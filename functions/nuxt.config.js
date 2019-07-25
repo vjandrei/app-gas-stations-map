@@ -22,6 +22,7 @@ module.exports =  {
   ** Global CSS
   */
   css: [
+    '~/assets/styles/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -33,7 +34,7 @@ module.exports =  {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
   /*
   ** Build configuration
