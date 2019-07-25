@@ -35,7 +35,8 @@ module.exports =  {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
   ],
   /*
   ** Build configuration
@@ -43,6 +44,12 @@ module.exports =  {
   buildDir: 'nuxt',
   build: {
     extractCSS: true,
+    styleResources: {
+      // your settings here
+      sass: [
+        './assets/styles/_space.scss',
+      ], // alternative: scss
+    },
     /*
     ** You can extend webpack config here
     */

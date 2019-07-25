@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
     nav{
         display: flex;
         height: 40px;
