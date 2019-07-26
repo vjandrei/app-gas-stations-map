@@ -1,2 +1,0 @@
-exports.ids=[2],exports.modules={15:function(t,e,n){"use strict";n.r(e);var r={},c=n(1);Object(c.a)(r,function(){var t=this.$createElement;return(this._self._c||t)("div",[])},[],!1,function(t){},null,"1d894574").exports;var o={components:{}};var l=Object(c.a)(o,function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"container"},[this._ssrNode('<h1 class="title">\n      Kaasuatankkiin\n    </h1>')])},[],!1,function(t){},null,"89b59f58");e.default=l.exports}};
-//# sourceMappingURL=dd8119d51410c10b59ad.js.map

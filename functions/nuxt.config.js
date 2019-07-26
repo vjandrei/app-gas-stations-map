@@ -11,7 +11,8 @@ module.exports =  {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' }
     ]
   },
   /*
@@ -34,7 +35,8 @@ module.exports =  {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
   ],
   /*
   ** Build configuration
@@ -42,6 +44,12 @@ module.exports =  {
   buildDir: 'nuxt',
   build: {
     extractCSS: true,
+    styleResources: {
+      // your settings here
+      sass: [
+        './assets/styles/_space.scss',
+      ], // alternative: scss
+    },
     /*
     ** You can extend webpack config here
     */

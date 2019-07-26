@@ -1,11 +1,11 @@
 <template>
     <div>
         <nav>
-            <div class="cta-item">1</div>
+            <div class="cta-item"></div>
             <div id="appTitle">
                 <h3>Kaasuasemat</h3>
             </div>
-            <div class="cta-item">2</div>
+            <div class="cta-item"></div>
         </nav>
     </div>
 </template>
@@ -25,12 +25,14 @@ export default {
         align-content: space-around;
         align-items: center;
         text-align: center;
+        padding-top: power(8,1,1);
+        padding-bottom: power(8,1,1);
     }
     #appTitle{
         flex:1;
-        @extend .m-t-8;
     }
     .cta-item{
         flex: 1;
+
     }
 </style>

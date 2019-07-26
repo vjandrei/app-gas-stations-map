@@ -1,20 +1,16 @@
 <template>
   <div>
-    <AppHeader />
     <div class="container">
-        <h1 class="title">
-          Kaasuatankkiin
-        </h1>
+        <StationList/>
     </div>
   </div>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader';
-
+import StationList from '@/components/StationList';
 export default {
   components: {
-    AppHeader,
+    StationList,
   }
 }
 </script>
