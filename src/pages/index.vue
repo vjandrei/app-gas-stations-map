@@ -11,7 +11,7 @@ import StationList from '@/components/StationList';
 export default {
   components: {
     StationList,
-  }
+  }, 
 }
 </script>
 
