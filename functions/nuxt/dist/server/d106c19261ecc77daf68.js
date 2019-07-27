@@ -1,2 +1,0 @@
-exports.ids=[2],exports.modules={17:function(t,e,n){"use strict";n.r(e);var r={},o=n(1);var c={components:{StationList:Object(o.a)(r,function(){var t=this.$createElement;return(this._self._c||t)("div",[this._ssrNode("\n    List of Stations\n    <ul></ul>")])},[],!1,function(t){},null,"2dd576dc").exports}};var l=Object(o.a)(c,function(){var t=this.$createElement,e=this._self._c||t;return e("div",[this._ssrNode('<div class="container">',"</div>",[e("StationList")],1)])},[],!1,function(t){},null,"89b59f58");e.default=l.exports}};
-//# sourceMappingURL=d106c19261ecc77daf68.js.map

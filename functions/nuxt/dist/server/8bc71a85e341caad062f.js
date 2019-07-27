@@ -1,2 +1,0 @@
-exports.ids=[1],exports.modules={18:function(t,e,r){"use strict";r.r(e);var c={},n=r(1);var component=Object(n.a)(c,function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"container"},[this._ssrNode('<h1 class="title">About</h1>')])},[],!1,function(t){},null,"c92554e2");e.default=component.exports}};
-//# sourceMappingURL=8bc71a85e341caad062f.js.map
