@@ -13,6 +13,8 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_swplugin_c87e39e0 from 'nuxt_plugin_swplugin_c87e39e0' // Source: ./sw.plugin.js (mode: 'client')
 import nuxt_plugin_nuxticons_49f08a9e from 'nuxt_plugin_nuxticons_49f08a9e' // Source: ./nuxt-icons.js (mode: 'all')
+import nuxt_plugin_nuxtleaflet_42012824 from 'nuxt_plugin_nuxtleaflet_42012824' // Source: ./nuxt-leaflet.js (mode: 'client')
+import nuxt_plugin_leaflet_4674fed0 from 'nuxt_plugin_leaflet_4674fed0' // Source: ../plugins/leaflet.js (mode: 'client')
 
 // Component: <NoSsr>
 Vue.component(NoSsr.name, NoSsr)
@@ -158,6 +160,14 @@ async function createApp(ssrContext) {
 
   if (typeof nuxt_plugin_nuxticons_49f08a9e === 'function') {
     await nuxt_plugin_nuxticons_49f08a9e(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_nuxtleaflet_42012824 === 'function') {
+    await nuxt_plugin_nuxtleaflet_42012824(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_leaflet_4674fed0 === 'function') {
+    await nuxt_plugin_leaflet_4674fed0(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

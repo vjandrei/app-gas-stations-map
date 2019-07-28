@@ -12,7 +12,9 @@ module.exports =  {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' }    
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' },
+      { rel: 'stylesheet', href: '//unpkg.com/leaflet/dist/leaflet.css' },
+      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' }
     ]
   },
   /*
@@ -29,6 +31,7 @@ module.exports =  {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: "~/plugins/leaflet.js", ssr: false }
   ],
   /*
   ** Nuxt.js modules
