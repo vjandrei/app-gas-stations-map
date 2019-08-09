@@ -37,8 +37,7 @@ module.exports =  {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
-    '@nuxtjs/style-resources',
-    ['nuxt-leaflet', { /* module options */ }],
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Build configuration
