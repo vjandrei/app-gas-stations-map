@@ -24,6 +24,17 @@ export const state = () => ({
             address: 'Espoontie 21',
             coords: [60.215780, 24.662930],
             type: 'marker',
-        }
+        },
+        {
+            type: "Feature",
+            geometry: {
+            type: "Point",
+            coordinates: [60.300040, 24.214420]
+            },
+            properties: {
+            title: "Gasum Lohja Muijala",
+            icon: "monument"
+            }
+        },
     ]
 })

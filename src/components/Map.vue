@@ -2,26 +2,11 @@
     <no-ssr>
         <mapbox
         @map-load="mapLoaded"
-        @map-click="mapClicked"
-        @geolocate-error="geolocateError"
-        @geolocate-geolocate="geolocate"
-        access-token=""
+        access-token="pk.eyJ1IjoidmphbmRyZWkiLCJhIjoiY2p5bGJ4YTZnMDY5aTNjcnR3N2p4NGZmbCJ9.uxuxi-gzV2Nz47Scn-uhLw"
         :map-options="{
         style: 'mapbox://styles/mapbox/light-v9',
         center: [-96, 37.8],
         zoom: 3
-        }"
-        :geolocate-control="{
-        show: true,
-        position: 'top-left'
-        }"
-        :scale-control="{
-        show: true,
-        position: 'top-left'
-        }"
-        :fullscreen-control="{
-        show: true,
-        position: 'top-left'
         }"
         ></mapbox>
     </no-ssr>
@@ -65,6 +50,30 @@ export default {
                     active: false,
                     features: [],
                 }
+            ],
+            test: [
+                {
+                    type: "Feature",
+                    geometry: {
+                    type: "Point",
+                    coordinates: [-77.03238901390978, 38.913188059745586]
+                    },
+                    properties: {
+                    title: "Mapbox DC",
+                    icon: "monument"
+                    }
+                },
+                {
+                    type: "Feature",
+                    geometry: {
+                    type: "Point",
+                    coordinates: [-122.414, 37.776]
+                    },
+                    properties: {
+                    title: "Mapbox SF",
+                    icon: "harbor"
+                    }
+                }
             ]
         }
     },
@@ -77,30 +86,8 @@ export default {
         }
     },
     mounted() { /* Code to run when app is mounted */ 
-        this.currentLocation();
-        //console.log(this.$L);
     },
     methods: { /* Any app-specific functions go here */ 
-        layerChanged(layerId, active) {},
-        geolocation() {
-            navigator.geolocation.getCurrentPosition(this.buildUrl);
-        },
-        currentLocation() {		
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(this.showPosition);
-            }
-            else{
-                this.error = "Geolocation is not supported.";   
-            }
-        },
-        buildUrl(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-        },
-        showPosition(position) {	
-            this.lat = position.coords.latitude;
-            this.lon = position.coords.longitude;
-        },
         mapLoaded(map) {
             map.addLayer({
                 id: "points",
@@ -110,28 +97,7 @@ export default {
                 data: {
                     type: "FeatureCollection",
                     features: [
-                    {
-                        type: "Feature",
-                        geometry: {
-                        type: "Point",
-                        coordinates: [-77.03238901390978, 38.913188059745586]
-                        },
-                        properties: {
-                        title: "Mapbox DC",
-                        icon: "monument"
-                        }
-                    },
-                    {
-                        type: "Feature",
-                        geometry: {
-                        type: "Point",
-                        coordinates: [-122.414, 37.776]
-                        },
-                        properties: {
-                        title: "Mapbox SF",
-                        icon: "harbor"
-                        }
-                    }
+                        this.test
                     ]
                 }
                 },
@@ -143,24 +109,11 @@ export default {
                 "text-anchor": "top"
                 }
             });
-            },
-            mapClicked(map, e) {
-            alert("Map Clicked!");
-            },
-            geolocateError(control, positionError) {
-            console.log(positionError);
-            },
-            geolocate(control, position) {
-            console.log(
-                `User position: ${position.coords.latitude}, ${position.coords.longitude}`
-            );
             }
     },
     beforeMount() {
-        this.geolocation();
     },
 }
-
 </script>
 
 <style>
