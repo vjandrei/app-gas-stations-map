@@ -13,8 +13,9 @@ module.exports =  {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' },
-      { rel: 'stylesheet', href: '//unpkg.com/leaflet/dist/leaflet.css' },
-      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' }
+      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
+      { rel: 'stylesheet', href: 'https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' },
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/vue-mapbox@latest/dist/vue-mapbox.css' }
     ]
   },
   /*
@@ -31,6 +32,7 @@ module.exports =  {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/mapbox', mode: 'client' },
   ],
   /*
   ** Nuxt.js modules

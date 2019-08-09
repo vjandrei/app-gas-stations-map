@@ -12,6 +12,7 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_nuxticons_1925773c from 'nuxt_plugin_nuxticons_1925773c' // Source: ./nuxt-icons.js (mode: 'all')
+import nuxt_plugin_mapbox_50fc9436 from 'nuxt_plugin_mapbox_50fc9436' // Source: ../plugins/mapbox (mode: 'client')
 
 // Component: <NoSsr>
 Vue.component(NoSsr.name, NoSsr)
@@ -153,6 +154,10 @@ async function createApp(ssrContext) {
 
   if (typeof nuxt_plugin_nuxticons_1925773c === 'function') {
     await nuxt_plugin_nuxticons_1925773c(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_mapbox_50fc9436 === 'function') {
+    await nuxt_plugin_mapbox_50fc9436(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
