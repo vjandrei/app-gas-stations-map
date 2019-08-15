@@ -2,7 +2,7 @@
     <div>
         List of Stations
         <ul>
-            <li v-for="station in stations" :key="station.id">
+            <li v-for="station in stations" :key="station.id" ref="list">
                 <nuxt-link :to="{name: 'stations-id', params: {id: station.url_name}}" >
                     {{station.url_name}}
                 </nuxt-link>
@@ -17,6 +17,11 @@ export default {
         stations(){
             return this.$store.state.stations.all
         }
+    },
+    methods: {
+        orderList() {
+            console.log('Filter!!');
+         }
     },
 }
 </script>

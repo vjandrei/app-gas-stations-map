@@ -12,7 +12,7 @@ module.exports =  {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' }    
     ]
   },
   /*
@@ -29,6 +29,7 @@ module.exports =  {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: "~/plugins/leaflet.js", ssr: false }
   ],
   /*
   ** Nuxt.js modules
@@ -37,6 +38,7 @@ module.exports =  {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    ['nuxt-leaflet', { /* module options */ }],
   ],
   /*
   ** Build configuration
