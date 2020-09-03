@@ -1,94 +1,93 @@
 <template>
-    <div>
-        <div id="map" style="height: 50vh; width: 100%;">
-            <no-ssr>
-                <l-map :zoom="zoom" :center="userLocation">
-                    <l-tile-layer :url="url"></l-tile-layer>
-                    <l-marker :lat-lng="userLocation" ></l-marker>
-                    <l-marker v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
-                    <v-locatecontrol/>
-                </l-map>
-            </no-ssr>
-        </div>
-        <div v-for="layer in layers" :key="layer.id">
-            <label>
-                <input type="checkbox" v-model="layer.active" @change="layerChanged(layer.id, layer.active)"/>
-                {{ layer.name }}
-            </label>
-        </div>
+  <div>
+    <div id="map">
+      <client-only>
+        <l-map
+          :zoom="zoom"
+          :center="center"
+          ref="myMap"
+          @update:bounds="boundsUpdated"
+          @update:center="centerUpdated"
+          @ready="markers"
+        >
+          <l-tile-layer :url="url" :attribution="attribution" />
+          <l-marker
+            v-for="station in stations"
+            :key="station.id"
+            :lat-lng="station.coords"
+          ></l-marker>
+          <v-locatecontrol />
+        </l-map>
+      </client-only>
     </div>
+    <div id="sidebar"></div>
+  </div>
 </template>
 
 <script>
-
-export default {
-    data() {
-        /* Data properties will go here */
-        return {
-            lat:'',
-            lon:'',
-            url: 'https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmphbmRyZWkiLCJhIjoiY2p5bGJ4YTZnMDY5aTNjcnR3N2p4NGZmbCJ9.uxuxi-gzV2Nz47Scn-uhLw',
-            zoom: 13,
-            map: null,
-            tileLayer: null,
-            bounds: null,
-            layers: [
-                {
-                    id: 0,
-                    name: 'Bio gas',
-                    active: false,
-                    features: [],
-                },
-                {
-                    id: 1,
-                    name: 'Natural gas',
-                    active: false,
-                    features: [],
-                }
-            ]
-        }
-    },
-    computed: {
-        stations() {
-            return this.$store.state.stations.all
-        },
-        userLocation(){
-            return [this.lat, this.lon];
-        }
-    },
-    mounted() { /* Code to run when app is mounted */ 
-        this.currentLocation();
-        //console.log(this.$L);
-    },
-    methods: { /* Any app-specific functions go here */ 
-        layerChanged(layerId, active) {},
-        geolocation() {
-            navigator.geolocation.getCurrentPosition(this.buildUrl);
-        },
-        currentLocation() {		
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(this.showPosition);
-            }
-            else{
-                this.error = "Geolocation is not supported.";   
-            }
-        },
-        buildUrl(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-        },
-        showPosition(position) {	
-            this.lat = position.coords.latitude;
-            this.lon = position.coords.longitude;
-        },
-    },
-    beforeMount() {
-        this.geolocation();
-    },
+import { mapGetters, mapState } from 'vuex';
+const isBrowser = typeof window !== 'undefined';
+let leaflet;
+if (isBrowser) {
+  leaflet = require('leaflet');
 }
+export default {
+  data() {
+    /* Data properties will go here */
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      zoom: 15,
+      center: null,
+    };
+  },
 
+  created() {
+    if (isBrowser) {
+      this.geolocations.locations.forEach((value, key) => {
+        this.center = leaflet.latLng(Object.values(value.geolocations));
+      });
+    }
+  },
+  computed: {
+    stations() {
+      return this.$store.state.stations.all;
+    },
+    geolocations() {
+      return this.$store.state.geolocation;
+    },
+  },
+  methods: {
+    /* Any app-specific functions go here */ markers() {},
+    centerUpdated(center) {
+      this.center = center;
+    },
+    boundsUpdated(bounds) {
+      var inBounds = [];
+      this.bounds = bounds;
+      //console.log(this.bounds);
+      const markers = this.$store.state.stations.all;
+
+      for (var i = 0, len = markers.length; i < len; i++) {
+        var marker = markers[i];
+        if (bounds.contains(marker.coords)) {
+          inBounds.push(marker.name);
+          //console.log(marker.name);
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style>
-    
+#map {
+  height: 50vh;
+  width: 100%;
+}
+#sidebar {
+  padding: 24px;
+  font-family: monospace;
+}
 </style>
