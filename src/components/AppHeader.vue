@@ -1,38 +1,27 @@
 <template>
-    <div>
-        <nav>
-            <div class="cta-item"></div>
-            <div id="appTitle">
-                <h3>Kaasuasemat</h3>
-            </div>
-            <div class="cta-item"></div>
-        </nav>
-    </div>
+  <div>
+    <nav>
+      <div class="cta-item"></div>
+      <div id="appTitle">
+        Kaasuasemat
+      </div>
+      <div class="cta-item"></div>
+    </nav>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style lang="scss">
-    nav{
-        display: flex;
-        height: 40px;
-        width: 100%;
-        justify-content: center;
-        align-content: space-around;
-        align-items: center;
-        text-align: center;
-        padding-top: power(8,1,1);
-        padding-bottom: power(8,1,1);
-    }
-    #appTitle{
-        flex:1;
-    }
-    .cta-item{
-        flex: 1;
-
-    }
+<style lang="postcss" scoped>
+nav {
+  @apply flex w-full pt-2 pb-2 justify-center items-center content-center text-center border-solid border-b border-gray-200 font-semibold;
+}
+#appTitle {
+  @apply flex-1;
+}
+.cta-item {
+  @apply flex-1;
+}
 </style>
