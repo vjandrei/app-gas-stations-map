@@ -19,7 +19,6 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('../store/geolocation.js'), 'geolocation.js')
   resolveStoreModules(require('../store/stations.js'), 'stations.js')
 
   // If the environment supports hot reloading...
@@ -27,7 +26,6 @@ let store = {};
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '../store/geolocation.js',
       '../store/index.js',
       '../store/stations.js',
     ], () => {

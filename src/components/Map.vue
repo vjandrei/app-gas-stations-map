@@ -40,12 +40,13 @@ export default {
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 15,
       center: null,
+      bounds: null,
     };
   },
 
   created() {
     if (isBrowser) {
-      this.geolocations.locations.forEach((value, key) => {
+      this.$store.state.locations.forEach((value, key) => {
         this.center = leaflet.latLng(Object.values(value.geolocations));
       });
     }
@@ -55,7 +56,7 @@ export default {
       return this.$store.state.stations.all;
     },
     geolocations() {
-      return this.$store.state.geolocation;
+      return this.$store.state.geolocations;
     },
   },
   methods: {
@@ -64,18 +65,10 @@ export default {
       this.center = center;
     },
     boundsUpdated(bounds) {
-      var inBounds = [];
+      //console.log(bounds);
+      const inBounds = [];
       this.bounds = bounds;
-      //console.log(this.bounds);
       const markers = this.$store.state.stations.all;
-
-      for (var i = 0, len = markers.length; i < len; i++) {
-        var marker = markers[i];
-        if (bounds.contains(marker.coords)) {
-          inBounds.push(marker.name);
-          //console.log(marker.name);
-        }
-      }
     },
   },
 };

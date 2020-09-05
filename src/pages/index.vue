@@ -22,6 +22,7 @@
       </div>
       <div v-if="location">
         <StationMap />
+        <pre id="coordinates" class="ui-coordinates"></pre>
         <StationList />
       </div>
     </div>
@@ -48,18 +49,12 @@ export default {
     this.gettingLocation = true;
   },
 
-  computed: {
-    geolocations() {
-      return this.$store.state.geolocation.locations;
-    },
-  },
   methods: {
     async getLocation() {
       return new Promise((resolve, reject) => {
         if (!('geolocation' in navigator)) {
           reject(new Error('Geolocation is not available.'));
         }
-
         navigator.geolocation.getCurrentPosition(
           (pos) => {
             resolve(pos);
@@ -75,7 +70,7 @@ export default {
       try {
         this.gettingLocation = false;
         this.location = await this.getLocation();
-        this.$store.commit('geolocation/add', {
+        this.$store.commit('add', {
           latitude: this.location.coords.latitude,
           longitude: this.location.coords.longitude,
         });
