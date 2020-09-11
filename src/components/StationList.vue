@@ -1,6 +1,7 @@
 <template>
   <div>
     List of Stations
+    {{ stationName }}
     <ul>
       <li v-for="station in stations" :key="station.id" ref="list">
         <nuxt-link
@@ -15,11 +16,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   computed: {
     stations() {
       return this.$store.state.stations.all;
     },
+    ...mapState({
+      stationName: (state) => state.stations.name,
+    }),
   },
   methods: {
     orderList() {

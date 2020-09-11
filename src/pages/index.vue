@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container mx-auto p-4 s:max-w-screen-sm">
-      <div class="text-center" v-if="gettingLocation">
+      <div class="text-center" v-if="noUserLocation">
         <h1 class="mx-auto text-center text-xl font-bold mb-4">
           Kaasun tankkaaminen
         </h1>
@@ -20,7 +20,7 @@
       <div v-if="errorStr">
         Sorry, but the following error occurred: {{ errorStr }}
       </div>
-      <div v-if="location">
+      <div v-if="hasUserlocation">
         <StationMap />
         <pre id="coordinates" class="ui-coordinates"></pre>
         <StationList />
@@ -32,12 +32,10 @@
 <script>
 import StationMap from '@/components/Map';
 import StationList from '@/components/StationList';
-
 export default {
   data() {
     return {
-      location: null,
-      gettingLocation: false,
+      userCoords: [],
       errorStr: null,
     };
   },
@@ -45,10 +43,15 @@ export default {
     StationList,
     StationMap,
   },
-  created() {
-    this.gettingLocation = true;
+  created() {},
+  computed: {
+    hasUserlocation() {
+      return this.$store.state.hasUserlocation;
+    },
+    noUserLocation() {
+      return this.$store.state.gettingLocation;
+    },
   },
-
   methods: {
     async getLocation() {
       return new Promise((resolve, reject) => {
@@ -66,17 +69,16 @@ export default {
       });
     },
     async locateMe(e) {
-      this.gettingLocation = true;
       try {
-        this.gettingLocation = false;
-        this.location = await this.getLocation();
+        this.userCoords = await this.getLocation();
         this.$store.commit('add', {
-          latitude: this.location.coords.latitude,
-          longitude: this.location.coords.longitude,
+          latitude: this.userCoords.coords.latitude,
+          longitude: this.userCoords.coords.longitude,
         });
+        this.$store.dispatch('getLocation');
         e.target.value = '';
       } catch (e) {
-        this.gettingLocation = false;
+        this.noUserLocation = false;
         this.errorStr = e.message;
       }
     },
