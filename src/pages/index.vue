@@ -12,7 +12,7 @@
         </p>
         <button
           class="mx-auto text-center bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded"
-          @click="locateMe"
+          @click="getLocation"
         >
           Paikanna minut
         </button>
@@ -61,13 +61,21 @@ export default {
         navigator.geolocation.getCurrentPosition(
           (pos) => {
             resolve(pos);
+            this.$store.commit('add', {
+              latitude: pos.coords.latitude,
+              longitude: pos.coords.longitude,
+            });
+            this.$store.dispatch('fetchFromnNavigator');
           },
           (err) => {
             reject(err);
+            console.log(err.message);
+            this.errorStr = err.message;
           }
         );
       });
     },
+    /*
     async locateMe(e) {
       try {
         this.userCoords = await this.getLocation();
@@ -82,6 +90,7 @@ export default {
         this.errorStr = e.message;
       }
     },
+    */
   },
 };
 </script>

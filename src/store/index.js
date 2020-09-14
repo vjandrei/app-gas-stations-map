@@ -1,6 +1,7 @@
 export const state = () => ({
   message: 'Hello Vuex state!',
   locations: [],
+  isLocation: false,
   gettingLocation: true,
   hasUserlocation: false,
 });
@@ -13,7 +14,7 @@ export const getters = {
 };
 
 export const actions = {
-  getLocation(context) {
+  fetchFromnNavigator(context) {
     context.commit('getLocation');
   },
 };

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
 const isBrowser = typeof window !== 'undefined';
 let leaflet;
 if (isBrowser) {
@@ -43,7 +42,6 @@ export default {
       bounds: null,
     };
   },
-
   created() {
     if (isBrowser) {
       this.$store.state.locations.forEach((value, key) => {
@@ -51,6 +49,7 @@ export default {
       });
     }
   },
+
   computed: {
     stations() {
       return this.$store.state.stations.all;
@@ -65,10 +64,19 @@ export default {
       this.center = center;
     },
     boundsUpdated(bounds) {
-      //console.log(bounds);
       const inBounds = [];
       this.bounds = bounds;
       const markers = this.$store.state.stations.all;
+
+      /*
+      for (var i = 0, len = markers.length; i < len; i++) {
+        var marker = markers[i];
+        if (bounds.contains(marker.coords)) {
+          inBounds.push(marker.name);
+          console.log(marker.name);
+        }
+      }
+      */
     },
   },
 };
