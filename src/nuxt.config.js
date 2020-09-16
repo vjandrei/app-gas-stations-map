@@ -29,6 +29,13 @@ module.exports = {
       },
     ],
   },
+  pwa: {
+    meta: {
+      /* meta options */
+      title: 'Kaasuasemat',
+      description: 'Löydä lähin kaasuasema',
+    },
+  },
   /*
    ** Customize the progress-bar color
    */
