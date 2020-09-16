@@ -58,6 +58,7 @@ export default {
       return this.$store.state.geolocations;
     },
   },
+
   methods: {
     /* Any app-specific functions go here */ markers() {},
     centerUpdated(center) {
