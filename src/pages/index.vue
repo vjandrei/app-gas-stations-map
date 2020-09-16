@@ -14,11 +14,9 @@
           class="mx-auto text-center bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded"
           @click="getLocation"
         >
-          Paikanna minut
+          <span v-if="showLocationLoading">Haetaan paikkatietoja</span>
+          <span v-else>Paikanna minut</span>
         </button>
-      </div>
-      <div v-if="errorStr">
-        Sorry, but the following error occurred: {{ errorStr }}
       </div>
       <div v-if="hasUserlocation">
         <StationMap />
@@ -36,7 +34,6 @@ export default {
   data() {
     return {
       userCoords: [],
-      errorStr: null,
     };
   },
   components: {
@@ -51,46 +48,14 @@ export default {
     noUserLocation() {
       return this.$store.state.gettingLocation;
     },
+    showLocationLoading() {
+      return this.$store.state.loadLocation;
+    },
   },
   methods: {
     async getLocation() {
-      return new Promise((resolve, reject) => {
-        if (!('geolocation' in navigator)) {
-          reject(new Error('Geolocation is not available.'));
-        }
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            resolve(pos);
-            this.$store.commit('add', {
-              latitude: pos.coords.latitude,
-              longitude: pos.coords.longitude,
-            });
-            this.$store.dispatch('fetchFromnNavigator');
-          },
-          (err) => {
-            reject(err);
-            console.log(err.message);
-            this.errorStr = err.message;
-          }
-        );
-      });
+      this.$store.dispatch('fetchFromNavigator');
     },
-    /*
-    async locateMe(e) {
-      try {
-        this.userCoords = await this.getLocation();
-        this.$store.commit('add', {
-          latitude: this.userCoords.coords.latitude,
-          longitude: this.userCoords.coords.longitude,
-        });
-        this.$store.dispatch('getLocation');
-        e.target.value = '';
-      } catch (e) {
-        this.noUserLocation = false;
-        this.errorStr = e.message;
-      }
-    },
-    */
   },
 };
 </script>
