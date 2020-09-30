@@ -1,40 +1,37 @@
 <template>
-  <div>
-    <div id="map">
-      <client-only>
-        <l-map
-          :zoom="zoom"
-          :center="center"
-          ref="myMap"
-          @update:bounds="boundsUpdated"
-          @update:center="centerUpdated"
-          @ready="markers"
-        >
-          <l-tile-layer :url="url" :attribution="attribution" />
-          <l-marker
-            v-for="station in stations"
-            :key="station.id"
-            :lat-lng="station.coords"
-          ></l-marker>
-          <v-locatecontrol />
-        </l-map>
-      </client-only>
-    </div>
-    <div id="sidebar"></div>
+  <div id="map">
+    <client-only>
+      <l-map
+        :zoom="zoom"
+        :center="center"
+        ref="myMap"
+        @update:bounds="boundsUpdated"
+        @update:center="centerUpdated"
+        @ready="markers"
+      >
+        <l-tile-layer :url="url" :attribution="attribution" />
+        <l-marker
+          v-for="station in stations"
+          :key="station.id"
+          :lat-lng="station.coords"
+        ></l-marker>
+        <v-locatecontrol />
+      </l-map>
+    </client-only>
   </div>
 </template>
 
 <script>
-const isBrowser = typeof window !== 'undefined';
+const isBrowser = typeof window !== "undefined";
 let leaflet;
 if (isBrowser) {
-  leaflet = require('leaflet');
+  leaflet = require("leaflet");
 }
 export default {
   data() {
     /* Data properties will go here */
     return {
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 15,
@@ -83,13 +80,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="postcss" scoped>
 #map {
   height: 50vh;
   width: 100%;
-}
-#sidebar {
-  padding: 24px;
-  font-family: monospace;
 }
 </style>

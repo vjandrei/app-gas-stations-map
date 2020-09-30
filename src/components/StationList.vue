@@ -1,18 +1,20 @@
 <template>
-  <div>
-    Nearest stations
-    <ul>
-      <li v-for="station in stations" :key="station.id" ref="list">
-        <nuxt-link
-          class="font-semibold"
-          :to="{ name: 'stations-id', params: { id: station.url_name } }"
-          >{{ station.name }}
-        </nuxt-link>
-        ({{ (station.distance / 1000).toFixed(1) }}
-        km)
-        {{ station.address }}
-      </li>
-    </ul>
+  <div id="stationList">
+    <div class="container mx-auto pt-6">
+      Nearest stations
+      <ul>
+        <li v-for="station in stations" :key="station.id" ref="list">
+          <nuxt-link
+            class="font-semibold"
+            :to="{ name: 'stations-id', params: { id: station.url_name } }"
+            >{{ station.name }}
+          </nuxt-link>
+          ({{ (station.distance / 1000).toFixed(1) }}
+          km)
+          {{ station.address }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -39,7 +41,7 @@ export default {
   },
   methods: {
     orderList() {
-      console.log('Filter!!');
+      console.log("Filter!!");
     },
   },
 };

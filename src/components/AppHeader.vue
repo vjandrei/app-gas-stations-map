@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav>
+    <nav class="fixed z-10 bg-white">
       <div class="cta-item"></div>
       <div id="appTitle">
         Kaasuasemat

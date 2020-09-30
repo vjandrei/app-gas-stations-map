@@ -7,6 +7,13 @@
     "_name": "_47672644"
   },
   {
+    "name": "map",
+    "path": "/map",
+    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/_sovellukset-tuotannossa/gas-stations/src/pages/map.vue",
+    "chunkName": "pages/map",
+    "_name": "_76f54453"
+  },
+  {
     "name": "stations-id",
     "path": "/stations/:id?",
     "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/_sovellukset-tuotannossa/gas-stations/src/pages/stations/_id.vue",
