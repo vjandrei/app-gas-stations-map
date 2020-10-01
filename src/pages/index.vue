@@ -42,14 +42,4 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#view1 {
-  height: 100vh;
-  width: 100%;
-  background: khaki;
-}
-#view2 {
-  height: 100vh;
-  width: 100%;
-  background: lavenderblush;
-}
 </style>

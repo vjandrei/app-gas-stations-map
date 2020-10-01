@@ -2,6 +2,7 @@
   <div id="welcomeScreen">
     <div class="container mx-auto pt-6 text-center">
       <h1 class="mx-auto text-xl font-bold mb-4">Kaasun tankkaaminen</h1>
+
       <p class="mb-4">
         Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat
         ympäri maailmaa. Jotta asemat tulisi sovellukseen sinun on annettava
@@ -40,6 +41,8 @@ export default {
 #welcomeScreen {
   height: 100vh;
   width: inherit;
+  background: url("~assets/img/bg.jpg");
+  @apply .bg-local .bg-center .bg-no-repeat .bg-cover;
 }
 </style>
 
