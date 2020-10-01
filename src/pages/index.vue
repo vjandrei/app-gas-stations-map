@@ -1,20 +1,10 @@
 <template>
-  <div>
-    <button v-on:click="show = !show">Toggle</button>
+  <div id="welcomePageWrapper">
     <transition name="fade">
-      <p v-if="show">hello</p>
-    </transition>
-    <transition name="fade">
-      <p v-if="!show">Goodbye</p>
-    </transition>
-
-    <transition name="fade">
-      <div v-if="noUserLocation">
+      <div class="item" v-if="noUserLocation" key="welcome">
         <WelcomeScreen />
       </div>
-    </transition>
-    <transition name="fade">
-      <div v-if="hasUserlocation">
+      <div class="item" v-if="hasUserlocation" key="map">
         <StationMap />
         <StationList />
       </div>
@@ -51,4 +41,15 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+#view1 {
+  height: 100vh;
+  width: 100%;
+  background: khaki;
+}
+#view2 {
+  height: 100vh;
+  width: 100%;
+  background: lavenderblush;
+}
+</style>

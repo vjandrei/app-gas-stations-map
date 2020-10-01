@@ -1,3 +1,6 @@
+import path from 'path';
+import fs from 'fs';
+
 module.exports = {
   mode: 'universal',
   /*
@@ -71,5 +74,13 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+  },
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0', // default: localhost
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
+    },
   },
 };
