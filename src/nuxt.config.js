@@ -57,17 +57,25 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
+  exampleMsg: 'hello',
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
   ],
+  customCounter: { option1: 'something' },
   buildModules: ['@nuxtjs/tailwindcss'],
   /*
    ** Build configuration
    */
   buildDir: 'nuxt',
   build: {
+    postcss: {
+      plugins: {
+        'postcss-viewport-height-correction': {},
+      },
+      preset: {},
+    },
     extractCSS: true,
     styleResources: {
       // your settings here
