@@ -9,7 +9,7 @@
       >
         <WelcomeScreen />
       </div>
-      <div class="item" v-if="hasUserlocation" key="map">
+      <div id="mapScreen" v-if="hasUserlocation" key="map">
         <StationMap />
         <StationList />
       </div>
@@ -34,7 +34,6 @@ export default {
     StationMap,
   },
   created() {
-    console.log('a is: ' + this.a);
     if (process.browser) {
       var customViewportCorrectionVariable = 'vh';
 

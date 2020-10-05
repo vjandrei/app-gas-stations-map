@@ -45,28 +45,15 @@ html {
   width: inherit;
 }
 
-#welcomePageWrapper .item {
+#welcomePageWrapper #mapScreen {
   position: absolute;
   width: 100%;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-.fade-enter {
-  #map {
-    transform: scale(2);
-  }
-  #stationList {
-    transform: translateY(calc(100% + 0px));
-  }
-}
-.fade-leave-active {
-  transform: translateY(-31px);
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
 }
 
 #map {
@@ -77,6 +64,23 @@ html {
 #stationList {
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(0px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 2.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-enter {
+  #map {
+    transform: scale(2);
+  }
+  #stationList {
+    transform: translateY(calc(100% + 0px));
+  }
+}
+.fade-leave-active {
+  transform: translateY(-31px);
 }
 
 .title {
