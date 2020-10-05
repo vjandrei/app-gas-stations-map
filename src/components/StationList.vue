@@ -31,8 +31,8 @@ export default {
         .map((m) =>
           Object.assign({}, m, {
             distance: L.latLng(
-              this.$store.state.locations[0].geolocations.latitude,
-              this.$store.state.locations[0].geolocations.longitude
+              this.$store.state.userLocation[0].coords.latitude,
+              this.$store.state.userLocation[0].coords.longitude
             ).distanceTo(L.latLng([m.coords.lat, m.coords.lng])),
           })
         )
@@ -41,11 +41,10 @@ export default {
   },
   methods: {
     orderList() {
-      console.log("Filter!!");
+      console.log('Filter!!');
     },
   },
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

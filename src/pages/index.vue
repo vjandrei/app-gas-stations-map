@@ -55,7 +55,6 @@ export default {
         'resize',
         setViewportProperty(document.documentElement)
       );
-      console.log(window.innerWidth, window.innerHeight);
     }
   },
   computed: {

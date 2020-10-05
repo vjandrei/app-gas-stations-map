@@ -4,7 +4,7 @@
       <l-map
         :zoom="zoom"
         :center="center"
-        ref="myMap"
+        ref="map"
         @update:bounds="boundsUpdated"
         @update:center="centerUpdated"
         @ready="markers"
@@ -22,16 +22,16 @@
 </template>
 
 <script>
-const isBrowser = typeof window !== "undefined";
+const isBrowser = typeof window !== 'undefined';
 let leaflet;
 if (isBrowser) {
-  leaflet = require("leaflet");
+  leaflet = require('leaflet');
 }
 export default {
   data() {
     /* Data properties will go here */
     return {
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 15,
@@ -41,8 +41,8 @@ export default {
   },
   created() {
     if (isBrowser) {
-      this.$store.state.locations.forEach((value, key) => {
-        this.center = leaflet.latLng(Object.values(value.geolocations));
+      this.$store.state.userLocation.forEach((value, key) => {
+        this.center = L.latLng(Object.values(value.coords));
       });
     }
   },
@@ -51,9 +51,13 @@ export default {
     stations() {
       return this.$store.state.stations.all;
     },
-    geolocations() {
-      return this.$store.state.geolocations;
-    },
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      const map = this.$refs.map.mapObject;
+      L.marker(this.center).addTo(map);
+    });
   },
 
   methods: {

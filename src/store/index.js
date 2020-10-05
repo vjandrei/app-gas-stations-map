@@ -1,10 +1,11 @@
 export const state = () => ({
   message: 'Hello Vuex state!',
-  locations: [],
+  userLocation: [],
   isLocation: false,
   gettingLocation: true,
   hasUserlocation: false,
   loadLocation: false,
+  gasStations: [],
 });
 
 const pingGeoLocation = () => {
@@ -45,9 +46,9 @@ export const actions = {
 };
 
 export const mutations = {
-  add(state, geolocations) {
-    state.locations.push({
-      geolocations,
+  add(state, coords) {
+    state.userLocation.push({
+      coords,
     });
   },
   getLocation(state) {
