@@ -78,7 +78,7 @@ export default {
       rgba(35, 35, 35, 0.47),
       rgba(35, 35, 35, 0.67)
     ),
-    url('~assets/img/bg.jpg');
+    url('~assets/img/bg-min.jpg');
   //filter: saturate(0.5);
   @apply .bg-local .bg-center .bg-no-repeat .bg-cover;
 }
