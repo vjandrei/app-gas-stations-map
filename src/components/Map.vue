@@ -39,7 +39,7 @@ export default {
   data() {
     /* Data properties will go here */
     return {
-      url: "https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidmphbmRyZWkiLCJhIjoiY2tlODdqNTlxMXRxdzJ2bjdwbWU2Z3ZtayJ9.fFRq9nmI2X8Xu14Z0_Zp2w",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       zoom: 13,
       center: null,
       bounds: null,
