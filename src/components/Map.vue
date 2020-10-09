@@ -9,12 +9,20 @@
         @update:center="centerUpdated"
         @ready="markers"
       >
-        <l-tile-layer :url="url" :attribution="attribution" />
+        <l-tile-layer :url="url" :options="options"/>
         <l-marker
           v-for="station in stations"
           :key="station.id"
           :lat-lng="station.coords"
         ></l-marker>
+        <l-circle
+          :lat-lng="circle.center"
+          :radius="circle.radius"
+          :color="circle.color"
+          :fillColor="circle.fillColor"
+          :fillOpacity="circle.fillOpacity"
+          :weight="circle.weight"
+        />
         <v-locatecontrol />
       </l-map>
     </client-only>
@@ -22,21 +30,30 @@
 </template>
 
 <script>
-const isBrowser = typeof window !== 'undefined';
+const isBrowser = typeof window !== "undefined";
 let leaflet;
 if (isBrowser) {
-  leaflet = require('leaflet');
+  leaflet = require("leaflet");
 }
 export default {
   data() {
     /* Data properties will go here */
     return {
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      zoom: 15,
+      url: "https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidmphbmRyZWkiLCJhIjoiY2tlODdqNTlxMXRxdzJ2bjdwbWU2Z3ZtayJ9.fFRq9nmI2X8Xu14Z0_Zp2w",
+      zoom: 13,
       center: null,
       bounds: null,
+      circle: {
+        center: [60.16345979999999, 24.886902],
+        radius: 20,
+        color: "rgba(35,136,204,0.30)",
+        fillColor: "#2388CC",
+        fillOpacity: 1,
+        weight: 20,
+      },
+      options:{
+        accessToken: process.env.MAPBOX_KEY
+      }
     };
   },
   created() {
@@ -55,8 +72,10 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
+      /* remove marker
       const map = this.$refs.map.mapObject;
       L.marker(this.center).addTo(map);
+      */
     });
   },
 

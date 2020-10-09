@@ -64,7 +64,10 @@ module.exports = {
     '@nuxtjs/style-resources',
   ],
   customCounter: { option1: 'something' },
-  buildModules: ['@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxtjs/tailwindcss', 
+    '@nuxtjs/dotenv'
+  ],
   /*
    ** Build configuration
    */

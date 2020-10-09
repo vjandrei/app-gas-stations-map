@@ -150,7 +150,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {}
+      env: {"MAPBOX_KEY":"pk.eyJ1IjoidmphbmRyZWkiLCJhIjoiY2tlODdqNTlxMXRxdzJ2bjdwbWU2Z3ZtayJ9.fFRq9nmI2X8Xu14Z0_Zp2w"}
     }
     // Only set once
     if (!process.static && context.req) {

@@ -3,13 +3,15 @@ import {
   LMap,
   LTileLayer,
   LMarker,
+  LCircle,
   findRealParent,
   propsBinder,
 } from 'vue2-leaflet';
 import * as L from 'leaflet';
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol';
+import { Icon } from 'leaflet';
 
-import { Icon, latLng } from 'leaflet';
+
 delete Icon.Default.prototype._getIconUrl;
 
 Icon.Default.mergeOptions({
@@ -21,6 +23,7 @@ Icon.Default.mergeOptions({
 Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
+Vue.component('l-circle', LCircle);
 Vue.component('v-locatecontrol', Vue2LeafletLocatecontrol);
 
 delete Icon.Default.prototype._getIconUrl;
