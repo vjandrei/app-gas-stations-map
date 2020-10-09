@@ -15,13 +15,15 @@
           :key="station.id"
           :lat-lng="station.coords"
         ></l-marker>
-        <l-circle
+        <l-circle-marker
+          :name="circle.name"
           :lat-lng="circle.center"
           :radius="circle.radius"
           :color="circle.color"
           :fillColor="circle.fillColor"
           :fillOpacity="circle.fillOpacity"
           :weight="circle.weight"
+          :className="circle.class"
         />
         <v-locatecontrol />
       </l-map>
@@ -44,12 +46,14 @@ export default {
       center: null,
       bounds: null,
       circle: {
+        name: "userLocationPin",
         center: [60.16345979999999, 24.886902],
-        radius: 20,
+        radius: 10,
         color: "rgba(35,136,204,0.30)",
         fillColor: "#2388CC",
         fillOpacity: 1,
         weight: 20,
+        class: "mapPin"
       },
     };
   },

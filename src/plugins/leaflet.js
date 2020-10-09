@@ -4,6 +4,7 @@ import {
   LTileLayer,
   LMarker,
   LCircle,
+  LCircleMarker,
   findRealParent,
   propsBinder,
 } from 'vue2-leaflet';
@@ -24,6 +25,7 @@ Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-marker', LMarker);
 Vue.component('l-circle', LCircle);
+Vue.component('l-circle-marker', LCircleMarker)
 Vue.component('v-locatecontrol', Vue2LeafletLocatecontrol);
 
 delete Icon.Default.prototype._getIconUrl;
