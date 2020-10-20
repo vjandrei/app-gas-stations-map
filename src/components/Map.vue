@@ -15,9 +15,7 @@
           :key="station.id"
           :lat-lng="station.coords"
         ></l-marker>
-        <l-marker :lat-lng="car.center">
-          <l-icon icon-url="assets/img/car.png" />
-        </l-marker>
+
         <l-circle-marker
           :name="circle1.name"
           :lat-lng="circle1.center"
@@ -38,7 +36,6 @@
           :weight="circle2.weight"
           :className="circle2.class"
         />
-
         <v-locatecontrol />
       </l-map>
     </client-only>
@@ -55,9 +52,7 @@ export default {
   data() {
     /* Data properties will go here */
     return {
-      url:
-        "https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=" +
-        process.env.MAPBOX_KEY,
+      url:"https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=" + process.env.MAPBOX_KEY,
       zoom: 13,
       center: null,
       bounds: null,
@@ -104,8 +99,21 @@ export default {
     },
   },
 
+  mounted() {
+    this.$nextTick(() => {
+        // Toimii! console.log(this.$refs.map);
+    });
+    this.$root.$on('setStation', () => {
+      console.log(this.$store.state.markerLocation.lat);
+      console.log(this.$store.state.markerLocation.lng);
+      this.$refs.map.setCenter([this.$store.state.markerLocation.lat, this.$store.state.markerLocation.lng])
+    });
+  },
+
+
+
   methods: {
-    /* Any app-specific functions go here */ markers() {},
+    markers() {},
     centerUpdated(center) {
       this.center = center;
     },
@@ -113,21 +121,7 @@ export default {
       const inBounds = [];
       this.bounds = bounds;
       const markers = this.$store.state.stations.all;
-
-      /*
-      for (var i = 0, len = markers.length; i < len; i++) {
-        var marker = markers[i];
-        if (bounds.contains(marker.coords)) {
-          inBounds.push(marker.name);
-          console.log(marker.name);
-        }
-      }
-      */
     },
-    openStation(station){
-      console.log("Child to parent!!!");
-      console.log(station);
-    }
   },
 };
 </script>

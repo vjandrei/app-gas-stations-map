@@ -3,7 +3,7 @@
     <div class="container mx-auto pt-6">
       Nearest stations
       <ul>
-        <li v-for="station in stations.slice(0,1)" :key="station.id" ref="list" class="stationListItem" @click="openStation(station)">
+        <li v-for="station in stations.slice(0,1)" :key="station.id" ref="list" class="stationListItem" @click="setStation(station)">
           <nuxt-link
             class="font-semibold"
             :to="{ name: 'stations-id', params: { id: station.url_name } }"
@@ -22,11 +22,6 @@
 </template>
 
 <script>
-const isBrowser = typeof window !== "undefined";
-let leaflet;
-if (isBrowser) {
-  leaflet = require("leaflet");
-}
 export default {
   data() {
     return {
@@ -50,16 +45,11 @@ export default {
     },
   },
   mounted() {
-    
   },
   methods: {
-    openStation(station){
-      console.log(this.$parent);
-      //this.$parent.openStation(station);
-      //this.$store.dispatch('helloWorld');
-      //this.center = L.latLng(station.coords.lat, station.coords.lng);
-      //this.$refs.map.setView(L.latLng(station.coords.lat, station.coords.lng), 13);
-      //this.$refs.map.setCenter([station.coords.lat, station.coords.lng])
+    setStation(station){
+      this.$store.dispatch('updateStation', station.coords)
+      this.$root.$emit('setStation')
     }
   },
 };
