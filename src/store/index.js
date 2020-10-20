@@ -5,7 +5,8 @@ export const state = () => ({
   gettingLocation: true,
   hasUserlocation: false,
   loadLocation: false,
-  gasStations: [],
+  showMore: false,
+  gasStations: []
 });
 
 const pingGeoLocation = () => {
@@ -25,7 +26,7 @@ const pingGeoLocation = () => {
 export const getters = {
   hasUserlocation: (state) => {
     return state.gettingLocation;
-  },
+  }
 };
 
 export const actions = {
@@ -42,7 +43,7 @@ export const actions = {
       .finally(() => {
         context.commit('loadLocation', false);
       });
-  },
+  }
 };
 
 export const mutations = {
@@ -57,5 +58,5 @@ export const mutations = {
   },
   loadLocation(state, payload) {
     state.loadLocation = payload;
-  },
+  }
 };

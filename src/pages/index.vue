@@ -10,8 +10,12 @@
         <WelcomeScreen />
       </div>
       <div id="mapScreen" v-if="hasUserlocation" key="map">
-        <StationMap />
-        <StationList />
+        <div id="mapGridItem">
+          <StationMap />
+        </div>
+        <div id="stationGridItem">
+          <StationList />
+        </div>
       </div>
     </transition>
   </div>
@@ -69,15 +73,4 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-#welcomeScreen {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(35, 35, 35, 0.47),
-      rgba(35, 35, 35, 0.67)
-    ),
-    url('~assets/img/bg-min.jpg');
-  //filter: saturate(0.5);
-  @apply .bg-local .bg-center .bg-no-repeat .bg-cover;
-}
-</style>
+<style lang="postcss" scoped></style>

@@ -6,6 +6,7 @@ import {
   LCircle,
   LCircleMarker,
   LIcon,
+  LControl,
   findRealParent,
   propsBinder,
 } from 'vue2-leaflet';
@@ -28,6 +29,7 @@ Vue.component('l-marker', LMarker);
 Vue.component('l-circle', LCircle);
 Vue.component('l-circle-marker', LCircleMarker)
 Vue.component('l-icon', LIcon)
+Vue.component('l-control', LControl);
 Vue.component('v-locatecontrol', Vue2LeafletLocatecontrol);
 
 delete Icon.Default.prototype._getIconUrl;

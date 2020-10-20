@@ -86,6 +86,7 @@ export default {
       },
     };
   },
+
   created() {
     if (isBrowser) {
       this.$store.state.userLocation.forEach((value, key) => {
@@ -101,15 +102,6 @@ export default {
     stations() {
       return this.$store.state.stations.all;
     },
-  },
-
-  mounted() {
-    this.$nextTick(() => {
-      /* remove marker
-      const map = this.$refs.map.mapObject;
-      L.marker(this.center).addTo(map);
-      */
-    });
   },
 
   methods: {
@@ -132,13 +124,12 @@ export default {
       }
       */
     },
+    openStation(station){
+      console.log("Child to parent!!!");
+      console.log(station);
+    }
   },
 };
 </script>
 
-<style lang="postcss" scoped>
-#map {
-  height: 50vh;
-  width: 100%;
-}
-</style>
+<style lang="postcss" scoped></style>
