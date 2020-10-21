@@ -3,7 +3,6 @@
     <transition name="fade">
       <div
         id="welcomeScreen"
-        class="flex flex-col h-full justify-center content-center items-center place-content-center text-white"
         v-if="noUserLocation"
         key="welcome"
       >

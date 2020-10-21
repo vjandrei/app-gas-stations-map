@@ -15,6 +15,7 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_workbox_50ae8453 from 'nuxt_plugin_workbox_50ae8453' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_nuxticons_49f08a9e from 'nuxt_plugin_nuxticons_49f08a9e' // Source: ./nuxt-icons.js (mode: 'all')
+import nuxt_plugin_webfontloader_108ecff7 from 'nuxt_plugin_webfontloader_108ecff7' // Source: ./webfontloader.js (mode: 'client')
 import nuxt_plugin_leaflet_4674fed0 from 'nuxt_plugin_leaflet_4674fed0' // Source: ../plugins/leaflet.js (mode: 'client')
 import nuxt_plugin_hello_7851454a from 'nuxt_plugin_hello_7851454a' // Source: ../plugins/hello.js (mode: 'all')
 
@@ -69,7 +70,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Kaasutankkausasemat Suomessa","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, height=device-height,initial-scale=1"},{"hid":"description","name":"description","content":"\u003E This project is starting base for Nuxt Firebase SSR app"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"kaasuasemat"},{"hid":"author","name":"author","content":"Andreas Koutsoukos"},{"hid":"theme-color","name":"theme-color","content":"#fff"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"kaasuasemat"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"kaasuasemat"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Löydä lähin kaasuasema"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Lato:300,400,700&display=swap"},{"rel":"stylesheet","href":"\u002F\u002Funpkg.com\u002Fleaflet\u002Fdist\u002Fleaflet.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fmaxcdn.bootstrapcdn.com\u002Ffont-awesome\u002F4.7.0\u002Fcss\u002Ffont-awesome.min.css"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.0008cdd9.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64x64.46472c.png"},{"rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512x512.46472c.png","sizes":"512x512"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
+    head: {"title":"Kaasutankkausasemat Suomessa","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, height=device-height,initial-scale=1"},{"hid":"description","name":"description","content":"\u003E This project is starting base for Nuxt Firebase SSR app"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"kaasuasemat"},{"hid":"author","name":"author","content":"Andreas Koutsoukos"},{"hid":"theme-color","name":"theme-color","content":"#fff"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"kaasuasemat"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"kaasuasemat"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Löydä lähin kaasuasema"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"\u002F\u002Funpkg.com\u002Fleaflet\u002Fdist\u002Fleaflet.css"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.0008cdd9.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64x64.46472c.png"},{"rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512x512.46472c.png","sizes":"512x512"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
 
     store,
     router,
@@ -204,6 +205,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_nuxticons_49f08a9e === 'function') {
     await nuxt_plugin_nuxticons_49f08a9e(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_webfontloader_108ecff7 === 'function') {
+    await nuxt_plugin_webfontloader_108ecff7(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_leaflet_4674fed0 === 'function') {

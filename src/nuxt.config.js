@@ -22,17 +22,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap',
-      },
       { rel: 'stylesheet', href: '//unpkg.com/leaflet/dist/leaflet.css' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-      },
     ],
   },
   env:{
@@ -52,7 +42,22 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['~/assets/styles/main.scss'],
+  css: [
+    '~/assets/styles/main.scss', 
+    '~/assets/styles/tailwind.scss',
+  ],
+  purgeCSS: {
+    mode: 'postcss',
+    enabled: (process.env.NODE_ENV === 'production')
+  },
+  /*
+   ** Global Fonts
+   */
+  webfontloader: {
+    google: {
+      families: ['Lato:300,400,700'] //Loads Lato font with weights 400 and 700
+    }
+  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -65,6 +70,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    'nuxt-purgecss',
+    'nuxt-webfontloader',
   ],
   customCounter: { option1: 'something' },
   buildModules: [
@@ -78,9 +85,17 @@ module.exports = {
   build: {
     postcss: {
       plugins: {
+        'postcss-import': {},
+        'postcss-nested': {},
         'postcss-viewport-height-correction': {},
+        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
+        
       },
-      preset: {},
+      order: 'presetEnvAndCssnanoLast',
+      preset: {
+        stage: 2 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
+      },
+      
     },
     extractCSS: true,
     styleResources: {

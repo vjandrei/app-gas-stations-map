@@ -38,6 +38,7 @@ export const mutations = {
   },
   getStation(state, value) {
     state.markerLocation = value;
+    state.showMore = true;
   }
 };
 

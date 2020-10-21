@@ -1,25 +1,4 @@
-@import 'space';
-@import 'typography';
 @import 'Vue2LeafletLocatecontrol';
-@import 'tailwind';
-
-$min_width: 320px;
-$max_width: 1200px;
-$min_font: 16px;
-$max_font: 24px;
-
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  @include fluid-type($min_width, $max_width, $min_font, $max_font);
-}
 
 *,
 *:before,
@@ -41,20 +20,36 @@ html {
 }
 
 #welcomePageWrapper {
-  position: relative;
-  height: 100vh;
   width: inherit;
+  height: 100vh;
+  @apply relative;
 }
 
 #welcomeScreen {
   background-image: linear-gradient(
-      to bottom,
-      rgba(35, 35, 35, 0.47),
-      rgba(35, 35, 35, 0.67)
+      180deg,
+      rgba(1, 62, 89, 0) 34%,
+      rgba(35, 136, 204, 0.5) 98%
     ),
-    url('~assets/img/bg-min.jpg');
-  //filter: saturate(0.5);
-  @apply bg-local bg-center bg-no-repeat bg-cover;
+    url('~assets/img/bg-min.gif');
+  @apply bg-local bg-center bg-no-repeat bg-cover flex flex-col h-full text-white justify-end;
+}
+
+#welcomeScreenContainer {
+  @apply mx-auto p-6;
+  h1,
+  h4,
+  p,
+  button {
+    @apply text-white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  h4 {
+    @apply font-normal;
+  }
+  p {
+    @apply leading-3;
+  }
 }
 
 #welcomePageWrapper #mapScreen {
@@ -67,18 +62,18 @@ html {
   bottom: 0;
   background: white;
 }
-#mapScreen{
+#mapScreen {
   @apply grid gap-1;
   @screen sm {
-    @apply  grid-cols-2 grid-rows-1;
-   }
+    @apply grid-cols-2 grid-rows-1;
+  }
 }
 
-#mapGridItem{
-
+#mapGridItem {
 }
-#stationGridItem{
-  @apply p-4 grid justify-center content-end;
+
+#stationGridItem {
+  @apply p-4 grid content-end;
   @screen sm {
     @apply p-16 overflow-hidden overflow-y-scroll;
   }
@@ -93,7 +88,7 @@ html {
 
   @screen sm {
     @apply relative;
-   }
+  }
 }
 
 #stationList {
@@ -101,8 +96,38 @@ html {
   transform: translateY(0px);
 }
 
-.stationListItem{
-  @apply bg-white p-4 rounded-lg;
+.stationListItemCard {
+  @apply bg-white p-4 rounded-lg shadow-md;
+  dl,
+  dd {
+    @apply font-normal text-sm;
+  }
+}
+
+.stationListItem {
+  @apply flex flex-row w-full mb-2;
+}
+
+.stationLocationLink {
+  background: #2388cc;
+  @apply rounded mr-2;
+
+  img {
+    @apply p-4 h-full;
+  }
+}
+
+.stationLocationContent {
+  @apply flex flex-col;
+  h2 {
+    @apply font-bold text-xl;
+  }
+  h4 {
+    @apply text-base;
+  }
+  h5 {
+    @apply font-normal text-sm;
+  }
 }
 
 .fade-enter-active,
@@ -198,108 +223,127 @@ html {
   pointer-events: none;
 }
 
-
-.mapPin{
+.mapPin {
   margin: auto auto;
   position: relative;
-  animation: animationWave cubic-bezier(0,.54,.53,1) 3s;
+  animation: animationWave cubic-bezier(0, 0.54, 0.53, 1) 3s;
   transform-origin: center;
-  animation-fill-mode:forwards;
-  animation-delay:1.07s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.07s;
   animation-iteration-count: infinite;
 }
 
-@keyframes animationWave{
-	0% {
-      stroke-opacity: 0;
-      stroke-width: 0;
-      fill-opacity: 0;
-      width: 0;
+@keyframes animationWave {
+  0% {
+    stroke-opacity: 0;
+    stroke-width: 0;
+    fill-opacity: 0;
+    width: 0;
   }
-  
-  
-	1% {
-		stroke-opacity: 1;
-  }
-  
-  5% {
-	  width: 20;
-	}
 
-	10% {
-    stroke: rgba(32,150,243,0.4);
+  1% {
+    stroke-opacity: 1;
+  }
+
+  5% {
+    width: 20;
+  }
+
+  10% {
+    stroke: rgba(32, 150, 243, 0.4);
     fill-opacity: 1;
   }
 
   11% {
     width: 15;
-	}
+  }
 
-	12% {
+  12% {
     width: 20;
-	}
+  }
 
-  90%{
-		fill-opacity: 1;
-	}
+  90% {
+    fill-opacity: 1;
+  }
 
-	100% {
-    stroke-width:  50;
+  100% {
+    stroke-width: 50;
     fill-opacity: 0;
-	 	stroke: rgba(32,150,243,0.0);
-	 }
+    stroke: rgba(32, 150, 243, 0);
+  }
 }
 
-@keyframes animationDotCentral{
-	
-	0% {
-		//transform:  scale(0) ;
-		fill-opacity: 0;
-	}
- 
-	5% {
-		//transform:  scale(2) ;
-	}
-  
-	10% {
-		//transform:  scale(0.90) ;
-		fill-opacity: 1;
-	}
+@keyframes animationDotCentral {
+  0% {
+    //transform:  scale(0) ;
+    fill-opacity: 0;
+  }
 
+  5% {
+    //transform:  scale(2) ;
+  }
 
-	11% {
-		//transform:  scale(1.50) ;
-	}
+  10% {
+    //transform:  scale(0.90) ;
+    fill-opacity: 1;
+  }
 
-	12% {
-		//transform:  scale(1.00) ;
-	}
- 
-	28% {
-		fill: rgba(32,150,243,1);
-	}
-  
-	29% {
-		fill: rgba(255,255,255,1);
-	}
+  11% {
+    //transform:  scale(1.50) ;
+  }
 
-	31% {
-		fill: rgba(32,150,243,1);
-	}
+  12% {
+    //transform:  scale(1.00) ;
+  }
 
-	33% {
-		fill: rgba(255,255,255,1);
-	}
+  28% {
+    fill: rgba(32, 150, 243, 1);
+  }
 
-	35% {
-		fill: rgba(32,150,243,1);
-	}
+  29% {
+    fill: rgba(255, 255, 255, 1);
+  }
 
-	90%{
-		fill-opacity: 1;
-	}
+  31% {
+    fill: rgba(32, 150, 243, 1);
+  }
 
-	100% {
-		fill-opacity: 0;
-	}
+  33% {
+    fill: rgba(255, 255, 255, 1);
+  }
+
+  35% {
+    fill: rgba(32, 150, 243, 1);
+  }
+
+  90% {
+    fill-opacity: 1;
+  }
+
+  100% {
+    fill-opacity: 0;
+  }
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+dt {
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+dd {
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+dd b {
+  padding-left: 16px;
 }
