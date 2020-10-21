@@ -110,7 +110,7 @@ html {
 
 .stationLocationLink {
   background: #2388cc;
-  @apply rounded mr-2;
+  @apply rounded;
 
   img {
     @apply p-4 h-full;
@@ -118,7 +118,6 @@ html {
 }
 
 .stationLocationContent {
-  @apply flex flex-col;
   h2 {
     @apply font-bold text-xl;
   }
