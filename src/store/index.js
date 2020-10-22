@@ -7,71 +7,72 @@ export const state = () => ({
   loadLocation: false,
   showMore: false,
   gasStations: [],
-  markerLocation: []
-});
+  markerLocation: [],
+  demo: 'demotus'
+})
 
 const pingGeoLocation = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        resolve(pos);
+      pos => {
+        resolve(pos)
       },
-      (err) => {
-        reject(err);
+      err => {
+        reject(err)
       }
-    );
-  });
-};
+    )
+  })
+}
 
 export const mutations = {
-  add(state, coords) {
+  add(state, station) {
     state.userLocation.push({
-      coords,
-    });
+      station
+    })
   },
   getLocation(state) {
-    state.gettingLocation = false;
-    state.hasUserlocation = true;
+    state.gettingLocation = false
+    state.hasUserlocation = true
   },
   loadLocation(state, payload) {
-    state.loadLocation = payload;
+    state.loadLocation = payload
   },
   getStation(state, value) {
-    state.markerLocation = value;
-    state.showMore = true;
+    state.markerLocation = value
+    state.showMore = true
   }
-};
+}
 
 export const actions = {
   fetchFromNavigator(context) {
-    context.commit('loadLocation', true);
+    context.commit('loadLocation', true)
     pingGeoLocation()
-      .then((pos) => {
+      .then(pos => {
         context.commit('add', {
-          latitude: pos.coords.latitude,
-          longitude: pos.coords.longitude,
-        });
-        context.commit('getLocation');
+          coords: {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+          },
+          name: this.state.demo,
+          address: null,
+          distance: null
+        })
+        context.commit('getLocation')
       })
       .finally(() => {
-        context.commit('loadLocation', false);
-      });
+        context.commit('loadLocation', false)
+      })
   },
-  updateStation({state, commit}, value){
+  updateStation({ state, commit }, value) {
     if (state.markerLocation) {
       commit('getStation', value)
     }
   }
-
-};
-
+}
 
 //showing things, not mutating state
 export const getters = {
-  hasUserlocation: (state) => {
-    return state.gettingLocation;
+  hasUserlocation: state => {
+    return state.gettingLocation
   }
-};
-
-
-
+}
