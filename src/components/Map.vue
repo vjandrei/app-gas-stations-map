@@ -10,7 +10,7 @@
         @ready="markers"
       >
         <l-tile-layer :url="url" />
-        <l-marker
+        <l-marker @click="getMarker(station)"
           v-for="station in stations"
           :key="station.id"
           :lat-lng="station.coords"
@@ -36,7 +36,6 @@
           :weight="circle2.weight"
           :className="circle2.class"
         />
-        <v-locatecontrol />
       </l-map>
     </client-only>
   </div>
@@ -121,6 +120,9 @@ export default {
       this.bounds = bounds;
       const markers = this.$store.state.stations.all;
     },
+    getMarker(station){
+      console.log(station.name);
+    }
   },
 };
 </script>

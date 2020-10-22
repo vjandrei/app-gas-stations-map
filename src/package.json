@@ -17,8 +17,7 @@
     "leaflet": "^1.7.1",
     "nuxt": "^2.14.4",
     "postcss-viewport-height-correction": "^2.0.2",
-    "vue2-leaflet": "^2.5.2",
-    "vue2-leaflet-locatecontrol": "^1.0.1"
+    "vue2-leaflet": "^2.5.2"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",

@@ -11,7 +11,6 @@ import {
   propsBinder,
 } from 'vue2-leaflet';
 import * as L from 'leaflet';
-import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol';
 import { Icon } from 'leaflet';
 
 
@@ -30,7 +29,6 @@ Vue.component('l-circle', LCircle);
 Vue.component('l-circle-marker', LCircleMarker)
 Vue.component('l-icon', LIcon)
 Vue.component('l-control', LControl);
-Vue.component('v-locatecontrol', Vue2LeafletLocatecontrol);
 
 delete Icon.Default.prototype._getIconUrl;
 
