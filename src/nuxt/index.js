@@ -17,7 +17,7 @@ import nuxt_plugin_workbox_50ae8453 from 'nuxt_plugin_workbox_50ae8453' // Sourc
 import nuxt_plugin_nuxticons_49f08a9e from 'nuxt_plugin_nuxticons_49f08a9e' // Source: ./nuxt-icons.js (mode: 'all')
 import nuxt_plugin_webfontloader_108ecff7 from 'nuxt_plugin_webfontloader_108ecff7' // Source: ./webfontloader.js (mode: 'client')
 import nuxt_plugin_leaflet_4674fed0 from 'nuxt_plugin_leaflet_4674fed0' // Source: ../plugins/leaflet.js (mode: 'client')
-import nuxt_plugin_hello_7851454a from 'nuxt_plugin_hello_7851454a' // Source: ../plugins/hello.js (mode: 'all')
+import nuxt_plugin_fullHeight_6e1a65eb from 'nuxt_plugin_fullHeight_6e1a65eb' // Source: ../plugins/fullHeight.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -215,8 +215,8 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_leaflet_4674fed0(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_hello_7851454a === 'function') {
-    await nuxt_plugin_hello_7851454a(app.context, inject)
+  if (process.client && typeof nuxt_plugin_fullHeight_6e1a65eb === 'function') {
+    await nuxt_plugin_fullHeight_6e1a65eb(app.context, inject)
   }
 
   // Lock enablePreview in context

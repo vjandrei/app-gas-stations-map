@@ -25,6 +25,7 @@ import WelcomeScreen from '@/components/WelcomeScreen';
 import StationMap from '@/components/Map';
 import StationList from '@/components/StationList';
 export default {
+
   data() {
     return {
       userCoords: [],
@@ -36,30 +37,9 @@ export default {
     StationList,
     StationMap,
   },
-  created() {
-    if (process.browser) {
-      var customViewportCorrectionVariable = 'vh';
 
-      function setViewportProperty(doc) {
-        var prevClientHeight;
-        var customVar = '--' + (customViewportCorrectionVariable || 'vh');
-        function handleResize() {
-          var clientHeight = doc.clientHeight;
-          if (clientHeight === prevClientHeight) return;
-          requestAnimationFrame(function updateViewportHeight() {
-            doc.style.setProperty(customVar, clientHeight * 0.01 + 'px');
-            prevClientHeight = clientHeight;
-          });
-        }
-        handleResize();
-        return handleResize;
-      }
-      window.addEventListener(
-        'resize',
-        setViewportProperty(document.documentElement)
-      );
-    }
-  },
+  mounted () {},
+
   computed: {
     hasUserlocation() {
       return this.$store.state.hasUserlocation;
@@ -68,6 +48,7 @@ export default {
       return this.$store.state.gettingLocation;
     },
   },
+
   methods: {},
 };
 </script>

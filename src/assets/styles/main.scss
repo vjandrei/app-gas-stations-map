@@ -1,3 +1,9 @@
+@import '~vue-mobile-viewport-height/src/mobile-viewport-height.scss';
+
+#welcomePageWrapper {
+  @include mobile-viewport-height();
+}
+
 *,
 *:before,
 *:after {
@@ -19,7 +25,6 @@ html {
 
 #welcomePageWrapper {
   width: inherit;
-  height: 100vh;
   @apply relative;
 }
 

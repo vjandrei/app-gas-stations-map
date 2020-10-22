@@ -61,7 +61,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/leaflet.js', ssr: false }, '~/plugins/hello.js'],
+  plugins: [
+    { src: '~/plugins/leaflet.js', ssr: false },
+    { src: '~/plugins/fullHeight.js',  mode: 'client'}
+    
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -87,7 +91,6 @@ module.exports = {
       plugins: {
         'postcss-import': {},
         'postcss-nested': {},
-        'postcss-viewport-height-correction': {},
         tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
         
       },
