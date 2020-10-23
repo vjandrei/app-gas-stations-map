@@ -52,6 +52,7 @@ export default {
       address: '',
       distance: null,
       coords: [],
+      location: [],
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
       zoom: null,
       center: null,
@@ -88,12 +89,12 @@ export default {
 
   created() {
     if (isBrowser) {
-      this.$store.state.userLocation.forEach((value, key) => {
-        this.center = L.latLng(Object.values(value.station.coords))
+      this.$store.state.userLocationData.forEach((value, key) => {
+        this.center = L.latLng(Object.values(value.coords))
         this.zoom = 13
-        this.circle1.center = L.latLng(Object.values(value.station.coords))
-        this.circle2.center = L.latLng(Object.values(value.station.coords))
-        this.car.center = L.latLng(Object.values(value.station.coords))
+        this.circle1.center = L.latLng(Object.values(value.coords))
+        this.circle2.center = L.latLng(Object.values(value.coords))
+        this.car.center = L.latLng(Object.values(value.coords))
       })
     }
   },
@@ -108,8 +109,8 @@ export default {
     this.$nextTick(() => {
       // Toimii! console.log(this.$refs.map);
     })
-    this.$root.$on('setStation', () => {
-      this.$refs.map.mapObject.setView([this.$store.state.markerLocation.lat, this.$store.state.markerLocation.lng], 15)
+    this.$root.$on('setStation', station => {
+      this.$refs.map.mapObject.setView([station.coords.lat, station.coords.lng], 15)
     })
   },
 
@@ -126,7 +127,7 @@ export default {
     getMarker(station) {
       this.name = station.name
       this.address = station.address
-      this.distance = null
+      this.distance = null //L.latLng(station.coords.latitude, station.coords.longitude).distanceTo(L.latLng([this.$store.state.userLocationData[0].coords.latitude, this.$store.state.userLocationData[0].coords.longitude]))
       this.coords = station.coords
     }
   }

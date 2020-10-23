@@ -4,13 +4,13 @@
       Nearest stations
       <div class="stationListItemCard" v-for="station in stations.slice(0, 1)" :key="station.id" ref="list">
         <div class="flex items-center">
-          <div class="flex-grow stationLocationContent" @click="getStation(station)">
-            <h2>{{ station.name }} {{ name }}</h2>
-            <h4>{{ station.address }} {{ address }}</h4>
+          <div class="flex-grow stationLocationContent" @click="showStationDetails(station)">
+            <h2>{{ station.name }}</h2>
+            <h4>{{ station.address }}</h4>
             <h5>Nykyisestä sijainista: {{ (station.distance / 1000).toFixed(1) }} km</h5>
           </div>
           <div class="flex-grow-0 pl-2">
-            <div class="stationLocationLink" @click="setStation(station)">
+            <div class="stationLocationLink" @click="focusMarker(station)">
               <img src="~/assets/img/path-icon.svg" />
             </div>
           </div>
@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  props: ['name', 'address', 'distance', 'coords'],
+  props: ['name', 'address', 'distance', 'location', 'coords'],
   data() {
     return {
       markers: [],
@@ -48,14 +48,14 @@ export default {
   },
   computed: {
     stations() {
+      // distanse: käyttäjän koordinaateista vertaa kaikkiin station storessa oleviin koordinaatteihin.
+      // distanceTo = Returns the distance (in meters) to the given LatLng calculated using the Spherical Law of Cosines.
       return this.$store.state.stations.all
-        .map(m =>
-          Object.assign({}, m, {
-            distance: L.latLng(this.$store.state.userLocation[0].station.coords.latitude, this.$store.state.userLocation[0].station.coords.longitude).distanceTo(
-              L.latLng([m.coords.lat, m.coords.lng])
-            ),
-            name: m.name,
-            address: m.address
+        .map(marker =>
+          Object.assign({}, marker, {
+            distance: L.latLng(this.$store.state.userLocationData[0].coords.latitude, this.$store.state.userLocationData[0].coords.longitude).distanceTo(
+              L.latLng([marker.coords.lat, marker.coords.lng])
+            )
           })
         )
         .sort((a, b) => a.distance - b.distance)
@@ -66,13 +66,14 @@ export default {
   },
   mounted() {
     //console.timeEnd('rendering')
+    this.$store.dispatch('setNearestLocation', this.stations[0])
   },
   methods: {
-    setStation(station) {
-      this.$store.dispatch('updateStation', this.coords)
-      this.$root.$emit('setStation')
+    focusMarker(station) {
+      // Lähettää emitin MapContainerille mountedille ja sielä asetetaan this.tiedot jotta setView toimii
+      this.$root.$emit('setStation', station)
     },
-    getStation(station) {
+    showStationDetails(station) {
       this.showMore = true
     }
   }

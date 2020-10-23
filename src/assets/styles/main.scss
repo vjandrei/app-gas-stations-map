@@ -24,26 +24,9 @@ html {
 }
 
 .largeButton {
-  @apply mx-auto w-full text-center bg-blue-500 text-lg text-white font-bold py-4 px-4 rounded;
+  @apply mx-auto w-full text-center bg-blue-600 text-lg text-white font-bold py-4 px-4 rounded;
   &:hover {
     @apply bg-blue-700;
-  }
-}
-
-#welcomeScreenContainer {
-  @apply mx-auto p-6;
-  h1,
-  h4,
-  p,
-  button {
-    @apply text-white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  h4 {
-    @apply font-normal;
-  }
-  p {
-    @apply leading-3;
   }
 }
 

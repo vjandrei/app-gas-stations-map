@@ -1,21 +1,21 @@
 <template>
   <div id="appWrapper">
     <transition name="fade">
-      <div id="welcomeScreen" v-if="noUserLocation" key="welcome">
+      <div id="mapScreen" v-if="userLocation" key="map">
+        <Map />
+      </div>
+      <div id="welcomeScreen" v-else key="welcome">
         <div id="welcomeScreenContainer">
-          <h1>Kaasun tankkaaminen</h1>
-          <h4>{{ this.about }}</h4>
-          <button class="largeButton" @click="getLocation">
-            <span v-if="showLocationLoading">Haetaan paikkatietoja</span>
+          <h1>Löydä kaasuasema</h1>
+          <h2>{{ this.about }}</h2>
+          <button class="largeButton" @click="getUserLocation">
+            <span v-if="locationLoading">Haetaan paikkatietoja</span>
             <span v-else>Paikanna minut</span>
           </button>
           <p>
             <small>{{ this.locationTipMessage }}</small>
           </p>
         </div>
-      </div>
-      <div id="mapScreen" v-if="hasUserlocation" key="map">
-        <Map />
       </div>
     </transition>
   </div>
@@ -27,27 +27,22 @@ export default {
   data() {
     return {
       about: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
-      locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.',
-      userCoords: [],
-      show: true
+      locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.'
     }
   },
   components: {
     Map
   },
   computed: {
-    showLocationLoading() {
-      return this.$store.state.loadLocation
+    locationLoading() {
+      return this.$store.state.userLocationStatus
     },
-    hasUserlocation() {
-      return this.$store.state.hasUserlocation
-    },
-    noUserLocation() {
-      return this.$store.state.gettingLocation
+    userLocation() {
+      return this.$store.state.userLocation
     }
   },
   methods: {
-    async getLocation() {
+    async getUserLocation() {
       this.$store.dispatch('fetchFromNavigator')
     }
   }
@@ -60,8 +55,14 @@ export default {
   @apply relative;
 }
 #welcomeScreen {
-  background-image: linear-gradient(180deg, rgba(1, 62, 89, 0) 34%, rgba(35, 136, 204, 0.5) 98%), url('~assets/img/bg-min.gif');
-  @apply bg-local bg-center bg-no-repeat bg-cover flex flex-col h-full text-white justify-end;
+  @apply relative bg-local bg-center bg-no-repeat bg-cover flex flex-col h-full text-white justify-end;
+  &::before {
+    content: '';
+    @apply absolute inset-0 w-full h-full bg-cover bg-center;
+    //filter: grayscale(60%);
+    background-blend-mode: saturation;
+    background-image: linear-gradient(180deg, rgba(0, 48, 69, 0) 30%, rgba(0, 0, 0, 0.74) 100%), url('~assets/img/bg-min.gif');
+  }
 }
 #mapScreen {
   position: absolute;
@@ -72,5 +73,23 @@ export default {
   right: 0;
   bottom: 0;
   background: white;
+}
+#welcomeScreenContainer {
+  backdrop-filter: blur(0.8px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  @apply font-display p-4 pb-8 w-11/12 m-auto relative rounded-lg;
+
+  h1 {
+    @apply text-4xl font-bold mb-4 leading-10;
+  }
+  h2 {
+    @apply text-lg font-normal mb-4 leading-6;
+  }
+  button {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  p {
+    @apply text-base leading-4 pt-4 text-center w-10/12 m-auto;
+  }
 }
 </style>

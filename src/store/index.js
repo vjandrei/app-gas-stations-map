@@ -1,17 +1,16 @@
 export const state = () => ({
   message: 'Hello Vuex state!',
-  userLocation: [],
-  isLocation: false,
-  gettingLocation: true,
-  hasUserlocation: false,
-  loadLocation: false,
-  showMore: false,
-  gasStations: [],
-  markerLocation: [],
-  demo: 'demotus'
+  userLocationStatus: false,
+  userLocation: false,
+  userLocationData: [],
+  nearestLocationData: []
 })
 
-const pingGeoLocation = () => {
+/**
+ * Functions
+ */
+
+const getGeoLocation = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       pos => {
@@ -24,48 +23,57 @@ const pingGeoLocation = () => {
   })
 }
 
+/**
+ * Mutations: Sets states
+ */
+
 export const mutations = {
-  add(state, station) {
-    state.userLocation.push({
-      station
+  SET_LOADING_STATUS(state, payload) {
+    state.userLocationStatus = payload
+  },
+  SET_USER_LOCATION_STATUS(state, payload) {
+    state.userLocation = payload
+  },
+  SET_USER_LOCATION_DATA(state, coords) {
+    state.userLocationData.push({
+      coords
     })
   },
-  getLocation(state) {
-    state.gettingLocation = false
-    state.hasUserlocation = true
-  },
-  loadLocation(state, payload) {
-    state.loadLocation = payload
-  },
-  getStation(state, value) {
-    state.markerLocation = value
-    state.showMore = true
+  SET_NEAREST_LOCATION_DATA(state, value) {
+    state.nearestLocationData = value
   }
 }
 
+/**
+ * Actions: Adds data
+ * fetchFromNavigator:
+ * 1. SET_LOADING_STATUS true
+ * 2. SET_USER_LOCATION_DATA to Object
+ * 3. SET_USER_LOCATION_STATUS to true
+ */
+
 export const actions = {
   fetchFromNavigator(context) {
-    context.commit('loadLocation', true)
-    pingGeoLocation()
+    context.commit('SET_LOADING_STATUS', true)
+    getGeoLocation()
       .then(pos => {
-        context.commit('add', {
-          coords: {
-            latitude: pos.coords.latitude,
-            longitude: pos.coords.longitude
-          },
-          name: this.state.demo,
-          address: null,
-          distance: null
+        context.commit('SET_USER_LOCATION_DATA', {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude
         })
-        context.commit('getLocation')
       })
       .finally(() => {
-        context.commit('loadLocation', false)
+        context.commit('SET_USER_LOCATION_STATUS', true)
       })
   },
-  updateStation({ state, commit }, value) {
-    if (state.markerLocation) {
-      commit('getStation', value)
+  setNearestLocation({ state, commit }, value) {
+    if (state.userLocationData) {
+      commit('SET_NEAREST_LOCATION_DATA', {
+        name: value.name,
+        address: value.address,
+        coords: value.coords,
+        distance: value.distance
+      })
     }
   }
 }
