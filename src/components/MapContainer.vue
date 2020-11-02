@@ -1,34 +1,36 @@
 <template>
   <div id="mapScreenContainer">
     <div id="mapGridItem">
-      <div id="map">
-        <client-only>
-          <l-map :zoom="zoom" :center="center" ref="map" @update:bounds="boundsUpdated" @update:center="centerUpdated" @ready="markers">
-            <l-tile-layer :url="url" />
-            <l-marker @click="getMarker(station)" v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
+      <div id="mapMask" :class="{ large: isActive }">
+        <div id="map">
+          <client-only>
+            <l-map :zoom="zoom" :center="center" ref="map" @update:bounds="boundsUpdated" @update:center="centerUpdated" @ready="markers">
+              <l-tile-layer :url="url" />
+              <l-marker @click="getMarker(station)" v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
 
-            <l-circle-marker
-              :name="circle1.name"
-              :lat-lng="circle1.center"
-              :radius="circle1.radius"
-              :color="circle1.color"
-              :fillColor="circle1.fillColor"
-              :fillOpacity="circle1.fillOpacity"
-              :weight="circle1.weight"
-              :className="circle1.class"
-            />
-            <l-circle-marker
-              :name="circle2.name"
-              :lat-lng="circle2.center"
-              :radius="circle2.radius"
-              :color="circle2.color"
-              :fillColor="circle2.fillColor"
-              :fillOpacity="circle2.fillOpacity"
-              :weight="circle2.weight"
-              :className="circle2.class"
-            />
-          </l-map>
-        </client-only>
+              <l-circle-marker
+                :name="circle1.name"
+                :lat-lng="circle1.center"
+                :radius="circle1.radius"
+                :color="circle1.color"
+                :fillColor="circle1.fillColor"
+                :fillOpacity="circle1.fillOpacity"
+                :weight="circle1.weight"
+                :className="circle1.class"
+              />
+              <l-circle-marker
+                :name="circle2.name"
+                :lat-lng="circle2.center"
+                :radius="circle2.radius"
+                :color="circle2.color"
+                :fillColor="circle2.fillColor"
+                :fillOpacity="circle2.fillOpacity"
+                :weight="circle2.weight"
+                :className="circle2.class"
+              />
+            </l-map>
+          </client-only>
+        </div>
       </div>
     </div>
     <div id="stationGridItem">
@@ -48,6 +50,7 @@ export default {
   data() {
     /* Data properties will go here */
     return {
+      isActive: false,
       name: '',
       address: '',
       distance: null,
@@ -95,6 +98,7 @@ export default {
         this.circle1.center = L.latLng(Object.values(value.coords))
         this.circle2.center = L.latLng(Object.values(value.coords))
         this.car.center = L.latLng(Object.values(value.coords))
+        //this.$refs.map.mapObject.panBy([200, 300])
       })
     }
   },
@@ -107,6 +111,7 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
+      this.$refs.map.mapObject.panBy([0, 200])
       // Toimii! console.log(this.$refs.map);
     })
     this.$root.$on('setStation', station => {
@@ -118,6 +123,8 @@ export default {
     markers() {},
     centerUpdated(center) {
       this.center = center
+      //this.isActive = true
+      console.log('hello')
     },
     boundsUpdated(bounds) {
       const inBounds = []
@@ -136,9 +143,33 @@ export default {
 
 <style lang="postcss" scoped>
 #mapScreenContainer {
+  //grid-auto-rows: 50vmax;
   @apply grid gap-1 h-full;
   @screen sm {
     @apply grid-cols-2 grid-rows-1;
+  }
+}
+#mapGridItem {
+  overflow: hidden;
+}
+#mapMask {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: fixed;
+  height: 50vh;
+  overflow: hidden;
+  width: 100%;
+}
+.large {
+  height: 100vh !important;
+}
+#stationGridItem {
+  @apply p-4 grid content-end;
+}
+.stationListItemCard {
+  @apply bg-white p-4 rounded-lg shadow-md;
+  dl,
+  dd {
+    @apply font-normal text-sm;
   }
 }
 </style>
