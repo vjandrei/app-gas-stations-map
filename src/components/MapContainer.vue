@@ -125,7 +125,7 @@ export default {
       // Toimii! console.log(this.$refs.map);
     })
     this.$root.$on('setStation', station => {
-      this.$refs.map.mapObject.setView([station.coords.lat, station.coords.lng], 15)
+      this.$refs.map.mapObject.setView([station.coords.lat, station.coords.lng], 15).panBy(L.point(0, this.mapMaskheight/2))
     })
   },
 
