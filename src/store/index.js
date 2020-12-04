@@ -11,16 +11,18 @@ export const state = () => ({
  */
 
 const getGeoLocation = () => {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        resolve(pos)
-      },
-      err => {
-        reject(err)
-      }
-    )
-  })
+  if (process.client) {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          resolve(pos)
+        },
+        err => {
+          reject(err)
+        }
+      )
+    })
+  }
 }
 
 /**
@@ -61,6 +63,9 @@ export const actions = {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude
         })
+      })
+      .catch(err => {
+        console.log(err)
       })
       .finally(() => {
         context.commit('SET_USER_LOCATION_STATUS', true)

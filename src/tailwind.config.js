@@ -1,15 +1,19 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
-    prefix: '',
-    important: false,
-    separator: ':',
-    theme: {
-        fontFamily: {
-            'display': ['Lato'],
-        }
+  prefix: '',
+  important: false,
+  separator: ':',
+  theme: {
+    fontFamily: {
+      display: ['Lato']
     },
-    variants: {},
-    plugins: [
-        require('@tailwindcss/typography'),
-    ],
+    extend: {
+      colors: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)'
+      }
+    }
+  },
+  variants: {},
+  plugins: [require('@tailwindcss/typography')]
 }

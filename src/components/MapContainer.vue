@@ -1,7 +1,7 @@
 <template>
   <div id="mapScreenContainer">
     <div id="mapGridItem">
-      <div id="mapMask" :class="{ large: isActive }">
+      <div id="mapMask" :class="[isFull ? fullMap : '']" @click="full">
         <div id="map">
           <client-only>
             <l-map :zoom="zoom" :center="center" ref="map" @update:bounds="boundsUpdated" @update:center="centerUpdated" @ready="markers">
@@ -33,7 +33,10 @@
         </div>
       </div>
     </div>
-    <div id="stationGridItem">
+    <div id="filterGridItem">
+      Filter!!
+    </div>
+    <div id="stationGridItem" @click="half">
       <List :name="name" :address="address" :distance="distance" :coords="coords" />
     </div>
   </div>
@@ -41,11 +44,14 @@
 
 <script>
 const isBrowser = typeof window !== 'undefined'
+
+
 let leaflet
 if (isBrowser) {
   leaflet = require('leaflet')
 }
 import List from '@/components/MapStationList'
+import Filter from '@/components/MapFilter'
 export default {
   data() {
     /* Data properties will go here */
@@ -82,7 +88,10 @@ export default {
       },
       car: {
         center: null
-      }
+      },
+      mapMaskheight: null,
+      isFull: false,
+      fullMap: "full"
     }
   },
 
@@ -98,9 +107,9 @@ export default {
         this.circle1.center = L.latLng(Object.values(value.coords))
         this.circle2.center = L.latLng(Object.values(value.coords))
         this.car.center = L.latLng(Object.values(value.coords))
-        //this.$refs.map.mapObject.panBy([200, 300])
       })
     }
+    
   },
 
   computed: {
@@ -111,7 +120,8 @@ export default {
 
   mounted() {
     this.$nextTick(() => {
-      this.$refs.map.mapObject.panBy([0, 200])
+      this.mapMaskheight = document.getElementById("mapMask").clientHeight;
+      this.$refs.map.mapObject.panBy(L.point(0, this.mapMaskheight/2))
       // Toimii! console.log(this.$refs.map);
     })
     this.$root.$on('setStation', station => {
@@ -123,8 +133,6 @@ export default {
     markers() {},
     centerUpdated(center) {
       this.center = center
-      //this.isActive = true
-      console.log('hello')
     },
     boundsUpdated(bounds) {
       const inBounds = []
@@ -136,6 +144,15 @@ export default {
       this.address = station.address
       this.distance = null //L.latLng(station.coords.latitude, station.coords.longitude).distanceTo(L.latLng([this.$store.state.userLocationData[0].coords.latitude, this.$store.state.userLocationData[0].coords.longitude]))
       this.coords = station.coords
+    },
+    full(){
+      this.isFull = true;
+      console.log("full");
+    },
+    half(){
+      this.isFull = false;
+      console.log("half");
+      
     }
   }
 }
@@ -143,33 +160,35 @@ export default {
 
 <style lang="postcss" scoped>
 #mapScreenContainer {
-  //grid-auto-rows: 50vmax;
-  @apply grid gap-1 h-full;
+  @apply flex h-full flex-col;
   @screen sm {
     @apply grid-cols-2 grid-rows-1;
   }
 }
 #mapGridItem {
-  overflow: hidden;
+  @apply overflow-hidden row-auto;
 }
+
+#map{
+  height: 100vh;
+}
+
 #mapMask {
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: fixed;
   height: 50vh;
   overflow: hidden;
   width: 100%;
+  &.full{
+    height: 100vh !important;
+  }
 }
-.large {
-  height: 100vh !important;
+
+#filterGridItem{
+  @apply relative;
 }
 #stationGridItem {
-  @apply p-4 grid content-end;
-}
-.stationListItemCard {
-  @apply bg-white p-4 rounded-lg shadow-md;
-  dl,
-  dd {
-    @apply font-normal text-sm;
-  }
+  top: 50vh;
+  @apply relative px-2 overflow-y-scroll;
 }
 </style>

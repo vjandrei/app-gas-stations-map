@@ -1,5 +1,5 @@
-import path from 'path';
-import fs from 'fs';
+import path from 'path'
+import fs from 'fs'
 
 module.exports = {
   mode: 'universal',
@@ -12,28 +12,28 @@ module.exports = {
       { charset: 'utf-8' },
       {
         name: 'viewport',
-        content: 'width=device-width, height=device-height,initial-scale=1',
+        content: 'width=device-width, height=device-height,initial-scale=1'
       },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
-      },
+        content: process.env.npm_package_description || ''
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//unpkg.com/leaflet/dist/leaflet.css' },
-    ],
+      { rel: 'stylesheet', href: '//unpkg.com/leaflet/dist/leaflet.css' }
+    ]
   },
-  env:{
+  env: {
     MAPBOX_KEY: process.env.MAPBOX_KEY
   },
   pwa: {
     meta: {
       /* meta options */
       title: 'Kaasuasemat',
-      description: 'Löydä lähin kaasuasema',
-    },
+      description: 'Löydä lähin kaasuasema'
+    }
   },
   /*
    ** Customize the progress-bar color
@@ -42,13 +42,10 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [
-    '~/assets/styles/main.scss', 
-    '~/assets/styles/tailwind.scss',
-  ],
+  css: ['~/assets/styles/main.scss', '~/assets/styles/tailwind.scss'],
   purgeCSS: {
     mode: 'postcss',
-    enabled: (process.env.NODE_ENV === 'production')
+    enabled: process.env.NODE_ENV === 'production'
   },
   /*
    ** Global Fonts
@@ -63,8 +60,8 @@ module.exports = {
    */
   plugins: [
     { src: '~/plugins/leaflet.js', ssr: false },
-    { src: '~/plugins/fullHeight.js',  mode: 'client'}
-    
+    { src: '~/plugins/fullHeight.js', mode: 'client' },
+    { src: '~/plugins/getStations.server.js', ssr: false }
   ],
   /*
    ** Nuxt.js modules
@@ -75,13 +72,10 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     'nuxt-purgecss',
-    'nuxt-webfontloader',
+    'nuxt-webfontloader'
   ],
   customCounter: { option1: 'something' },
-  buildModules: [
-    '@nuxtjs/tailwindcss', 
-    '@nuxtjs/dotenv'
-  ],
+  buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv'],
   /*
    ** Build configuration
    */
@@ -91,31 +85,29 @@ module.exports = {
       plugins: {
         'postcss-import': {},
         'postcss-nested': {},
-        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
-        
+        tailwindcss: path.resolve(__dirname, './tailwind.config.js')
       },
       order: 'presetEnvAndCssnanoLast',
       preset: {
         stage: 2 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
-      },
-      
+      }
     },
     extractCSS: true,
     styleResources: {
       // your settings here
-      sass: ['./assets/styles/_space.scss'], // alternative: scss
+      sass: ['./assets/styles/_space.scss'] // alternative: scss
     },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
+    extend(config, ctx) {}
   },
   server: {
     port: 8000, // default: 3000
     host: '0.0.0.0', // default: localhost
     https: {
       key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
-    },
-  },
-};
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+    }
+  }
+}
