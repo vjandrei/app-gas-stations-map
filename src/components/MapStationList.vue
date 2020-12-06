@@ -1,6 +1,6 @@
 <template>
   <div id="stationList">
-    <div class="container mx-auto pt-6">
+    <div class="container mx-auto">
       <div class="stationListItemCard" v-for="station in stations.slice(0, 10)" :key="station.id" ref="list">
         <div class="flex items-center">
           <div class="flex-grow stationListItemCardContent">
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  props: ['name', 'address', 'distance', 'location', 'coords'],
+  props: ['locations','name', 'address', 'distance', 'location', 'coords'],
   data() {
     return {
       markers: [],
@@ -49,7 +49,7 @@ export default {
     stations() {
       // distanse: käyttäjän koordinaateista vertaa kaikkiin station storessa oleviin koordinaatteihin.
       // distanceTo = Returns the distance (in meters) to the given LatLng calculated using the Spherical Law of Cosines.
-      return this.$store.state.stations.all
+      return this.locations
         .map(marker =>
           Object.assign({}, marker, {
             distance: L.latLng(this.$store.state.userLocationData[0].coords.latitude, this.$store.state.userLocationData[0].coords.longitude).distanceTo(
@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     //console.timeEnd('rendering')
-    this.$store.dispatch('setNearestLocation', this.stations[0])
+    this.$store.dispatch('setNearestLocation', this.locations[0])
   },
   methods: {
     focusMarker(station) {

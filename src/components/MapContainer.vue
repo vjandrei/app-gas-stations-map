@@ -6,7 +6,7 @@
           <client-only>
             <l-map :zoom="zoom" :center="center" ref="map" @update:bounds="boundsUpdated" @update:center="centerUpdated" @ready="markers">
               <l-tile-layer :url="url" />
-              <l-marker @click="getMarker(station)" v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
+              <l-marker @click="getMarker(station)" v-for="station in userFilter" :key="station.id" :lat-lng="station.coords"></l-marker>
 
               <l-circle-marker
                 :name="circle1.name"
@@ -34,10 +34,17 @@
       </div>
     </div>
     <div id="filterGridItem">
-      Filter!!
+      <div id="filterContainer">
+        <div :class="{ active: userFilterKey == product.value, 'filterLink': linkDefault}" v-on:click="userFilterKey = product.value" v-for="product in products" :key="product.key">
+          {{ product.name }}
+        </div>
+      </div>
+    </div>
+    <div id="currentLocationGridItem">
+      <h1>Name</h1>
     </div>
     <div id="stationGridItem" @click="half">
-      <List :name="name" :address="address" :distance="distance" :coords="coords" />
+      <List :locations="userFilter" :name="name" :address="address" :distance="distance" :coords="coords" />
     </div>
   </div>
 </template>
@@ -56,11 +63,20 @@ export default {
   data() {
     /* Data properties will go here */
     return {
+      linkDefault: true,
       isActive: false,
+      locations: [],
       name: '',
       address: '',
       distance: null,
       coords: [],
+      userFilterKey: "all",
+      productFilter: [],
+      products: [
+        { name: "Kaikki asemat", value: "all" },
+        { name: "Biokaasu", value: "biogas" },
+        { name: "Maakaasu", value: "naturalgas" },
+      ],
       location: [],
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
       zoom: null,
@@ -115,7 +131,23 @@ export default {
   computed: {
     stations() {
       return this.$store.state.stations.all
-    }
+    },
+    userFilter(){
+      return this[this.userFilterKey]
+    },
+    all() {
+      return this.$store.state.stations.all;
+    },
+    biogas() {
+      return this.$store.state.stations.all.filter((station) =>
+        station.products.includes("Biokaasu")
+      );
+    },
+    naturalgas() {
+      return this.$store.state.stations.all.filter((station) =>
+        station.products.includes("Maakaasu")
+      );
+    },
   },
 
   mounted() {
@@ -144,6 +176,7 @@ export default {
       this.address = station.address
       this.distance = null //L.latLng(station.coords.latitude, station.coords.longitude).distanceTo(L.latLng([this.$store.state.userLocationData[0].coords.latitude, this.$store.state.userLocationData[0].coords.longitude]))
       this.coords = station.coords
+      this.products = station.products
     },
     full(){
       this.isFull = true;
@@ -184,11 +217,21 @@ export default {
   }
 }
 
-#filterGridItem{
-  @apply relative;
-}
 #stationGridItem {
-  top: 50vh;
-  @apply relative px-2 overflow-y-scroll;
+  @apply absolute w-full px-2 overflow-y-scroll bottom-0;
+}
+
+
+#filterGridItem{
+  @apply absolute w-full bottom-1/2;
+}
+
+#filterContainer{
+  @apply flex flex-row justify-between content-center p-3 px-4 bg-white text-base;
+}
+.filterLink{
+  &.active{
+    @apply font-medium text-primary;
+  }
 }
 </style>
