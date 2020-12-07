@@ -2,25 +2,29 @@
   {
     "name": "about",
     "path": "/about",
-    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/_sovellukset-tuotannossa/gas-stations/src/pages/about.vue",
-    "chunkName": "pages/about"
+    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/pwa-sovellukset/gas-stations/src/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_1f0734f0"
   },
   {
     "name": "map",
     "path": "/map",
-    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/_sovellukset-tuotannossa/gas-stations/src/pages/map.vue",
-    "chunkName": "pages/map"
+    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/pwa-sovellukset/gas-stations/src/pages/map.vue",
+    "chunkName": "pages/map",
+    "_name": "_7a610dff"
   },
   {
     "name": "stations-id",
     "path": "/stations/:id?",
-    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/_sovellukset-tuotannossa/gas-stations/src/pages/stations/_id.vue",
-    "chunkName": "pages/stations/_id"
+    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/pwa-sovellukset/gas-stations/src/pages/stations/_id.vue",
+    "chunkName": "pages/stations/_id",
+    "_name": "_5fab8357"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/_sovellukset-tuotannossa/gas-stations/src/pages/index.vue",
-    "chunkName": "pages/index"
+    "component": "/Users/andreas.koutsoukos/Documents/Henkilokohtaiset/pwa-sovellukset/gas-stations/src/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_3ebf0fb5"
   }
 ]

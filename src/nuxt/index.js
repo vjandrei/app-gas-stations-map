@@ -13,9 +13,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_workbox_50ae8453 from 'nuxt_plugin_workbox_50ae8453' // Source: ./workbox.js (mode: 'client')
-import nuxt_plugin_nuxticons_49f08a9e from 'nuxt_plugin_nuxticons_49f08a9e' // Source: ./nuxt-icons.js (mode: 'all')
-import nuxt_plugin_webfontloader_108ecff7 from 'nuxt_plugin_webfontloader_108ecff7' // Source: ./webfontloader.js (mode: 'client')
+import nuxt_plugin_workbox_284e92ff from 'nuxt_plugin_workbox_284e92ff' // Source: ./workbox.js (mode: 'client')
+import nuxt_plugin_nuxticons_66131c85 from 'nuxt_plugin_nuxticons_66131c85' // Source: ./nuxt-icons.js (mode: 'all')
+import nuxt_plugin_webfontloader_5bc7a4ba from 'nuxt_plugin_webfontloader_5bc7a4ba' // Source: ./webfontloader.js (mode: 'client')
 import nuxt_plugin_leaflet_4674fed0 from 'nuxt_plugin_leaflet_4674fed0' // Source: ../plugins/leaflet.js (mode: 'client')
 import nuxt_plugin_fullHeight_6e1a65eb from 'nuxt_plugin_fullHeight_6e1a65eb' // Source: ../plugins/fullHeight.js (mode: 'client')
 import nuxt_plugin_getStationsserver_24b062a5 from 'nuxt_plugin_getStationsserver_24b062a5' // Source: ../plugins/getStations.server.js (mode: 'client')
@@ -200,16 +200,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_workbox_50ae8453 === 'function') {
-    await nuxt_plugin_workbox_50ae8453(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_284e92ff === 'function') {
+    await nuxt_plugin_workbox_284e92ff(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxticons_49f08a9e === 'function') {
-    await nuxt_plugin_nuxticons_49f08a9e(app.context, inject)
+  if (typeof nuxt_plugin_nuxticons_66131c85 === 'function') {
+    await nuxt_plugin_nuxticons_66131c85(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_webfontloader_108ecff7 === 'function') {
-    await nuxt_plugin_webfontloader_108ecff7(app.context, inject)
+  if (process.client && typeof nuxt_plugin_webfontloader_5bc7a4ba === 'function') {
+    await nuxt_plugin_webfontloader_5bc7a4ba(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_leaflet_4674fed0 === 'function') {
