@@ -2,9 +2,9 @@ export const state = () => ({
   message: 'Hello Vuex state!',
   aboutApp: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
   locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.',
-  
+
   userLocation: false,
-  userLocationData: [],
+  userLocationData: []
 })
 
 /**
@@ -58,16 +58,15 @@ export const actions = {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude
         }),
-        localStorage.setItem("userCoords", {
-          latitude: pos.coords.latitude,
-          longitude: pos.coords.longitude
-        });
+          localStorage.setItem('userCoords', {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+          })
       })
       .catch(err => {
         console.log(err)
       })
-      .finally(() => {
-      })
+      .finally(() => {})
   },
   setNearestLocation({ state, commit }, value) {
     if (state.userLocationData) {
