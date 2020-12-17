@@ -13,9 +13,10 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_workbox_284e92ff from 'nuxt_plugin_workbox_284e92ff' // Source: ./workbox.js (mode: 'client')
-import nuxt_plugin_nuxticons_66131c85 from 'nuxt_plugin_nuxticons_66131c85' // Source: ./nuxt-icons.js (mode: 'all')
-import nuxt_plugin_webfontloader_5bc7a4ba from 'nuxt_plugin_webfontloader_5bc7a4ba' // Source: ./webfontloader.js (mode: 'client')
+import nuxt_plugin_webfontloader_108ecff7 from 'nuxt_plugin_webfontloader_108ecff7' // Source: ./webfontloader.js (mode: 'client')
+import nuxt_plugin_workbox_50ae8453 from 'nuxt_plugin_workbox_50ae8453' // Source: ./workbox.js (mode: 'client')
+import nuxt_plugin_metaplugin_41186f34 from 'nuxt_plugin_metaplugin_41186f34' // Source: ./pwa/meta.plugin.js (mode: 'all')
+import nuxt_plugin_iconplugin_37c9244c from 'nuxt_plugin_iconplugin_37c9244c' // Source: ./pwa/icon.plugin.js (mode: 'all')
 import nuxt_plugin_leaflet_4674fed0 from 'nuxt_plugin_leaflet_4674fed0' // Source: ../plugins/leaflet.js (mode: 'client')
 import nuxt_plugin_fullHeight_6e1a65eb from 'nuxt_plugin_fullHeight_6e1a65eb' // Source: ../plugins/fullHeight.js (mode: 'client')
 import nuxt_plugin_getStationsserver_24b062a5 from 'nuxt_plugin_getStationsserver_24b062a5' // Source: ../plugins/getStations.server.js (mode: 'client')
@@ -45,6 +46,13 @@ Vue.component('NChild', NuxtChild)
 // Component: <Nuxt>
 Vue.component(Nuxt.name, Nuxt)
 
+Object.defineProperty(Vue.prototype, '$nuxt', {
+  get() {
+    return this.$root.$options.$nuxt
+  },
+  configurable: true
+})
+
 Vue.use(Meta, {"keyName":"head","attribute":"data-n-head","ssrAttribute":"data-n-head-ssr","tagIDKeyName":"hid"})
 
 const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
@@ -71,7 +79,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Kaasutankkausasemat Suomessa","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, height=device-height,initial-scale=1"},{"hid":"description","name":"description","content":"\u003E This project is starting base for Nuxt Firebase SSR app"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"kaasuasemat"},{"hid":"author","name":"author","content":"Andreas Koutsoukos"},{"hid":"theme-color","name":"theme-color","content":"#fff"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"kaasuasemat"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"kaasuasemat"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Löydä lähin kaasuasema"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"\u002F\u002Funpkg.com\u002Fleaflet\u002Fdist\u002Fleaflet.css"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.0008cdd9.json"},{"rel":"shortcut icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_64x64.46472c.png"},{"rel":"apple-touch-icon","href":"\u002F_nuxt\u002Ficons\u002Ficon_512x512.46472c.png","sizes":"512x512"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
+    head: {"title":"Kaasutankkausasemat Suomessa","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, height=device-height,initial-scale=1"},{"hid":"description","name":"description","content":"\u003E This project is starting base for Nuxt Firebase SSR app"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"\u002F\u002Funpkg.com\u002Fleaflet\u002Fdist\u002Fleaflet.css"}],"style":[],"script":[]},
 
     store,
     router,
@@ -200,16 +208,20 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_workbox_284e92ff === 'function') {
-    await nuxt_plugin_workbox_284e92ff(app.context, inject)
+  if (process.client && typeof nuxt_plugin_webfontloader_108ecff7 === 'function') {
+    await nuxt_plugin_webfontloader_108ecff7(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxticons_66131c85 === 'function') {
-    await nuxt_plugin_nuxticons_66131c85(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_50ae8453 === 'function') {
+    await nuxt_plugin_workbox_50ae8453(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_webfontloader_5bc7a4ba === 'function') {
-    await nuxt_plugin_webfontloader_5bc7a4ba(app.context, inject)
+  if (typeof nuxt_plugin_metaplugin_41186f34 === 'function') {
+    await nuxt_plugin_metaplugin_41186f34(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_iconplugin_37c9244c === 'function') {
+    await nuxt_plugin_iconplugin_37c9244c(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_leaflet_4674fed0 === 'function') {

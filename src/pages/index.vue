@@ -1,15 +1,12 @@
 <template>
   <div id="appWrapper">
     <transition name="fade">
-      <div id="mapScreen" v-if="userLocation" key="map">
-        <Map />
-      </div>
-      <div id="welcomeScreen" v-else key="welcome">
+      <div id="welcomeScreen">
         <div id="welcomeScreenContainer">
           <h1>Löydä kaasuasema</h1>
-          <h2>{{ this.about }}</h2>
+          <h2>{{ this.aboutApp }}</h2>
           <button class="largeButton" @click="getUserLocation">
-            <span v-if="locationLoading">Haetaan paikkatietoja</span>
+            <span v-if="userLocation">Haetaan paikkatietoja</span>
             <span v-else>Paikanna minut</span>
           </button>
           <p>
@@ -26,17 +23,14 @@ import Map from '@/components/MapContainer'
 export default {
   data() {
     return {
-      about: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
-      locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.'
+      aboutApp: this.$store.state.aboutApp,
+      locationTipMessage: this.$store.state.locationTipMessage
     }
   },
   components: {
     Map
   },
   computed: {
-    locationLoading() {
-      return this.$store.state.userLocationStatus
-    },
     userLocation() {
       return this.$store.state.userLocation
     }

@@ -1,5 +1,5 @@
 export const state = () => ({
-  all: [
+  data: [
     {
       id: 0,
       url_name: 'friisila',

@@ -1,9 +1,10 @@
 export const state = () => ({
   message: 'Hello Vuex state!',
-  userLocationStatus: false,
+  aboutApp: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
+  locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.',
+  
   userLocation: false,
   userLocationData: [],
-  nearestLocationData: []
 })
 
 /**
@@ -31,18 +32,12 @@ const getGeoLocation = () => {
 
 export const mutations = {
   SET_LOADING_STATUS(state, payload) {
-    state.userLocationStatus = payload
-  },
-  SET_USER_LOCATION_STATUS(state, payload) {
     state.userLocation = payload
   },
   SET_USER_LOCATION_DATA(state, coords) {
     state.userLocationData.push({
       coords
     })
-  },
-  SET_NEAREST_LOCATION_DATA(state, value) {
-    state.nearestLocationData = value
   }
 }
 
@@ -62,13 +57,16 @@ export const actions = {
         context.commit('SET_USER_LOCATION_DATA', {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude
-        })
+        }),
+        localStorage.setItem("userCoords", {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude
+        });
       })
       .catch(err => {
         console.log(err)
       })
       .finally(() => {
-        context.commit('SET_USER_LOCATION_STATUS', true)
       })
   },
   setNearestLocation({ state, commit }, value) {

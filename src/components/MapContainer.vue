@@ -7,7 +7,6 @@
             <l-map :zoom="zoom" :center="center" ref="map" @update:bounds="boundsUpdated" @update:center="centerUpdated" @ready="markers">
               <l-tile-layer :url="url" />
               <l-marker @click="getMarker(station)" v-for="station in userFilter" :key="station.id" :lat-lng="station.coords"></l-marker>
-
               <l-circle-marker
                 :name="circle1.name"
                 :lat-lng="circle1.center"
