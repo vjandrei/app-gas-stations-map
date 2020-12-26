@@ -35,18 +35,16 @@ export const mutations = {
     state.userLocation = payload
   },
   SET_USER_LOCATION_DATA(state, coords) {
-    state.userLocationData.push({
-      coords
-    })
+    sessionStorage.setItem('userCoords', JSON.stringify(coords))
+    state.userLocationData = coords
   }
 }
 
 /**
- * Actions: Adds data
+ * Actions:
  * fetchFromNavigator:
  * 1. SET_LOADING_STATUS true
  * 2. SET_USER_LOCATION_DATA to Object
- * 3. SET_USER_LOCATION_STATUS to true
  */
 
 export const actions = {
@@ -57,16 +55,14 @@ export const actions = {
         context.commit('SET_USER_LOCATION_DATA', {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude
-        }),
-          localStorage.setItem('userCoords', {
-            latitude: pos.coords.latitude,
-            longitude: pos.coords.longitude
-          })
+        })
       })
       .catch(err => {
         console.log(err)
       })
-      .finally(() => {})
+      .finally(() => {
+        this.$router.push('/map')
+      })
   },
   setNearestLocation({ state, commit }, value) {
     if (state.userLocationData) {

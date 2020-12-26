@@ -21,6 +21,9 @@
 <script>
 import Map from '@/components/MapContainer'
 export default {
+  transition: {
+    name: 'home'
+  },
   data() {
     return {
       aboutApp: this.$store.state.aboutApp,
@@ -58,16 +61,7 @@ export default {
     background-image: linear-gradient(180deg, rgba(0, 48, 69, 0) 30%, rgba(0, 0, 0, 0.74) 100%), url('~assets/img/bg-min.gif');
   }
 }
-#mapScreen {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: white;
-}
+
 #welcomeScreenContainer {
   backdrop-filter: blur(0.8px);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

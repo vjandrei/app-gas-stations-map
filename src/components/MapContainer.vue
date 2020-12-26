@@ -34,7 +34,7 @@
     </div>
     <div id="filterGridItem">
       <div id="filterContainer">
-        <div :class="{ active: userFilterKey == product.value, 'filterLink': linkDefault}" v-on:click="userFilterKey = product.value" v-for="product in products" :key="product.key">
+        <div :class="{ active: userFilterKey == product.value, filterLink: linkDefault }" v-on:click="userFilterKey = product.value" v-for="product in products" :key="product.key">
           {{ product.name }}
         </div>
       </div>
@@ -50,7 +50,6 @@
 
 <script>
 const isBrowser = typeof window !== 'undefined'
-
 
 let leaflet
 if (isBrowser) {
@@ -69,12 +68,12 @@ export default {
       address: '',
       distance: null,
       coords: [],
-      userFilterKey: "all",
+      userFilterKey: 'all',
       productFilter: [],
       products: [
-        { name: "Kaikki asemat", value: "all" },
-        { name: "Biokaasu", value: "biogas" },
-        { name: "Maakaasu", value: "naturalgas" },
+        { name: 'Kaikki asemat', value: 'all' },
+        { name: 'Biokaasu', value: 'biogas' },
+        { name: 'Maakaasu', value: 'naturalgas' }
       ],
       location: [],
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
@@ -106,7 +105,7 @@ export default {
       },
       mapMaskheight: null,
       isFull: false,
-      fullMap: "full"
+      fullMap: 'full'
     }
   },
 
@@ -124,39 +123,34 @@ export default {
         this.car.center = L.latLng(Object.values(value.coords))
       })
     }
-    
   },
 
   computed: {
     stations() {
       return this.$store.state.stations.all
     },
-    userFilter(){
+    userFilter() {
       return this[this.userFilterKey]
     },
     all() {
-      return this.$store.state.stations.all;
+      return this.$store.state.stations.all
     },
     biogas() {
-      return this.$store.state.stations.all.filter((station) =>
-        station.products.includes("Biokaasu")
-      );
+      return this.$store.state.stations.all.filter(station => station.products.includes('Biokaasu'))
     },
     naturalgas() {
-      return this.$store.state.stations.all.filter((station) =>
-        station.products.includes("Maakaasu")
-      );
-    },
+      return this.$store.state.stations.all.filter(station => station.products.includes('Maakaasu'))
+    }
   },
 
   mounted() {
     this.$nextTick(() => {
-      this.mapMaskheight = document.getElementById("mapMask").clientHeight;
-      this.$refs.map.mapObject.panBy(L.point(0, this.mapMaskheight/2))
+      this.mapMaskheight = document.getElementById('mapMask').clientHeight
+      this.$refs.map.mapObject.panBy(L.point(0, this.mapMaskheight / 2))
       // Toimii! console.log(this.$refs.map);
     })
     this.$root.$on('setStation', station => {
-      this.$refs.map.mapObject.setView([station.coords.lat, station.coords.lng], 15).panBy(L.point(0, this.mapMaskheight/2))
+      this.$refs.map.mapObject.setView([station.coords.lat, station.coords.lng], 15).panBy(L.point(0, this.mapMaskheight / 2))
     })
   },
 
@@ -177,14 +171,13 @@ export default {
       this.coords = station.coords
       this.products = station.products
     },
-    full(){
-      this.isFull = true;
-      console.log("full");
+    full() {
+      this.isFull = true
+      console.log('full')
     },
-    half(){
-      this.isFull = false;
-      console.log("half");
-      
+    half() {
+      this.isFull = false
+      console.log('half')
     }
   }
 }
@@ -201,7 +194,7 @@ export default {
   @apply overflow-hidden row-auto;
 }
 
-#map{
+#map {
   height: 100vh;
 }
 
@@ -211,7 +204,7 @@ export default {
   height: 50vh;
   overflow: hidden;
   width: 100%;
-  &.full{
+  &.full {
     height: 100vh !important;
   }
 }
@@ -220,16 +213,15 @@ export default {
   @apply absolute w-full px-2 overflow-y-scroll bottom-0;
 }
 
-
-#filterGridItem{
+#filterGridItem {
   @apply absolute w-full bottom-1/2;
 }
 
-#filterContainer{
+#filterContainer {
   @apply flex flex-row justify-between content-center p-3 px-4 bg-white text-base;
 }
-.filterLink{
-  &.active{
+.filterLink {
+  &.active {
     @apply font-medium text-primary;
   }
 }

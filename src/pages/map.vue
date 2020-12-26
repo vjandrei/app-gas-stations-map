@@ -1,27 +1,33 @@
 <template>
-  <div>
-    <div class="container mx-auto">
-      <nuxt-link to="/">Home</nuxt-link>
-      <div class="view1">View1 Opacity</div>
-      <div class="view2">View2 Rigt to Left</div>
-      <h1 class="animate__animated animate__bounce">An animated element</h1>
-    </div>
+  <div id="mapScreen" key="map">
+    <Map />
   </div>
 </template>
 
 <script>
+import Map from '@/components/Map'
 export default {
-  transition: {
-    name: 'map',
-  },
   data() {
-    return {};
+    return {}
   },
-  components: {},
+  components: {
+    Map
+  },
   created() {},
   computed: {},
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+#mapScreen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+}
+</style>
