@@ -6,8 +6,28 @@
           <client-only>
             <l-map :zoom="zoom" :center="center">
               <l-tile-layer :url="url"></l-tile-layer>
+              <l-marker v-for="station in userFilter" :key="station.id" :lat-lng="station.coords"></l-marker>
+              <l-circle-marker
+                v-for="n in 2"
+                :key="n.key"
+                :name="circle.name"
+                :lat-lng="circle.center"
+                :radius="n * 3"
+                :color="circle.color"
+                :fillColor="circle.fillColor"
+                :fillOpacity="circle.fillOpacity"
+                :weight="circle.weight"
+                :className="circle.class"
+              />
             </l-map>
           </client-only>
+        </div>
+      </div>
+    </div>
+    <div id="filterGridItem">
+      <div id="filterContainer">
+        <div :class="{ active: userFilterKey == product.value, filterLink: linkDefault }" v-on:click="userFilterKey = product.value" v-for="product in products" :key="product.key">
+          {{ product.name }}
         </div>
       </div>
     </div>
@@ -21,23 +41,57 @@ let leaflet
 if (isBrowser) {
   leaflet = require('leaflet')
 }
+
 export default {
   data() {
     return {
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
       center: null,
-      zoom: null
+      zoom: null,
+      circle: {
+        name: 'userLocationPin',
+        center: null,
+        color: 'rgba(35,136,204,0.30)',
+        fillColor: '#2388CC',
+        fillOpacity: 1,
+        weight: 20,
+        class: 'mapPin'
+      },
+      linkDefault: true,
+      userFilterKey: 'all',
+      products: [
+        { name: 'Kaikki asemat', value: 'all' },
+        { name: 'Biokaasu', value: 'biogas' },
+        { name: 'Maakaasu', value: 'naturalgas' }
+      ]
     }
   },
+
   created() {
     if (isBrowser) {
       const userCoords = JSON.parse(sessionStorage.getItem('userCoords'))
       this.center = L.latLng(Object.values(userCoords))
+      this.circle.center = L.latLng(Object.values(userCoords))
       this.zoom = 13
     }
   },
-  mounted() {
-    //console.log(this.$store.state.userLocationData)
+  mounted() {},
+  computed: {
+    stations() {
+      return this.$store.state.stations.data
+    },
+    userFilter() {
+      return this[this.userFilterKey]
+    },
+    all() {
+      return this.$store.state.stations.data
+    },
+    biogas() {
+      return this.$store.state.stations.data.filter(station => station.products.includes('Biokaasu'))
+    },
+    naturalgas() {
+      return this.$store.state.stations.data.filter(station => station.products.includes('Maakaasu'))
+    }
   },
   methods: {
     doSomethingOnReady() {
