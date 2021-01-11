@@ -6,7 +6,7 @@
           <client-only>
             <l-map :zoom="zoom" :center="center">
               <l-tile-layer :url="url"></l-tile-layer>
-              <l-marker v-for="station in userFilter" :key="station.id" :lat-lng="station.coords"></l-marker>
+              <l-marker v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
               <l-circle-marker
                 v-for="n in 2"
                 :key="n.key"
@@ -25,10 +25,8 @@
       </div>
     </div>
     <div id="filterGridItem">
-      <div id="filterContainer">
-        <div :class="{ active: userFilterKey == product.value, filterLink: linkDefault }" v-on:click="userFilterKey = product.value" v-for="product in products" :key="product.key">
-          {{ product.name }}
-        </div>
+      <div id="mapFilterContainer">
+        <StationFilter v-for="filter in filters" @sending-filter="selectFilter" :name="filter.name" :value="filter.value" :selected-filter="selectedFilter" :key="filter.key" />
       </div>
     </div>
   </div>
@@ -41,6 +39,7 @@ let leaflet
 if (isBrowser) {
   leaflet = require('leaflet')
 }
+import StationFilter from '@/components/MapFilter'
 
 export default {
   data() {
@@ -48,6 +47,13 @@ export default {
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
       center: null,
       zoom: null,
+      stations: null,
+      filters: [
+        { name: 'Kaikki asemat', value: 'all' },
+        { name: 'Biokaasu', value: 'biogas' },
+        { name: 'Maakaasu', value: 'naturalgas' }
+      ],
+      selectedFilter: 'all',
       circle: {
         name: 'userLocationPin',
         center: null,
@@ -56,15 +62,12 @@ export default {
         fillOpacity: 1,
         weight: 20,
         class: 'mapPin'
-      },
-      linkDefault: true,
-      userFilterKey: 'all',
-      products: [
-        { name: 'Kaikki asemat', value: 'all' },
-        { name: 'Biokaasu', value: 'biogas' },
-        { name: 'Maakaasu', value: 'naturalgas' }
-      ]
+      }
     }
+  },
+
+  components: {
+    StationFilter
   },
 
   created() {
@@ -75,27 +78,17 @@ export default {
       this.zoom = 13
     }
   },
-  mounted() {},
-  computed: {
-    stations() {
-      return this.$store.state.stations.data
-    },
-    userFilter() {
-      return this[this.userFilterKey]
-    },
-    all() {
-      return this.$store.state.stations.data
-    },
-    biogas() {
-      return this.$store.state.stations.data.filter(station => station.products.includes('Biokaasu'))
-    },
-    naturalgas() {
-      return this.$store.state.stations.data.filter(station => station.products.includes('Maakaasu'))
-    }
+  mounted() {
+    this.stations = this.$store.state.stations.data
   },
+  computed: {},
   methods: {
     doSomethingOnReady() {
       this.map = this.$refs.map.mapObject
+    },
+    selectFilter(filter) {
+      this.selectedFilter = filter.value
+      this.selectedFilter === 'all' ? (this.stations = this.$store.state.stations.data) : (this.stations = this.$store.state.stations.data.filter(station => station.type.includes(filter.value)))
     }
   }
 }
@@ -108,8 +101,17 @@ export default {
     @apply grid-cols-2 grid-rows-1;
   }
 }
+
+#mapFilterContainer {
+  @apply flex flex-row justify-between content-center p-3 px-4 bg-white text-base;
+}
+
 #mapGridItem {
   @apply overflow-hidden row-auto;
+}
+
+#filterGridItem {
+  @apply absolute w-full bottom-1/2;
 }
 
 #mapMask {
@@ -129,18 +131,5 @@ export default {
 
 #stationGridItem {
   @apply absolute w-full px-2 overflow-y-scroll bottom-0;
-}
-
-#filterGridItem {
-  @apply absolute w-full bottom-1/2;
-}
-
-#filterContainer {
-  @apply flex flex-row justify-between content-center p-3 px-4 bg-white text-base;
-}
-.filterLink {
-  &.active {
-    @apply font-medium text-primary;
-  }
 }
 </style>

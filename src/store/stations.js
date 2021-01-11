@@ -7,9 +7,9 @@ export const state = () => ({
       address: 'Kuitinmäentie 26, 02240 Espoo',
       coords: { lat: 60.1617785, lng: 24.7172848 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 1,
@@ -18,9 +18,9 @@ export const state = () => ({
       address: 'Espoontie 21, 02740 Espoo',
       coords: { lat: 60.2165252, lng: 24.6664632 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 2,
@@ -29,9 +29,9 @@ export const state = () => ({
       address: 'Perkkaantie 17, 00370 Espoo',
       coords: { lat: 60.2173457, lng: 24.8351607 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 3,
@@ -40,9 +40,9 @@ export const state = () => ({
       address: 'Voimalankatu 56, 30420 Forssa',
       coords: { lat: 60.7916559, lng: 23.5885101 },
       products: ['Biokaasu'],
+      type: ['biogas'],
       payments: ['EG Biogas -tankkauskortti'],
-      operator: 'Envor Group Oy',
-      type: 'marker',
+      operator: 'Envor Group Oy'
     },
     {
       id: 4,
@@ -51,9 +51,9 @@ export const state = () => ({
       address: 'Helsingintie 1 B, 49410 Hamina (ST1)',
       coords: { lat: 60.5635916, lng: 27.1617594 },
       products: ['Biokaasu'],
+      type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'ST1 Oy / Haminan Energia Oy',
-      type: 'marker',
+      operator: 'ST1 Oy / Haminan Energia Oy'
     },
     {
       id: 5,
@@ -62,9 +62,9 @@ export const state = () => ({
       address: 'Vanha Talvitie 21, 00580 Helsinki',
       coords: { lat: 60.1922798, lng: 24.9779427 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 6,
@@ -73,9 +73,9 @@ export const state = () => ({
       address: 'Tattariharjuntie 41, 00700 Helsinki',
       coords: { lat: 60.2529849, lng: 25.0633955 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 7,
@@ -84,9 +84,10 @@ export const state = () => ({
       address: 'Viilarintie 7, 00880 Helsinki',
       coords: { lat: 60.2138918, lng: 25.0598805 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
       operator: 'Gasum',
-      type: 'marker',
+      type: 'marker'
     },
     {
       id: 8,
@@ -95,9 +96,9 @@ export const state = () => ({
       address: 'Hakamäenkuja 1, 00310 Helsinki',
       coords: { lat: 60.207332, lng: 24.905677 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 9,
@@ -106,9 +107,9 @@ export const state = () => ({
       address: 'Provianttikatu 6, 00960 Helsinki',
       coords: { lat: 60.2223017, lng: 25.1762191 },
       products: ['Nesteytetty maakaasu (LNG)'],
+      type: ['naturalgas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 10,
@@ -117,9 +118,9 @@ export const state = () => ({
       address: 'Haapasaarentie 75, 05470 Hyvinkää',
       coords: { lat: 60.5964257, lng: 24.9265945 },
       products: ['Biokaasu'],
+      type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Palopuron Biokaasu Oy / Nivos Oy',
-      type: 'marker',
+      operator: 'Palopuron Biokaasu Oy / Nivos Oy'
     },
     {
       id: 11,
@@ -128,9 +129,9 @@ export const state = () => ({
       address: 'Kerkkolankatu 39, 05800 Hyvinkää',
       coords: { lat: 60.6567101, lng: 24.8480165 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      type: 'marker',
+      operator: 'Gasum Oy'
     },
     {
       id: 12,
@@ -139,9 +140,9 @@ export const state = () => ({
       address: 'Paroistentie 2, 13600 Hämeenlinna',
       coords: { lat: 61.0157378, lng: 24.4157302 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      type: 'marker',
+      operator: 'Gasum Oy'
     },
     {
       id: 13,
@@ -150,9 +151,9 @@ export const state = () => ({
       address: 'Kertakaari 4, 55120 Imatra',
       coords: { lat: 61.1862904, lng: 28.7454718 },
       products: ['Maakaasu', 'Biokaasu'],
+      type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      type: 'marker',
+      operator: 'Gasum Oy'
     },
     {
       id: 14,
@@ -161,9 +162,9 @@ export const state = () => ({
       address: 'Kalpatie 2, 61500 Isokyrö',
       coords: { lat: 61.1862904, lng: 28.7454718 },
       products: ['Biokaasu'],
+      type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Oy Jeppo Biogas Ab / Kyrö Distillery Company Oy',
-      type: 'marker',
+      operator: 'Oy Jeppo Biogas Ab / Kyrö Distillery Company Oy'
     },
     {
       id: 15,
@@ -172,9 +173,9 @@ export const state = () => ({
       address: 'Mämmiläntie 38, 19650 Joutsa',
       coords: { lat: 61.7499478, lng: 26.1014101 },
       products: ['Biokaasu'],
+      type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Joutsan Ekokaasu Oy / Metener O',
-      type: 'marker',
+      operator: 'Joutsan Ekokaasu Oy / Metener O'
     },
     {
       id: 16,
@@ -183,9 +184,9 @@ export const state = () => ({
       address: 'Metsälehmuksentie 9, 40800 Jyväskylä',
       coords: { lat: 62.2313269, lng: 25.9162483 },
       products: ['Nesteytetty maakaasu (LNG)'],
+      type: ['naturalgas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      type: 'marker',
+      operator: 'Gasum'
     },
     {
       id: 17,
@@ -194,9 +195,9 @@ export const state = () => ({
       address: 'Ronsuntaipaleentie 204, 40500 Jyväskylä',
       coords: { lat: 62.2137324, lng: 25.6691426 },
       products: ['Biokaasu'],
+      type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Mustankorkea Oy',
-      type: 'marker',
-    },
-  ],
-});
+      operator: 'Mustankorkea Oy'
+    }
+  ]
+})
