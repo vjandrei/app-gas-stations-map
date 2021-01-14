@@ -1190,7 +1190,8 @@
         "900": "#702459"
       },
       "primary": "var(--color-primary)",
-      "secondary": "var(--color-secondary)"
+      "secondary": "var(--color-secondary)",
+      "default": "var(--color-default)"
     },
     "spacing": {
       "0": "0",
@@ -1329,7 +1330,8 @@
         "900": "#702459"
       },
       "primary": "var(--color-primary)",
-      "secondary": "var(--color-secondary)"
+      "secondary": "var(--color-secondary)",
+      "default": "var(--color-default)"
     },
     "backgroundImage": {
       "none": "none",
@@ -1458,7 +1460,8 @@
         "900": "#702459"
       },
       "primary": "var(--color-primary)",
-      "secondary": "var(--color-secondary)"
+      "secondary": "var(--color-secondary)",
+      "default": "var(--color-default)"
     },
     "backgroundOpacity": {
       "0": "0",
@@ -2137,7 +2140,8 @@
         "900": "#702459"
       },
       "primary": "var(--color-primary)",
-      "secondary": "var(--color-secondary)"
+      "secondary": "var(--color-secondary)",
+      "default": "var(--color-default)"
     },
     "placeholderOpacity": {
       "0": "0",
@@ -2309,7 +2313,8 @@
         "900": "#702459"
       },
       "primary": "var(--color-primary)",
-      "secondary": "var(--color-secondary)"
+      "secondary": "var(--color-secondary)",
+      "default": "var(--color-default)"
     },
     "textOpacity": {
       "0": "0",

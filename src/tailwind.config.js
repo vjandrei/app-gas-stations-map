@@ -10,11 +10,12 @@ module.exports = {
     extend: {
       colors: {
         primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)'
+        secondary: 'var(--color-secondary)',
+        default: 'var(--color-default)'
       },
-      inset:{
-        '1/2': '50%',
-      },
+      inset: {
+        '1/2': '50%'
+      }
     }
   },
   variants: {},

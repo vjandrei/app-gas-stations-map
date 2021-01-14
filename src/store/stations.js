@@ -201,3 +201,13 @@ export const state = () => ({
     }
   ]
 })
+
+const addDistance = () => {
+  this.$store.state.stations.data
+    .map(list =>
+      Object.assign({}, list, {
+        distance: L.latLng(this.userCoords.latitude, this.userCoords.longitude).distanceTo(L.latLng(list.coords.lat, list.coords.lng))
+      })
+    )
+    .sort((a, b) => a.distance - b.distance)
+}
