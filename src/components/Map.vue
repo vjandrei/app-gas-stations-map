@@ -26,24 +26,26 @@
     </div>
     <div id="filterGridItem">
       <div id="filterContainer">
-        <StationFilter v-for="filter in filters" @sending-stations="selectStations" :name="filter.name" :value="filter.value" :selected-filter="selectedFilter" :key="filter.key" />
+        <StationFilter />
       </div>
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <StationList v-for="station in stations" :key="station.key" :station="station" />
+        <StationList />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 const isBrowser = typeof window !== 'undefined'
 let leaflet
 
 if (isBrowser) {
   leaflet = require('leaflet')
 }
+
 import StationFilter from '@/components/MapFilter'
 import StationList from '@/components/MapStationList'
 
@@ -52,15 +54,8 @@ export default {
     return {
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
       center: null,
-      zoom: null,
-      stations: [],
-      filters: [
-        { name: 'Kaikki asemat', value: 'all' },
-        { name: 'Biokaasu', value: 'biogas' },
-        { name: 'Maakaasu', value: 'naturalgas' }
-      ],
+      zoom: 13,
       userCoords: [],
-      selectedFilter: 'all',
       circle: {
         name: 'userLocationPin',
         center: null,
@@ -83,28 +78,15 @@ export default {
       this.userCoords = JSON.parse(sessionStorage.getItem('userCoords'))
       this.center = L.latLng(Object.values(this.userCoords))
       this.circle.center = L.latLng(Object.values(this.userCoords))
-      this.zoom = 13
     }
   },
-  mounted() {
-    this.stations = this.$store.state.stations.data
-      .map(list =>
-        Object.assign({}, list, {
-          distance: L.latLng(this.userCoords.latitude, this.userCoords.longitude).distanceTo(L.latLng(list.coords.lat, list.coords.lng))
-        })
-      )
-      .sort((a, b) => a.distance - b.distance)
+  mounted() {},
+  computed: {
+    ...mapGetters({
+      stations: 'stations/PASS_STATIONS'
+    })
   },
-  computed: {},
-  methods: {
-    doSomethingOnReady() {
-      this.map = this.$refs.map.mapObject
-    },
-    selectStations(filter) {
-      this.selectedFilter = filter.value
-      this.selectedFilter === 'all' ? (this.stations = this.$store.state.stations.data) : (this.stations = this.$store.state.stations.data.filter(station => station.type.includes(filter.value)))
-    }
-  }
+  methods: {}
 }
 </script>
 
@@ -139,12 +121,12 @@ export default {
 }
 
 #filterContainer {
-  @apply flex flex-row justify-between content-center py-3 bg-white text-base;
+  div {
+    @apply flex flex-row justify-between content-center py-3 bg-white text-base;
+  }
 }
 
 #stationlistGridItem {
-  @apply relative w-full px-2 overflow-y-scroll bottom-0 top-1/2;
-}
-#stationlistContainer {
+  @apply relative w-full px-2 bottom-0 top-1/2;
 }
 </style>

@@ -2,7 +2,6 @@ import path from 'path'
 import fs from 'fs'
 
 module.exports = {
-  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -92,11 +91,7 @@ module.exports = {
         stage: 2 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
       }
     },
-    extractCSS: true,
-    styleResources: {
-      // your settings here
-      sass: ['./assets/styles/_space.scss'] // alternative: scss
-    },
+    extractCSS: false,
     /*
      ** You can extend webpack config here
      */

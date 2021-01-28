@@ -9,7 +9,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 1,
@@ -20,7 +21,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 2,
@@ -31,7 +33,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 3,
@@ -42,7 +45,8 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['EG Biogas -tankkauskortti'],
-      operator: 'Envor Group Oy'
+      operator: 'Envor Group Oy',
+      distance: null
     },
     {
       id: 4,
@@ -53,7 +57,8 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'ST1 Oy / Haminan Energia Oy'
+      operator: 'ST1 Oy / Haminan Energia Oy',
+      distance: null
     },
     {
       id: 5,
@@ -64,7 +69,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 6,
@@ -75,7 +81,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 7,
@@ -87,7 +94,8 @@ export const state = () => ({
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
       operator: 'Gasum',
-      type: 'marker'
+      type: 'marker',
+      distance: null
     },
     {
       id: 8,
@@ -98,7 +106,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 9,
@@ -109,7 +118,8 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['naturalgas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 10,
@@ -120,7 +130,8 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Palopuron Biokaasu Oy / Nivos Oy'
+      operator: 'Palopuron Biokaasu Oy / Nivos Oy',
+      distance: null
     },
     {
       id: 11,
@@ -131,7 +142,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy'
+      operator: 'Gasum Oy',
+      distance: null
     },
     {
       id: 12,
@@ -142,7 +154,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy'
+      operator: 'Gasum Oy',
+      distance: null
     },
     {
       id: 13,
@@ -153,7 +166,8 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy'
+      operator: 'Gasum Oy',
+      distance: null
     },
     {
       id: 14,
@@ -164,7 +178,8 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Oy Jeppo Biogas Ab / Kyrö Distillery Company Oy'
+      operator: 'Oy Jeppo Biogas Ab / Kyrö Distillery Company Oy',
+      distance: null
     },
     {
       id: 15,
@@ -175,7 +190,8 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Joutsan Ekokaasu Oy / Metener O'
+      operator: 'Joutsan Ekokaasu Oy / Metener O',
+      distance: null
     },
     {
       id: 16,
@@ -186,7 +202,8 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['naturalgas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
+      distance: null
     },
     {
       id: 17,
@@ -197,17 +214,55 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Mustankorkea Oy'
+      operator: 'Mustankorkea Oy',
+      distance: null
     }
   ]
 })
 
-const addDistance = () => {
-  this.$store.state.stations.data
-    .map(list =>
-      Object.assign({}, list, {
-        distance: L.latLng(this.userCoords.latitude, this.userCoords.longitude).distanceTo(L.latLng(list.coords.lat, list.coords.lng))
-      })
-    )
-    .sort((a, b) => a.distance - b.distance)
+const isBrowser = typeof window !== 'undefined'
+let leaflet
+
+if (isBrowser) {
+  leaflet = require('leaflet')
+}
+/*
+const getUserSessionLocation = () => {
+  if (isBrowser) {
+    const userSessionCoords = JSON.parse(sessionStorage.getItem('userCoords'))
+    const userCoords = Object.values(userSessionCoords)
+    return userCoords
+  }
+}
+*/
+
+// like methods get stuff from API
+export const actions = {
+  GET_DISTANCE(context) {
+    const userSessioLocations = getUserSessionLocation()
+    context.commit('SET_STATION_DISTANCE', userSessioLocations)
+  }
+}
+
+// only updates the state
+export const mutations = {
+  SET_STATION_DISTANCE(state, distance) {
+    if (isBrowser) {
+      const stationsCoords = state.data.map(station => station.coords)
+      const jotain = L.latLng(distance)
+      const jotainmuuta = L.latLng(stationsCoords)
+      console.log(stationsCoords)
+      //console.log(state.data.map(e => ({ ...e, distance })))
+      //state.data = state.data.map(e => ({ ...e, distance }))
+    }
+  }
+}
+
+//showing things, not mutating state like computed properties
+export const getters = {
+  PASS_STATIONS(state, getters, rootState, rootGetters) {
+    const filterSelected = rootState.stationFilter !== 'all'
+    const filteredStations = state.data.filter(s => s.type.includes(rootState.stationFilter))
+    return filterSelected ? filteredStations : state.data
+  }
 }

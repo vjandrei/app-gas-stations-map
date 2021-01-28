@@ -1,28 +1,58 @@
 <template>
-  <div class="stationListItemCard">
-    <div class="flex items-center">
-      <div class="flex-grow stationListItemCardContent">
-        <h2>{{ station.name }}</h2>
-        <h4>{{ station.address }}</h4>
-        <h5>Nykyisestä sijainista: km</h5>
+  <div>
+    <div v-for="station in stations" :key="station.id" class="stationListItemCard">
+      <div class="flex items-center">
+        <div class="flex-grow stationListItemCardContent">
+          <h2>{{ station.name }}</h2>
+          <h4>{{ station.address }}</h4>
+          <h5>Nykyisestä sijainista: km</h5>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+const isBrowser = typeof window !== 'undefined'
+let leaflet
+
+if (isBrowser) {
+  leaflet = require('leaflet')
+}
+
 export default {
-  props: {
-    station: {
-      type: Object
-    }
-  },
   data() {
     return {}
   },
-  computed: {},
-  created() {},
-  mounted() {},
+  computed: {
+    ...mapGetters({
+      stations: 'stations/PASS_STATIONS'
+    })
+  },
+  created() {
+    this.$store.dispatch('stations/GET_DISTANCE')
+  },
+  mounted() {
+    //this.stations = this.$store.state.stations.data
+    /*
+    const stationsCoords = this.stations.map(station => station.coords)
+      this.stationsDistace = stationsCoords
+        .map(x =>
+          Object.assign({}, x, {
+            distance: L.latLng(userCoordsList).distanceTo(L.latLng(x.lat, x.lng))
+          })
+        )
+        .sort((a, b) => a.distance - b.distance)
+      .map(list =>
+        Object.assign({}, list, {
+          distance: L.latLng(this.userCoords.latitude, this.userCoords.longitude).distanceTo(L.latLng(list.coords.lat, list.coords.lng))
+        })
+      )
+      .sort((a, b) => a.distance - b.distance)
+      */
+  },
   methods: {}
 }
 </script>

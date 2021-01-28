@@ -87,12 +87,18 @@ export default {
     this.$store.dispatch('setNearestLocation', this.locations[0])
   },
   methods: {
+    doSomethingOnReady() {
+      this.map = this.$refs.map.mapObject
+    },
     focusMarker(station) {
       // Lähettää emitin MapContainerille mountedille ja sielä asetetaan this.tiedot jotta setView toimii
       this.$root.$emit('setStation', station)
     },
     showStationDetails(station) {
       this.showMore = true
+    },
+    selectStations(filter) {
+      //this.selectedFilter === 'all' ? this.stations : this.stations.filter(station => station.type.includes(this.selectedFilter))
     }
   }
 }

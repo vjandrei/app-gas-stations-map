@@ -1,45 +1,32 @@
 <template>
-  <div class="filterLink" :class="{ active: isSelected }" v-on:click="selectFilter">
-    <span>{{ name }}</span>
+  <div>
+    <div v-for="filter in filters" :filter="filter.value" class="filterLink" :class="{ active: filterFromStore == filter.value }" v-on:click="selectFilter(filter.value)" :key="filter.id">
+      <span>{{ filter.name }}</span>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    value: {
-      type: String,
-      required: true
-    },
-    selectedFilter: {
-      type: String
-    }
-  },
-
-  emits: {
-    'selected-filter'(payload) {
-      if (typeof payload.name === 'string' && payload.value) {
-        return true
-      } else {
-        return false
-      }
+  data() {
+    return {
+      filters: [
+        { name: 'Kaikki asemat', value: 'all', id: 1 },
+        { name: 'Biokaasu', value: 'biogas', id: 2 },
+        { name: 'Maakaasu', value: 'naturalgas', id: 3 }
+      ],
+      selectedFilter: ''
     }
   },
   computed: {
-    isSelected() {
-      return this.value === this.selectedFilter
-    }
+    ...mapGetters({
+      filterFromStore: 'PASS_FILTER'
+    })
   },
   methods: {
-    selectFilter(filter) {
-      this.$emit('sending-stations', {
-        name: this.name,
-        value: this.value
-      })
+    selectFilter(value) {
+      this.$store.dispatch('GET_FILTER', value)
     }
   }
 }

@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async getUserLocation() {
-      this.$store.dispatch('fetchFromNavigator')
+      this.$store.dispatch('GET_FROM_NAVIGATOR')
     }
   }
 }

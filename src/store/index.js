@@ -1,10 +1,9 @@
 export const state = () => ({
-  message: 'Hello Vuex state!',
   aboutApp: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
   locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.',
-
   userLocation: false,
-  userLocationData: []
+  userLocationData: [],
+  stationFilter: 'all'
 })
 
 /**
@@ -27,20 +26,6 @@ const getGeoLocation = () => {
 }
 
 /**
- * Mutations: Sets states
- */
-
-export const mutations = {
-  SET_LOADING_STATUS(state, payload) {
-    state.userLocation = payload
-  },
-  SET_USER_LOCATION_DATA(state, coords) {
-    sessionStorage.setItem('userCoords', JSON.stringify(coords))
-    state.userLocationData = coords
-  }
-}
-
-/**
  * Actions:
  * fetchFromNavigator:
  * 1. SET_LOADING_STATUS true
@@ -48,7 +33,7 @@ export const mutations = {
  */
 
 export const actions = {
-  fetchFromNavigator(context) {
+  GET_FROM_NAVIGATOR(context) {
     context.commit('SET_LOADING_STATUS', true)
     getGeoLocation()
       .then(pos => {
@@ -64,21 +49,30 @@ export const actions = {
         this.$router.push('/map')
       })
   },
-  setNearestLocation({ state, commit }, value) {
-    if (state.userLocationData) {
-      commit('SET_NEAREST_LOCATION_DATA', {
-        name: value.name,
-        address: value.address,
-        coords: value.coords,
-        distance: value.distance
-      })
-    }
+  GET_FILTER(context, filter) {
+    context.commit('SET_FILTER', filter)
+  }
+}
+
+/**
+ * Mutations: Sets states
+ */
+export const mutations = {
+  SET_LOADING_STATUS(state, payload) {
+    state.userLocation = payload
+  },
+  SET_USER_LOCATION_DATA(state, coords) {
+    sessionStorage.setItem('userCoords', JSON.stringify(coords))
+    state.userLocationData = coords
+  },
+  SET_FILTER(state, payload) {
+    state.stationFilter = payload
   }
 }
 
 //showing things, not mutating state
 export const getters = {
-  hasUserlocation: state => {
-    return state.gettingLocation
+  PASS_FILTER: state => {
+    return state.stationFilter
   }
 }
