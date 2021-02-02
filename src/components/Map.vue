@@ -4,14 +4,14 @@
       <div id="mapMask">
         <div id="map">
           <client-only>
-            <l-map :zoom="zoom" :center="center">
+            <l-map ref="map" :zoom="userZoom || defaultZoom" :center="updatedLocation || defaultLocation">
               <l-tile-layer :url="url"></l-tile-layer>
               <l-marker v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
               <l-circle-marker
                 v-for="n in 2"
                 :key="n.key"
                 :name="circle.name"
-                :lat-lng="circle.center"
+                :lat-lng.sync="updatedLocation"
                 :radius="n * 3"
                 :color="circle.color"
                 :fillColor="circle.fillColor"
@@ -26,12 +26,14 @@
     </div>
     <div id="filterGridItem">
       <div id="filterContainer">
+        {{ updatedLocation }} updated <br />
+        <button @click="getNewLocation">Uusi lokaatio</button>
         <StationFilter />
       </div>
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <StationList />
+        <StationList :stations="stations" />
       </div>
     </div>
   </div>
@@ -53,12 +55,13 @@ export default {
   data() {
     return {
       url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
-      center: null,
-      zoom: 13,
+      defaultLocation: [],
+      userLocation: [],
       userCoords: [],
+      defaultZoom: 6,
+      userZoom: 13,
       circle: {
         name: 'userLocationPin',
-        center: null,
         color: 'rgba(35,136,204,0.30)',
         fillColor: '#2388CC',
         fillOpacity: 1,
@@ -72,21 +75,40 @@ export default {
     StationFilter,
     StationList
   },
-
   created() {
     if (isBrowser) {
+      this.defaultLocation = L.latLng(63.3941186, 24.7088464)
       this.userCoords = JSON.parse(sessionStorage.getItem('userCoords'))
-      this.center = L.latLng(Object.values(this.userCoords))
-      this.circle.center = L.latLng(Object.values(this.userCoords))
+      this.userLocation = L.latLng(this.userCoords)
     }
   },
-  mounted() {},
+  mounted() {
+    this.$store.dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
+  },
+  watch: {
+    userLocation: {
+      deep: true,
+      async handler(value) {
+        console.log(value)
+      }
+    }
+  },
   computed: {
     ...mapGetters({
-      stations: 'stations/PASS_STATIONS'
-    })
+      stations: 'PASS_STATIONS',
+      userlocation: 'PASS_USERLOCATION'
+    }),
+    updatedLocation() {
+      if (isBrowser) {
+        return L.latLng(Object.values(this.userlocation))
+      }
+    }
   },
-  methods: {}
+  methods: {
+    async getNewLocation() {
+      this.$store.dispatch('GET_FROM_NAVIGATOR')
+    }
+  }
 }
 </script>
 

@@ -60,7 +60,8 @@ module.exports = {
   plugins: [
     { src: '~/plugins/leaflet.js', ssr: false },
     { src: '~/plugins/fullHeight.js', mode: 'client' },
-    { src: '~/plugins/getStations.server.js', ssr: false }
+    { src: '~/plugins/getStations.server.js', ssr: false },
+    { src: '~/plugins/getLocation.js', ssr: false }
   ],
   /*
    ** Nuxt.js modules

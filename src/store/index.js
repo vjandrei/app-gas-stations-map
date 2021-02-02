@@ -1,3 +1,4 @@
+/** Initial state */
 export const state = () => ({
   aboutApp: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
   locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.',
@@ -37,20 +38,32 @@ export const actions = {
     context.commit('SET_LOADING_STATUS', true)
     getGeoLocation()
       .then(pos => {
-        context.commit('SET_USER_LOCATION_DATA', {
-          latitude: pos.coords.latitude,
-          longitude: pos.coords.longitude
-        })
+        context.commit(
+          'SET_USER_LOCATION_DATA',
+          {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+          },
+          sessionStorage.setItem(
+            'userCoords',
+            JSON.stringify({
+              lat: pos.coords.latitude,
+              lng: pos.coords.longitude
+            })
+          )
+        )
+        this.$router.push('/map')
       })
       .catch(err => {
         console.log(err)
       })
-      .finally(() => {
-        this.$router.push('/map')
-      })
+      .finally(() => {})
   },
   GET_FILTER(context, filter) {
     context.commit('SET_FILTER', filter)
+  },
+  GET_USER_SESSION_LOCATION_DATA(context, location) {
+    context.commit('SET_USER_SESSION_LOCATION_DATA', location)
   }
 }
 
@@ -61,12 +74,14 @@ export const mutations = {
   SET_LOADING_STATUS(state, payload) {
     state.userLocation = payload
   },
-  SET_USER_LOCATION_DATA(state, coords) {
-    sessionStorage.setItem('userCoords', JSON.stringify(coords))
-    state.userLocationData = coords
+  SET_USER_LOCATION_DATA(state, payload) {
+    state.userLocationData = payload
   },
   SET_FILTER(state, payload) {
     state.stationFilter = payload
+  },
+  SET_USER_SESSION_LOCATION_DATA(state, payload) {
+    state.userLocationData = payload
   }
 }
 
@@ -74,5 +89,13 @@ export const mutations = {
 export const getters = {
   PASS_FILTER: state => {
     return state.stationFilter
+  },
+  PASS_STATIONS(state, getters, rootState, rootGetters) {
+    const filterSelected = rootState.stationFilter !== 'all'
+    const filteredStations = rootState.stations.data.filter(s => s.type.includes(rootState.stationFilter))
+    return filterSelected ? filteredStations : rootState.stations.data
+  },
+  PASS_USERLOCATION: state => {
+    return state.userLocationData
   }
 }

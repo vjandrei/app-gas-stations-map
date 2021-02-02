@@ -220,49 +220,17 @@ export const state = () => ({
   ]
 })
 
-const isBrowser = typeof window !== 'undefined'
-let leaflet
-
-if (isBrowser) {
-  leaflet = require('leaflet')
-}
-/*
-const getUserSessionLocation = () => {
-  if (isBrowser) {
-    const userSessionCoords = JSON.parse(sessionStorage.getItem('userCoords'))
-    const userCoords = Object.values(userSessionCoords)
-    return userCoords
-  }
-}
-*/
-
 // like methods get stuff from API
 export const actions = {
   GET_DISTANCE(context) {
-    const userSessioLocations = getUserSessionLocation()
-    context.commit('SET_STATION_DISTANCE', userSessioLocations)
+    context.commit('SET_STATION_DISTANCE')
   }
 }
 
 // only updates the state
 export const mutations = {
-  SET_STATION_DISTANCE(state, distance) {
-    if (isBrowser) {
-      const stationsCoords = state.data.map(station => station.coords)
-      const jotain = L.latLng(distance)
-      const jotainmuuta = L.latLng(stationsCoords)
-      console.log(stationsCoords)
-      //console.log(state.data.map(e => ({ ...e, distance })))
-      //state.data = state.data.map(e => ({ ...e, distance }))
-    }
-  }
+  SET_STATION_DISTANCE(state, distance) {}
 }
 
 //showing things, not mutating state like computed properties
-export const getters = {
-  PASS_STATIONS(state, getters, rootState, rootGetters) {
-    const filterSelected = rootState.stationFilter !== 'all'
-    const filteredStations = state.data.filter(s => s.type.includes(rootState.stationFilter))
-    return filterSelected ? filteredStations : state.data
-  }
-}
+export const getters = {}

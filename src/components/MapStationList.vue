@@ -13,46 +13,20 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
-const isBrowser = typeof window !== 'undefined'
-let leaflet
-
-if (isBrowser) {
-  leaflet = require('leaflet')
-}
-
 export default {
+  props: {
+    stations: {
+      type: Array
+    }
+  },
   data() {
     return {}
   },
-  computed: {
-    ...mapGetters({
-      stations: 'stations/PASS_STATIONS'
-    })
-  },
+  computed: {},
   created() {
-    this.$store.dispatch('stations/GET_DISTANCE')
+    //this.$store.dispatch('stations/GET_DISTANCE')
   },
-  mounted() {
-    //this.stations = this.$store.state.stations.data
-    /*
-    const stationsCoords = this.stations.map(station => station.coords)
-      this.stationsDistace = stationsCoords
-        .map(x =>
-          Object.assign({}, x, {
-            distance: L.latLng(userCoordsList).distanceTo(L.latLng(x.lat, x.lng))
-          })
-        )
-        .sort((a, b) => a.distance - b.distance)
-      .map(list =>
-        Object.assign({}, list, {
-          distance: L.latLng(this.userCoords.latitude, this.userCoords.longitude).distanceTo(L.latLng(list.coords.lat, list.coords.lng))
-        })
-      )
-      .sort((a, b) => a.distance - b.distance)
-      */
-  },
+  mounted() {},
   methods: {}
 }
 </script>
