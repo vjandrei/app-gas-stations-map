@@ -85,14 +85,6 @@ export default {
   mounted() {
     this.$store.dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
   },
-  watch: {
-    userLocation: {
-      deep: true,
-      async handler(value) {
-        console.log(value)
-      }
-    }
-  },
   computed: {
     ...mapGetters({
       stations: 'PASS_STATIONS',
@@ -107,6 +99,7 @@ export default {
   methods: {
     async getNewLocation() {
       this.$store.dispatch('GET_FROM_NAVIGATOR')
+      this.userZoom = 20
     }
   }
 }
