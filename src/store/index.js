@@ -27,20 +27,22 @@ const getGeoLocation = () => {
 }
 
 const addToSessionStorage = (lat, lng) => {
-  console.log(lat)
   const key = 'userCoords'
   const coords = JSON.stringify({
     lat: lat,
     lng: lng
   })
   try {
-    if (window.localStorage) console.log('Local Storage Supported')
-    else console.log('Local Storage Not Supported')
-
+    if (!window.sessionStorage) {
+      return false
+    }
+    sessionStorage.setItem(key, coords)
     console.log(`Added to Session Storage: '${key}'`)
+    return true
   } catch (ex) {
     console.error(`*** SessionStorage: '${ex.name}' ***`, ex)
-    alert('Oops: Error writing to SessionStorage, check console.')
+    alert('Virhe: Et ole sallinut sovelluksen paikkatieto tallennusta')
+    return false
   }
 }
 
