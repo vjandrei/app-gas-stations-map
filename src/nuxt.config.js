@@ -2,6 +2,8 @@ import path from 'path'
 import fs from 'fs'
 
 module.exports = {
+  target: 'static',
+  ssr: false,
   /*
    ** Headers of the page
    */
@@ -59,22 +61,18 @@ module.exports = {
    */
   plugins: [
     { src: '~/plugins/leaflet.js', ssr: false },
-    { src: '~/plugins/fullHeight.js', mode: 'client' },
-    { src: '~/plugins/getStations.server.js', ssr: false },
-    { src: '~/plugins/getLocation.js', ssr: false }
+    { src: '~/plugins/fullHeight.js', mode: 'client' }
   ],
   /*
    ** Nuxt.js modules
    */
-  exampleMsg: 'hello',
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     'nuxt-purgecss',
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    '@nuxtjs/pwa'
   ],
-  customCounter: { option1: 'something' },
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/dotenv'],
   /*
    ** Build configuration

@@ -13,14 +13,12 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_webfontloader_108ecff7 from 'nuxt_plugin_webfontloader_108ecff7' // Source: ./webfontloader.js (mode: 'client')
 import nuxt_plugin_workbox_50ae8453 from 'nuxt_plugin_workbox_50ae8453' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_metaplugin_41186f34 from 'nuxt_plugin_metaplugin_41186f34' // Source: ./pwa/meta.plugin.js (mode: 'all')
 import nuxt_plugin_iconplugin_37c9244c from 'nuxt_plugin_iconplugin_37c9244c' // Source: ./pwa/icon.plugin.js (mode: 'all')
+import nuxt_plugin_webfontloader_108ecff7 from 'nuxt_plugin_webfontloader_108ecff7' // Source: ./webfontloader.js (mode: 'client')
 import nuxt_plugin_leaflet_4674fed0 from 'nuxt_plugin_leaflet_4674fed0' // Source: ../plugins/leaflet.js (mode: 'client')
 import nuxt_plugin_fullHeight_6e1a65eb from 'nuxt_plugin_fullHeight_6e1a65eb' // Source: ../plugins/fullHeight.js (mode: 'client')
-import nuxt_plugin_getStationsserver_24b062a5 from 'nuxt_plugin_getStationsserver_24b062a5' // Source: ../plugins/getStations.server.js (mode: 'client')
-import nuxt_plugin_getLocation_70b01de2 from 'nuxt_plugin_getLocation_70b01de2' // Source: ../plugins/getLocation.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -56,7 +54,7 @@ Object.defineProperty(Vue.prototype, '$nuxt', {
 
 Vue.use(Meta, {"keyName":"head","attribute":"data-n-head","ssrAttribute":"data-n-head-ssr","tagIDKeyName":"hid"})
 
-const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
+const defaultTransition = {"name":"page","mode":"out-in","appear":true,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
 const originalRegisterModule = Vuex.Store.prototype.registerModule
 const baseStoreOptions = { preserveState: process.client }
@@ -71,9 +69,6 @@ async function createApp(ssrContext, config = {}) {
   const store = createStore(ssrContext)
   // Add this.$router into store actions/mutations
   store.$router = router
-
-  // Fix SSR caveat https://github.com/nuxt/nuxt.js/issues/3757#issuecomment-414689141
-  store.registerModule = registerModule
 
   // Create Root instance
 
@@ -209,10 +204,6 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_webfontloader_108ecff7 === 'function') {
-    await nuxt_plugin_webfontloader_108ecff7(app.context, inject)
-  }
-
   if (process.client && typeof nuxt_plugin_workbox_50ae8453 === 'function') {
     await nuxt_plugin_workbox_50ae8453(app.context, inject)
   }
@@ -225,20 +216,16 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_iconplugin_37c9244c(app.context, inject)
   }
 
+  if (process.client && typeof nuxt_plugin_webfontloader_108ecff7 === 'function') {
+    await nuxt_plugin_webfontloader_108ecff7(app.context, inject)
+  }
+
   if (process.client && typeof nuxt_plugin_leaflet_4674fed0 === 'function') {
     await nuxt_plugin_leaflet_4674fed0(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_fullHeight_6e1a65eb === 'function') {
     await nuxt_plugin_fullHeight_6e1a65eb(app.context, inject)
-  }
-
-  if (process.client && typeof nuxt_plugin_getStationsserver_24b062a5 === 'function') {
-    await nuxt_plugin_getStationsserver_24b062a5(app.context, inject)
-  }
-
-  if (process.client && typeof nuxt_plugin_getLocation_70b01de2 === 'function') {
-    await nuxt_plugin_getLocation_70b01de2(app.context, inject)
   }
 
   // Lock enablePreview in context

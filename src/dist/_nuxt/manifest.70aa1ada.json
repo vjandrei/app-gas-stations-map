@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-firebase-ssr-base",
-  "short_name": "nuxt-firebase-ssr-base",
-  "description": "This project is starting base for Nuxt Firebase SSR app",
+  "name": "kaasuasemat",
+  "short_name": "kaasuasemat",
+  "description": "> This project is starting base for Nuxt Firebase SSR app",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.46472c.png",
@@ -49,6 +49,5 @@
   "start_url": "/?standalone=true",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#fff",
   "lang": "en"
 }

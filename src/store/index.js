@@ -26,6 +26,22 @@ const getGeoLocation = () => {
   }
 }
 
+const addToSessionStorage = (lat, lng) => {
+  console.log(lat)
+  const key = 'userCoords'
+  const coords = JSON.stringify({
+    lat: lat,
+    lng: lng
+  })
+  try {
+    sessionStorage.setItem(key, coords)
+    console.log(`Added to Session Storage: '${key}'`)
+  } catch (ex) {
+    console.error(`*** SessionStorage: '${ex.name}' ***`, ex)
+    alert('Oops: Error writing to SessionStorage, check console.')
+  }
+}
+
 /**
  * Actions:
  * fetchFromNavigator:
@@ -44,13 +60,7 @@ export const actions = {
             latitude: pos.coords.latitude,
             longitude: pos.coords.longitude
           },
-          sessionStorage.setItem(
-            'userCoords',
-            JSON.stringify({
-              lat: pos.coords.latitude,
-              lng: pos.coords.longitude
-            })
-          )
+          addToSessionStorage(pos.coords.latitude, pos.coords.longitude)
         )
         this.$router.push('/map')
       })
