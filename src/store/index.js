@@ -34,7 +34,9 @@ const addToSessionStorage = (lat, lng) => {
     lng: lng
   })
   try {
-    sessionStorage.setItem(key, coords)
+    if (window.localStorage) console.log('Local Storage Supported')
+    else console.log('Local Storage Not Supported')
+
     console.log(`Added to Session Storage: '${key}'`)
   } catch (ex) {
     console.error(`*** SessionStorage: '${ex.name}' ***`, ex)
