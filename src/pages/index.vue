@@ -3,15 +3,24 @@
     <transition name="fade">
       <div id="welcomeScreen">
         <div id="welcomeScreenContainer">
-          <h1>Löydä kaasuasema</h1>
-          <h2>{{ this.aboutApp }}</h2>
-          <button class="largeButton" @click="getUserLocation">
-            <span v-if="userLocation">Haetaan paikkatietoja</span>
-            <span v-else>Paikanna minut</span>
-          </button>
-          <p>
-            <small>{{ this.locationTipMessage }}</small>
-          </p>
+          <div class="w-full pt-1 pb-5">
+            <div id="logo">
+              <i class="icon-gas-station"></i>
+            </div>
+          </div>
+          <div class="mb-5">
+            <h1 class="text-center">Löydä kaasuasema</h1>
+            <h2 class="text-center">{{ this.aboutApp }}</h2>
+          </div>
+          <div>
+            <button class="largeButton" @click="getUserLocation">
+              <span v-if="userLocation"><i class="mdi mdi-lock-outline mr-1"></i>Haetaan paikkatietoja</span>
+              <span v-else>Paikanna minut</span>
+            </button>
+            <p>
+              <small>{{ this.locationTipMessage }}</small>
+            </p>
+          </div>
         </div>
       </div>
     </transition>
@@ -58,23 +67,26 @@ export default {
     @apply absolute inset-0 w-full h-full bg-cover bg-center;
     //filter: grayscale(60%);
     background-blend-mode: saturation;
-    background-image: linear-gradient(180deg, rgba(0, 48, 69, 0) 30%, rgba(0, 0, 0, 0.74) 100%), url('~assets/img/bg-min.gif');
+    background-image: linear-gradient(180deg, rgba(0, 48, 69, 0) 30%, rgba(0, 0, 0, 0.74) 100%), url('~assets/img/bg-min.jpg');
   }
 }
 
 #welcomeScreenContainer {
-  backdrop-filter: blur(0.8px);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  @apply font-display p-4 pb-8 w-11/12 m-auto relative rounded-lg;
-
+  //backdrop-filter: blur(0.8px);
+  //text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  @apply font-display p-4 pb-8 m-auto relative rounded-lg w-10/12 max-w-lg bg-white shadow-lg p-5 text-gray-700;
+  #logo {
+    @apply bg-blue-600 text-white overflow-hidden rounded-full w-16 h-16 -mt-16 mx-auto shadow-lg flex justify-center items-center;
+  }
   h1 {
-    @apply text-4xl font-bold mb-4 leading-10;
+    @apply text-2xl font-bold mb-4 leading-10;
   }
   h2 {
-    @apply text-lg font-normal mb-4 leading-6;
+    @apply text-base font-normal mb-2 leading-6;
   }
   button {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    @apply block w-full max-w-xs mx-auto rounded-lg px-3 py-3;
   }
   p {
     @apply text-base leading-4 pt-4 text-center w-10/12 m-auto;

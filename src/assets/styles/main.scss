@@ -1,4 +1,5 @@
 @import '~vue-mobile-viewport-height/src/mobile-viewport-height.scss';
+@import 'fonts-icons.scss';
 
 #appWrapper {
   @include mobile-viewport-height();
@@ -186,4 +187,3 @@ dd {
 dd b {
   padding-left: 16px;
 }
-
