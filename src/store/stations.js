@@ -640,7 +640,7 @@ export const state = () => ({
       distance: null
     },
     {
-      id: 52,
+      id: 53,
       url_name: 'runsor',
       name: 'Vaasa Runsor',
       address: 'Kiitokaari 2, 65380 Vaasa (ABC!)',
@@ -652,7 +652,7 @@ export const state = () => ({
       distance: null
     },
     {
-      id: 53,
+      id: 54,
       url_name: 'petikko',
       name: 'Vantaa Petikko',
       address: 'Klinkkerinkaari 1, 01720 Vantaa',
@@ -664,7 +664,7 @@ export const state = () => ({
       distance: null
     },
     {
-      id: 54,
+      id: 55,
       url_name: 'porttipuisto',
       name: 'Vantaa Porttipuisto',
       address: 'Porttisuontie 18, 01200 Vantaa (IKEA)',
@@ -676,7 +676,7 @@ export const state = () => ({
       distance: null
     },
     {
-      id: 55,
+      id: 56,
       url_name: 'porttipuisto',
       name: 'Vantaa Tuupakka',
       address: 'Porttisuontie 18, 01200 Vantaa (IKEA)',
