@@ -691,16 +691,27 @@ export const state = () => ({
 })
 
 // like methods get stuff from API
+
 export const actions = {
   GET_DISTANCE(context) {
-    context.commit('SET_STATION_DISTANCE')
+    console.log('hello from Map mounted')
   }
+  /*
+  GET_DISTANCE(context) {
+    const userLocation = [context.rootState.userLocationData.lat, context.rootState.userLocationData.lng]
+    const markersCoords = context.state.data.map(marker => marker.coords)
+    const distance = L.latLng(userLocation).distanceTo(L.latLng([markersCoords]))
+    //.sort((a, b) => a.distance - b.distance)
+    //distance: L.latLng(userLocation).distanceTo(L.latLng([marker.coords.lat, marker.coords.lng]))
+    //console.log(distance)
+    //context.commit('SET_STATION_DISTANCE')
+    console.log(distance)
+  }
+  */
 }
 
 // only updates the state
-export const mutations = {
-  SET_STATION_DISTANCE(state, distance) {}
-}
+export const mutations = {}
 
 //showing things, not mutating state like computed properties
 export const getters = {}

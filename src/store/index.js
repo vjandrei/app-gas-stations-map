@@ -26,6 +26,11 @@ const getGeoLocation = () => {
   }
 }
 
+const getDistance = (userLat, userLng, stations) => {
+  const userLocation = [userLat, userLng]
+  stations.map(({ coords: { lat, lng } }) => L.latLng(userLocation).distanceTo(L.latLng([lat, lng]))).sort((a, b) => a.value - b.value)
+}
+
 const addToSessionStorage = (lat, lng) => {
   const key = 'userCoords'
   const coords = JSON.stringify({
@@ -39,8 +44,8 @@ const addToSessionStorage = (lat, lng) => {
     sessionStorage.setItem(key, coords)
     console.log(`Added to Session Storage: '${key}'`)
     return true
-  } catch (ex) {
-    console.error(`*** SessionStorage: '${ex.name}' ***`, ex)
+  } catch (er) {
+    console.error(`*** SessionStorage: '${er.name}' ***`, er)
     alert('Virhe: Et ole sallinut sovelluksen paikkatieto tallennusta')
     return false
   }
@@ -54,9 +59,9 @@ const addToSessionStorage = (lat, lng) => {
  */
 
 export const actions = {
-  GET_FROM_NAVIGATOR(context) {
+  async GET_FROM_NAVIGATOR(context) {
     context.commit('SET_LOADING_STATUS', true)
-    getGeoLocation()
+    await getGeoLocation()
       .then(pos => {
         context.commit(
           'SET_USER_LOCATION_DATA',
@@ -78,6 +83,12 @@ export const actions = {
   },
   GET_USER_SESSION_LOCATION_DATA(context, location) {
     context.commit('SET_USER_SESSION_LOCATION_DATA', location)
+  },
+  async GET_LOCATION_AND_DISTANCE({ dispatch, commit, state }) {
+    await dispatch('GET_FROM_NAVIGATOR').then(() => {
+      console.log(getDistance(state.userLocationData.latitude, state.userLocationData.longitude, state.stations.data))
+      commit('SET_DISTANCE')
+    })
   }
 }
 
@@ -90,12 +101,16 @@ export const mutations = {
   },
   SET_USER_LOCATION_DATA(state, payload) {
     state.userLocationData = payload
+    console.log('SET_USER_LOCATION_DATA')
   },
   SET_FILTER(state, payload) {
     state.stationFilter = payload
   },
   SET_USER_SESSION_LOCATION_DATA(state, payload) {
     state.userLocationData = payload
+  },
+  SET_DISTANCE(state, payload) {
+    console.log(payload)
   }
 }
 

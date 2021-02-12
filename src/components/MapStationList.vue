@@ -5,7 +5,7 @@
         <div class="flex-grow stationListItemCardContent">
           <h2>{{ station.name }}</h2>
           <h4>{{ station.address }}</h4>
-          <h5>Nykyisestä sijainista: km</h5>
+          <h5>Nykyisestä sijainista: {{ (station.distance / 1000).toFixed(1) }} km</h5>
         </div>
       </div>
     </div>
@@ -17,15 +17,16 @@ export default {
   props: {
     stations: {
       type: Array
+    },
+    userLocation: {
+      type: Object
     }
   },
   data() {
     return {}
   },
   computed: {},
-  created() {
-    //this.$store.dispatch('stations/GET_DISTANCE')
-  },
+  created() {},
   mounted() {},
   methods: {}
 }

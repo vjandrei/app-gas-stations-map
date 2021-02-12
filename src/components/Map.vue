@@ -1,6 +1,9 @@
 <template>
   <div id="mapScreenContainer">
     <div id="mapGridItem">
+      <button id="newLocation" @click="getNewLocation">
+        <i class="icon-gps"></i>
+      </button>
       <div id="mapMask">
         <div id="map">
           <client-only>
@@ -24,16 +27,17 @@
         </div>
       </div>
     </div>
+
     <div id="filterGridItem">
       <div id="filterContainer">
-        {{ updatedLocation }} updated <br />
-        <button @click="getNewLocation">Uusi lokaatio</button>
+        {{ this.updatedLocation }}
+        {{ this.userlocation }}
         <StationFilter />
       </div>
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <StationList :stations="stations" />
+        <StationList :stations="stations" :userLocation="updatedLocation" />
       </div>
     </div>
   </div>
@@ -54,7 +58,7 @@ import StationList from '@/components/MapStationList'
 export default {
   data() {
     return {
-      url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       defaultLocation: [],
       userLocation: [],
       userCoords: [],
@@ -98,7 +102,9 @@ export default {
   },
   methods: {
     async getNewLocation() {
-      this.$store.dispatch('GET_FROM_NAVIGATOR')
+      this.$store.dispatch('GET_LOCATION_AND_DISTANCE').then(() => {
+        console.log('Valmis!')
+      })
       this.userZoom = 20
     }
   }
@@ -129,6 +135,16 @@ export default {
 
 #map {
   height: 100vh;
+}
+
+#newLocation {
+  @apply absolute z-50 right-0 w-12 h-12 rounded-full bg-white my-3 mx-3 flex justify-center items-center;
+  box-shadow: 0 0px 0px 7px rgb(180 194 213 / 5%);
+
+  i {
+    font-size: 24px;
+    @apply text-primary;
+  }
 }
 
 #filterGridItem {
