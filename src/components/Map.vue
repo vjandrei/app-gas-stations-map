@@ -85,7 +85,9 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
+    this.$store.dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords).then(() => {
+      this.$store.dispatch('GET_LOCATION_AND_DISTANCE')
+    })
   },
   computed: {
     ...mapGetters({
