@@ -87,8 +87,9 @@ export const actions = {
   async GET_LOCATION_AND_DISTANCE({ dispatch, commit, state }) {
     await dispatch('GET_FROM_NAVIGATOR').then(() => {
       const userLocation = [state.userLocationData.latitude, state.userLocationData.longitude]
-      const distances = state.stations.data.map(item => ({ ...item, distance: L.latLng(userLocation).distanceTo(L.latLng([item.coords.lat, item.coords.lng])) })).sort((a, b) => a.value - b.value)
-      commit('SET_DISTANCE', distances)
+      const distances = state.stations.data.map(item => ({ ...item, distance: L.latLng(userLocation).distanceTo(L.latLng([item.coords.lat, item.coords.lng])) }))
+      const sortedDistances = distances.sort((a, b) => a.distance - b.distance)
+      commit('SET_DISTANCE', sortedDistances)
     })
   }
 }
