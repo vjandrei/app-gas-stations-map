@@ -9,8 +9,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 1,
@@ -21,8 +20,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 2,
@@ -33,8 +31,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 3,
@@ -45,8 +42,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['EG Biogas -tankkauskortti'],
-      operator: 'Envor Group Oy',
-      distance: null
+      operator: 'Envor Group Oy'
     },
     {
       id: 4,
@@ -57,8 +53,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'ST1 Oy / Haminan Energia Oy',
-      distance: null
+      operator: 'ST1 Oy / Haminan Energia Oy'
     },
     {
       id: 5,
@@ -69,8 +64,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 6,
@@ -81,8 +75,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 7,
@@ -94,8 +87,7 @@ export const state = () => ({
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
       operator: 'Gasum',
-      type: 'marker',
-      distance: null
+      type: 'marker'
     },
     {
       id: 8,
@@ -106,8 +98,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 9,
@@ -118,8 +109,7 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['naturalgas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 10,
@@ -130,8 +120,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Palopuron Biokaasu Oy / Nivos Oy',
-      distance: null
+      operator: 'Palopuron Biokaasu Oy / Nivos Oy'
     },
     {
       id: 11,
@@ -142,8 +131,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 12,
@@ -154,8 +142,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 13,
@@ -166,8 +153,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 14,
@@ -178,8 +164,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Oy Jeppo Biogas Ab / Kyrö Distillery Company Oy',
-      distance: null
+      operator: 'Oy Jeppo Biogas Ab / Kyrö Distillery Company Oy'
     },
     {
       id: 15,
@@ -190,8 +175,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Joutsan Ekokaasu Oy / Metener O',
-      distance: null
+      operator: 'Joutsan Ekokaasu Oy / Metener O'
     },
     {
       id: 16,
@@ -202,8 +186,7 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['naturalgas'],
       payments: ['Gas Card -tankkauskortti, pankki- & luottokortit'],
-      operator: 'Gasum',
-      distance: null
+      operator: 'Gasum'
     },
     {
       id: 17,
@@ -214,8 +197,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Mustankorkea Oy',
-      distance: null
+      operator: 'Mustankorkea Oy'
     },
     {
       id: 18,
@@ -226,8 +208,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Mustankorkea Oy',
-      distance: null
+      operator: 'Mustankorkea Oy'
     },
     {
       id: 19,
@@ -238,8 +219,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 20,
@@ -250,8 +230,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 21,
@@ -262,8 +241,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 22,
@@ -274,8 +252,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Nesteytetty maakaasu (LNG)', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 23,
@@ -286,8 +263,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 24,
@@ -298,8 +274,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 25,
@@ -310,8 +285,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Metener-tankkauskortti, käteinen. Huom! Käteisellä maksu vain klo 07–20. Ennen saapumista soitettava +358 400 546 590 (Erkki Kalmari)'],
-      operator: 'Metener Oy',
-      distance: null
+      operator: 'Metener Oy'
     },
     {
       id: 26,
@@ -323,8 +297,7 @@ export const state = () => ({
       type: ['naturalgas'],
       payments: ['Metener-tankkauskortti, käteinen. Huom! Käteisellä maksu vain klo 07–20.(+aktivointiavain ks. yllä)'],
       operator: 'Lempäälän Lämpö Oy',
-      other: '*HUOM! Asema on puolijulkinen - tankkaus vaatii asiakkaaksi rekisteröitymistä (Lempäälän Lämpö Oy:ltä saatavaa aktivointiavainta)*',
-      distance: null
+      other: '*HUOM! Asema on puolijulkinen - tankkaus vaatii asiakkaaksi rekisteröitymistä (Lempäälän Lämpö Oy:ltä saatavaa aktivointiavainta)*'
     },
     {
       id: 27,
@@ -336,8 +309,7 @@ export const state = () => ({
       type: ['naturalgas'],
       payments: ['Metener-tankkauskortti, käteinen. Huom! Käteisellä maksu vain klo 07–20.(+aktivointiavain ks. yllä)'],
       operator: 'Lempäälän Lämpö Oy',
-      other: '*HUOM! Asema on puolijulkinen - tankkaus vaatii asiakkaaksi rekisteröitymistä (Lempäälän Lämpö Oy:ltä saatavaa aktivointiavainta)*',
-      distance: null
+      other: '*HUOM! Asema on puolijulkinen - tankkaus vaatii asiakkaaksi rekisteröitymistä (Lempäälän Lämpö Oy:ltä saatavaa aktivointiavainta)*'
     },
     {
       id: 28,
@@ -348,8 +320,7 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['naturalgas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 29,
@@ -360,8 +331,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 30,
@@ -372,8 +342,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 31,
@@ -384,8 +353,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Etelä-Savon Energia Oy',
-      distance: null
+      operator: 'Etelä-Savon Energia Oy'
     },
     {
       id: 32,
@@ -396,8 +364,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Etelä-Savon Energia Oy',
-      distance: null
+      operator: 'Etelä-Savon Energia Oy'
     },
     {
       id: 33,
@@ -408,8 +375,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'BIG Biokaasu',
-      distance: null
+      operator: 'BIG Biokaasu'
     },
     {
       id: 34,
@@ -420,8 +386,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'ST1 Oy / Nivos Oy',
-      distance: null
+      operator: 'ST1 Oy / Nivos Oy'
     },
     {
       id: 35,
@@ -432,8 +397,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Leppäkosken Lämpö  Oy',
-      distance: null
+      operator: 'Leppäkosken Lämpö  Oy'
     },
     {
       id: 36,
@@ -444,8 +408,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'SEO Suomalainen Energiaosuuskunta',
-      distance: null
+      operator: 'SEO Suomalainen Energiaosuuskunta'
     },
     {
       id: 37,
@@ -456,8 +419,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 38,
@@ -468,8 +430,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Kiertokaari Oy',
-      distance: null
+      operator: 'Kiertokaari Oy'
     },
     {
       id: 39,
@@ -480,8 +441,7 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['neutralgas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 40,
@@ -492,8 +452,7 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)'],
       type: ['neutralgas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 41,
@@ -504,8 +463,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Jepuan Biokaasu Oy / Jippo Biogas Ab',
-      distance: null
+      operator: 'Jepuan Biokaasu Oy / Jippo Biogas Ab'
     },
     {
       id: 42,
@@ -516,8 +474,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 43,
@@ -528,8 +485,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 44,
@@ -540,8 +496,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 45,
@@ -552,8 +507,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 46,
@@ -564,8 +518,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 47,
@@ -576,8 +529,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 48,
@@ -588,8 +540,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 49,
@@ -600,8 +551,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 50,
@@ -612,8 +562,7 @@ export const state = () => ({
       products: ['Nesteytetty maakaasu (LNG)', 'Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 51,
@@ -624,8 +573,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Suomen Kaasuenergia Oy',
-      distance: null
+      operator: 'Suomen Kaasuenergia Oy'
     },
     {
       id: 52,
@@ -636,8 +584,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Jepuan Biokaasu Oy (Jippo Biogas Ab)',
-      distance: null
+      operator: 'Jepuan Biokaasu Oy (Jippo Biogas Ab)'
     },
     {
       id: 53,
@@ -648,8 +595,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'BIG Biokaasu',
-      distance: null
+      operator: 'BIG Biokaasu'
     },
     {
       id: 54,
@@ -660,8 +606,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 55,
@@ -672,8 +617,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     },
     {
       id: 56,
@@ -684,31 +628,13 @@ export const state = () => ({
       products: ['Maakaasu', 'Nesteytetty maakaasu (LNG)', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
-      operator: 'Gasum Oy',
-      distance: null
+      operator: 'Gasum Oy'
     }
   ]
 })
 
 // like methods get stuff from API
-
-export const actions = {
-  GET_DISTANCE(context) {
-    console.log('hello from Map mounted')
-  }
-  /*
-  GET_DISTANCE(context) {
-    const userLocation = [context.rootState.userLocationData.lat, context.rootState.userLocationData.lng]
-    const markersCoords = context.state.data.map(marker => marker.coords)
-    const distance = L.latLng(userLocation).distanceTo(L.latLng([markersCoords]))
-    //.sort((a, b) => a.distance - b.distance)
-    //distance: L.latLng(userLocation).distanceTo(L.latLng([marker.coords.lat, marker.coords.lng]))
-    //console.log(distance)
-    //context.commit('SET_STATION_DISTANCE')
-    console.log(distance)
-  }
-  */
-}
+export const actions = {}
 
 // only updates the state
 export const mutations = {}

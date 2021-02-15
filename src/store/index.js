@@ -86,8 +86,9 @@ export const actions = {
   },
   async GET_LOCATION_AND_DISTANCE({ dispatch, commit, state }) {
     await dispatch('GET_FROM_NAVIGATOR').then(() => {
-      console.log(getDistance(state.userLocationData.latitude, state.userLocationData.longitude, state.stations.data))
-      commit('SET_DISTANCE')
+      const userLocation = [state.userLocationData.latitude, state.userLocationData.longitude]
+      const distances = state.stations.data.map(item => ({ ...item, distance: L.latLng(userLocation).distanceTo(L.latLng([item.coords.lat, item.coords.lng])) })).sort((a, b) => a.value - b.value)
+      commit('SET_DISTANCE', distances)
     })
   }
 }
@@ -101,7 +102,6 @@ export const mutations = {
   },
   SET_USER_LOCATION_DATA(state, payload) {
     state.userLocationData = payload
-    console.log('SET_USER_LOCATION_DATA')
   },
   SET_FILTER(state, payload) {
     state.stationFilter = payload
@@ -110,7 +110,7 @@ export const mutations = {
     state.userLocationData = payload
   },
   SET_DISTANCE(state, payload) {
-    console.log(payload)
+    state.stations.data = payload
   }
 }
 

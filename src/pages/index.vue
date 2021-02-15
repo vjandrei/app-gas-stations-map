@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     async getUserLocation() {
-      this.$store.dispatch('GET_FROM_NAVIGATOR')
+      this.$store.dispatch('GET_LOCATION_AND_DISTANCE')
     }
   }
 }
