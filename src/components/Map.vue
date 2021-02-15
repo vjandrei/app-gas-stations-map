@@ -30,8 +30,6 @@
 
     <div id="filterGridItem">
       <div id="filterContainer">
-        {{ this.updatedLocation }}
-        {{ this.userlocation }}
         <StationFilter />
       </div>
     </div>
