@@ -81,7 +81,7 @@ module.exports = {
   build: {
     postcss: {
       plugins: {
-        tailwindcss: join(__dirname, 'tailwind.config.js'),
+        tailwindcss: path.join(__dirname, 'tailwind.config.js'),
         'postcss-import': {},
         'postcss-nested': {}
       },
