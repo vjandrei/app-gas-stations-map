@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="mb-5">
-            <h1 class="text-center">Löydä kaasuasema</h1>
+            <h1 class="text-center">Löydä kaasuasema.</h1>
             <h2 class="text-center">Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.</h2>
           </div>
           <div>
