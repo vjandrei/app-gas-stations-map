@@ -632,12 +632,3 @@ export const state = () => ({
     }
   ]
 })
-
-// like methods get stuff from API
-export const actions = {}
-
-// only updates the state
-export const mutations = {}
-
-//showing things, not mutating state like computed properties
-export const getters = {}

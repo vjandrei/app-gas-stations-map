@@ -1,29 +1,35 @@
 <template>
   <div id="mapScreenContainer">
+    <div id="actionGridItem">
+      <div id="actionContainer">
+        <button id="newLocation" @click="getNewLocation">
+          <i class="icon-gps"></i>
+        </button>
+      </div>
+    </div>
     <div id="mapGridItem">
-      <button id="newLocation" @click="getNewLocation">
-        <i class="icon-gps"></i>
-      </button>
-      <div id="mapMask">
-        <div id="map">
-          <client-only>
-            <l-map ref="map" :zoom="userZoom || defaultZoom" :center="updatedLocation || defaultLocation">
-              <l-tile-layer :url="url"></l-tile-layer>
-              <l-marker v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
-              <l-circle-marker
-                v-for="n in 2"
-                :key="n.key"
-                :name="circle.name"
-                :lat-lng.sync="updatedLocation"
-                :radius="n * 3"
-                :color="circle.color"
-                :fillColor="circle.fillColor"
-                :fillOpacity="circle.fillOpacity"
-                :weight="circle.weight"
-                :className="circle.class"
-              />
-            </l-map>
-          </client-only>
+      <div id="mapContainer">
+        <div id="mapMask">
+          <div id="map">
+            <client-only>
+              <l-map ref="map" :zoom="userZoom || defaultZoom" :center="updatedLocation || defaultLocation" @click="resetMap">
+                <l-tile-layer :url="url"></l-tile-layer>
+                <l-marker @click="getMarker(station)" v-for="station in stations" :key="station.id" :lat-lng="station.coords"></l-marker>
+                <l-circle-marker
+                  v-for="n in 2"
+                  :key="n.key"
+                  :name="circle.name"
+                  :lat-lng.sync="updatedLocation"
+                  :radius="n * 3"
+                  :color="circle.color"
+                  :fillColor="circle.fillColor"
+                  :fillOpacity="circle.fillOpacity"
+                  :weight="circle.weight"
+                  :className="circle.class"
+                />
+              </l-map>
+            </client-only>
+          </div>
         </div>
       </div>
     </div>
@@ -35,7 +41,7 @@
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <StationList :stations="stations" :userLocation="updatedLocation" />
+        <StationList :station="showStation" />
       </div>
     </div>
   </div>
@@ -57,7 +63,6 @@ export default {
   data() {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      defaultLocation: [],
       userLocation: [],
       userCoords: [],
       defaultZoom: 6,
@@ -79,7 +84,7 @@ export default {
   },
   created() {
     if (isBrowser) {
-      this.defaultLocation = L.latLng(63.3941186, 24.7088464)
+      //this.defaultLocation = L.latLng(63.3941186, 24.7088464)
       this.userCoords = JSON.parse(sessionStorage.getItem('userCoords'))
       this.userLocation = L.latLng(this.userCoords)
     }
@@ -92,7 +97,9 @@ export default {
   computed: {
     ...mapGetters({
       stations: 'PASS_STATIONS',
-      userlocation: 'PASS_USERLOCATION'
+      userlocation: 'PASS_USERLOCATION',
+      defaultLocation: 'PASS_DEFAULT_LOCATION',
+      showStation: 'PASS_STATION'
     }),
     updatedLocation() {
       if (isBrowser) {
@@ -105,7 +112,14 @@ export default {
       this.$store.dispatch('GET_LOCATION_AND_DISTANCE').then(() => {
         console.log('Valmis!')
       })
-      this.userZoom = 20
+      this.$store.dispatch('SET_STATION_DETAILS')
+      this.userZoom = 17
+    },
+    getMarker(station) {
+      this.$store.dispatch('GET_SELECTED_STATION', station)
+    },
+    resetMap() {
+      this.$store.dispatch('SET_STATION_DETAILS')
     }
   }
 }
@@ -113,19 +127,23 @@ export default {
 
 <style lang="postcss" scoped>
 #mapScreenContainer {
-  @apply flex h-full flex-col;
+  @apply grid h-full grid-cols-1 grid-rows-2;
   @screen sm {
     @apply grid-cols-2 grid-rows-1;
   }
 }
 #mapGridItem {
-  @apply overflow-hidden row-auto;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  @apply overflow-hidden;
 }
 
 #mapMask {
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: fixed;
-  height: 50vh;
+  height: 100vh;
   overflow: hidden;
   width: 100%;
   &.full {
@@ -135,6 +153,10 @@ export default {
 
 #map {
   height: 100vh;
+}
+
+#actionGridItem {
+  @apply relative;
 }
 
 #newLocation {
@@ -148,7 +170,10 @@ export default {
 }
 
 #filterGridItem {
-  @apply relative w-full top-1/2;
+  @apply relative w-full;
+}
+
+#actionContainer {
 }
 
 #filterContainer {
@@ -158,6 +183,9 @@ export default {
 }
 
 #stationlistGridItem {
-  @apply relative w-full px-2 bottom-0 top-1/2;
+  @apply relative w-full px-2 pb-2;
+}
+
+#stationlistContainer {
 }
 </style>

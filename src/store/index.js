@@ -1,10 +1,11 @@
 /** Initial state */
 export const state = () => ({
-  aboutApp: 'Kaasuasemat on karttapohjainen sovellus josta löydät kaasuautoilu asemat ympäri maailmaa.',
-  locationTipMessage: 'Jotta asemat tulisi sovellukseen sinun on annettava oikeus sovellukselle käyttääkseen paikannustietoja.',
   userLocation: false,
   userLocationData: [],
-  stationFilter: 'all'
+  stationFilter: 'all',
+  showStation: {},
+  showStationDetails: false,
+  defaultLocation: [63.3941186, 24.7088464]
 })
 
 /**
@@ -24,11 +25,6 @@ const getGeoLocation = () => {
       )
     })
   }
-}
-
-const getDistance = (userLat, userLng, stations) => {
-  const userLocation = [userLat, userLng]
-  stations.map(({ coords: { lat, lng } }) => L.latLng(userLocation).distanceTo(L.latLng([lat, lng]))).sort((a, b) => a.value - b.value)
 }
 
 const addToSessionStorage = (lat, lng) => {
@@ -53,14 +49,20 @@ const addToSessionStorage = (lat, lng) => {
 
 /**
  * Actions:
- * fetchFromNavigator:
- * 1. SET_LOADING_STATUS true
- * 2. SET_USER_LOCATION_DATA to Object
  */
 
 export const actions = {
+  async GET_LOCATION_AND_DISTANCE({ dispatch, commit, state }) {
+    commit('SET_LOADING_STATUS', true)
+    await dispatch('GET_FROM_NAVIGATOR').then(() => {
+      const userLocation = [state.userLocationData.latitude, state.userLocationData.longitude]
+      const distances = state.stations.data.map(item => ({ ...item, distance: L.latLng(userLocation).distanceTo(L.latLng([item.coords.lat, item.coords.lng])) }))
+      const sortedDistances = distances.sort((a, b) => a.distance - b.distance)
+      commit('SET_DISTANCE', sortedDistances)
+      commit('SET_SELECTED_STATION', sortedDistances[0])
+    })
+  },
   async GET_FROM_NAVIGATOR(context) {
-    context.commit('SET_LOADING_STATUS', true)
     await getGeoLocation()
       .then(pos => {
         context.commit(
@@ -84,13 +86,12 @@ export const actions = {
   GET_USER_SESSION_LOCATION_DATA(context, location) {
     context.commit('SET_USER_SESSION_LOCATION_DATA', location)
   },
-  async GET_LOCATION_AND_DISTANCE({ dispatch, commit, state }) {
-    await dispatch('GET_FROM_NAVIGATOR').then(() => {
-      const userLocation = [state.userLocationData.latitude, state.userLocationData.longitude]
-      const distances = state.stations.data.map(item => ({ ...item, distance: L.latLng(userLocation).distanceTo(L.latLng([item.coords.lat, item.coords.lng])) }))
-      const sortedDistances = distances.sort((a, b) => a.distance - b.distance)
-      commit('SET_DISTANCE', sortedDistances)
-    })
+  GET_SELECTED_STATION(context, station) {
+    context.commit('SET_SELECTED_STATION', station)
+    context.commit('SET_STATION_DETAILS')
+  },
+  SET_STATION_DETAILS(context) {
+    context.commit('RESET_STATION_DETAILS')
   }
 }
 
@@ -112,6 +113,15 @@ export const mutations = {
   },
   SET_DISTANCE(state, payload) {
     state.stations.data = payload
+  },
+  SET_SELECTED_STATION(state, payload) {
+    state.showStation = payload
+  },
+  SET_STATION_DETAILS(state) {
+    state.showStationDetails = true
+  },
+  RESET_STATION_DETAILS(state) {
+    state.showStationDetails = false
   }
 }
 
@@ -127,5 +137,11 @@ export const getters = {
   },
   PASS_USERLOCATION: state => {
     return state.userLocationData
+  },
+  PASS_STATION: state => {
+    return state.showStation
+  },
+  PASS_DEFAULT_LOCATION: state => {
+    return L.latLng(state.defaultLocation)
   }
 }

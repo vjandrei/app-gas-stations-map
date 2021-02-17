@@ -1191,7 +1191,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "var(--color-default)"
+      "default": "var(--color-default)",
+      "dark": "var(--color-dark)"
     },
     "spacing": {
       "0": "0",
@@ -1331,7 +1332,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "var(--color-default)"
+      "default": "var(--color-default)",
+      "dark": "var(--color-dark)"
     },
     "backgroundImage": {
       "none": "none",
@@ -1461,7 +1463,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "var(--color-default)"
+      "default": "var(--color-default)",
+      "dark": "var(--color-dark)"
     },
     "backgroundOpacity": {
       "0": "0",
@@ -1603,7 +1606,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "#e2e8f0"
+      "default": "#e2e8f0",
+      "dark": "var(--color-dark)"
     },
     "borderOpacity": {
       "0": "0",
@@ -1769,7 +1773,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "#e2e8f0"
+      "default": "#e2e8f0",
+      "dark": "var(--color-dark)"
     },
     "divideOpacity": {
       "0": "0",
@@ -2141,7 +2146,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "var(--color-default)"
+      "default": "var(--color-default)",
+      "dark": "var(--color-dark)"
     },
     "placeholderOpacity": {
       "0": "0",
@@ -2314,7 +2320,8 @@
       },
       "primary": "var(--color-primary)",
       "secondary": "var(--color-secondary)",
-      "default": "var(--color-default)"
+      "default": "var(--color-default)",
+      "dark": "var(--color-dark)"
     },
     "textOpacity": {
       "0": "0",

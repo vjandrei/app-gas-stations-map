@@ -11,7 +11,8 @@ module.exports = {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
-        default: 'var(--color-default)'
+        default: 'var(--color-default)',
+        dark: 'var(--color-dark)'
       },
       inset: {
         '1/2': '50%'
