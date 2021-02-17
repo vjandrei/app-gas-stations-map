@@ -90,7 +90,7 @@ module.exports = {
         stage: 2 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
       }
     },
-    extractCSS: true,
+    extractCSS: false,
     /*
      ** You can extend webpack config here
      */

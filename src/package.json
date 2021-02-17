@@ -17,11 +17,11 @@
     "leaflet": "^1.7.1",
     "nuxt": "^2.14.10",
     "vue-mobile-viewport-height": "^1.0.4",
-    "vue2-leaflet": "^2.5.2"
+    "vue2-leaflet": "^2.5.2",
+    "@nuxtjs/tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
-    "@nuxtjs/tailwindcss": "^3.3.3",
     "@tailwindcss/typography": "^0.3.1",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.4",
