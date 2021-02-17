@@ -81,9 +81,9 @@ module.exports = {
   build: {
     postcss: {
       plugins: {
+        tailwindcss: join(__dirname, 'tailwind.config.js'),
         'postcss-import': {},
-        'postcss-nested': {},
-        tailwindcss: path.resolve(__dirname, './tailwind.config.js')
+        'postcss-nested': {}
       },
       order: 'presetEnvAndCssnanoLast',
       preset: {
