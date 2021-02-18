@@ -1,27 +1,20 @@
-# nuxt-firebase-ssr-base
+# NuxtTailwindPostcss
 
-This is simple starting base for Nuxt Firebase SSR app
-
-- Install npm dependencies
+## Build Setup
 
 ```bash
-$ npm --prefix src install
-$ npm --prefix functions install
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
 ```
 
-- First build to Firebase
-
-```bash
-$ firebase deploy
-```
-
-- Run localhost
-
-```bash
-$ firebase serve --only functions,hosting
-```
-
-## To-do
-
-Listaa asemat bouncen mukaan.
-getLocation() ei sallittu paikannus virhe viesti
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
