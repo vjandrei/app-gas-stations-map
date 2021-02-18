@@ -77,11 +77,17 @@ module.exports = {
   /*
    ** Build configuration
    */
+
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    config: {}
+  },
   buildDir: 'nuxt',
   build: {
     postcss: {
       plugins: {
-        tailwindcss: path.join(__dirname, 'tailwind.config.js'),
         'postcss-import': {},
         'postcss-nested': {}
       },
