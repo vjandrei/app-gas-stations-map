@@ -60,11 +60,6 @@
 <script>
 import { mapGetters } from 'vuex'
 const isBrowser = typeof window !== 'undefined'
-let leaflet
-
-if (isBrowser) {
-  leaflet = require('leaflet')
-}
 
 import StationFilter from '@/components/MapFilter'
 import StationList from '@/components/MapStationList'
@@ -141,15 +136,14 @@ export default {
 #mapScreenContainer {
   @apply grid h-full grid-cols-1 grid-rows-2;
   @screen sm {
-    @apply grid-cols-2 grid-rows-1;
+    @apply grid-cols-3 grid-rows-1;
   }
 }
 #mapGridItem {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  @apply overflow-hidden;
+  @apply col-start-1 col-end-1 row-start-1 row-end-3 overflow-hidden;
+  @screen sm {
+    @apply col-start-1 col-end-4 row-start-1 row-end-5;
+  }
 }
 
 #mapMask {
@@ -169,12 +163,15 @@ export default {
 
 #actionGridItem {
   @apply relative;
+  @screen sm {
+    @apply col-start-2 col-end-3;
+  }
 }
 
 #newLocation {
+  bottom: 16px;
   @apply absolute z-50 right-0 w-12 h-12 rounded-full bg-white my-3 mx-3 flex justify-center items-center;
   box-shadow: 0 0px 0px 7px rgb(180 194 213 / 5%);
-
   i {
     font-size: 24px;
     @apply text-primary;
@@ -182,22 +179,16 @@ export default {
 }
 
 #filterGridItem {
-  @apply relative w-full;
-}
-
-#actionContainer {
-}
-
-#filterContainer {
-  div {
-    @apply flex flex-row justify-between content-center py-3 bg-white text-base;
+  @apply relative w-full px-2 pb-2;
+  @screen sm {
+    @apply col-start-2 col-end-3;
   }
 }
 
 #stationlistGridItem {
   @apply relative w-full px-2 pb-2;
-}
-
-#stationlistContainer {
+  @screen sm {
+    @apply col-start-2 col-end-3;
+  }
 }
 </style>
