@@ -1,7 +1,7 @@
 {
-  "name": "NuxtTailwindPostcss",
-  "short_name": "NuxtTailwindPostcss",
-  "description": "## Build Setup",
+  "name": "liquefied-petroleum-gas-stations",
+  "short_name": "liquefied-petroleum-gas-stations",
+  "description": "Löydä lähin kaasuasema",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.5f6a36.png",
@@ -49,5 +49,6 @@
   "start_url": "/?standalone=true",
   "display": "standalone",
   "background_color": "#ffffff",
-  "lang": "en"
+  "lang": "en",
+  "title": "Kaasuasemat"
 }
