@@ -1,15 +1,13 @@
 <template>
-    <div class="container">
-        <h1 class="title">About</h1>
-    </div>
+  <div id="appWrapper"></div>
 </template>
 
 <script>
 export default {
-    
+  data() {
+    return {}
+  },
 }
 </script>
 
-<style>
-    
-</style>
+<style lang="postcss" scoped></style>

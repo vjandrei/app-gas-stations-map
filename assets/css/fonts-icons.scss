@@ -45,3 +45,21 @@ i {
     content: '\e900';
   }
 }
+
+.icon-car {
+  &:before {
+    content: '\e904';
+  }
+}
+
+.icon-list {
+  &:before {
+    content: '\e905';
+  }
+}
+
+.icon-location {
+  &:before {
+    content: '\e906';
+  }
+}

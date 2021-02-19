@@ -1,5 +1,5 @@
 <template>
-  <div id="mapScreen" key="map">
+  <div id="appWrapper">
     <Map />
   </div>
 </template>
@@ -11,23 +11,23 @@ export default {
     return {}
   },
   components: {
-    Map
+    Map,
   },
   created() {},
   computed: {},
-  methods: {}
+  methods: {},
 }
 </script>
 
 <style lang="postcss" scoped>
-#mapScreen {
-  position: absolute;
+#map {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1);
+  height: 100vh;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: white;
+  position: absolute;
+  @screen sm {
+    @apply relative;
+  }
 }
 </style>
