@@ -79,7 +79,9 @@ import StationList from '@/components/MapStationList'
 export default {
   data() {
     return {
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      url:
+        'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' +
+        process.env.MAPBOX_KEY,
       userLocation: [],
       userCoords: [],
       defaultZoom: 6,
@@ -119,6 +121,7 @@ export default {
       userlocation: 'PASS_USERLOCATION',
       defaultLocation: 'PASS_DEFAULT_LOCATION',
       showStation: 'PASS_STATION',
+      showStations: 'PASS_STATIONS',
     }),
     updatedLocation() {
       if (isBrowser) {

@@ -9,7 +9,8 @@
           </div>
           <div class="stationLocationDetails">
             <h5>
-              Nykyisestä sijainista <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+              Nykyisestä sijainista
+              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </h5>
           </div>
         </div>
@@ -18,11 +19,15 @@
             <dl>
               <dt>Tuottee</dt>
               <dd>
-                <span v-for="(product, i) in station.products" :key="product[i]">{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span>
+                <span v-for="(product, i) in station.products" :key="product[i]"
+                  >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
+                >
               </dd>
               <dt>Maksuvaihtoehdot</dt>
               <dd>
-                <span v-for="(payment, i) in station.payments" :key="payment[i]">{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span>
+                <span v-for="(payment, i) in station.payments" :key="payment[i]"
+                  >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
+                >
               </dd>
               <dt>Operaattori</dt>
               <dd>{{ station.operator }}</dd>
@@ -41,8 +46,8 @@
 export default {
   props: {
     station: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {}
@@ -57,11 +62,11 @@ export default {
     },
     showCardDetails() {
       return this.$store.state.showStationDetails
-    }
+    },
   },
   created() {},
   mounted() {},
-  methods: {}
+  methods: {},
 }
 </script>
 

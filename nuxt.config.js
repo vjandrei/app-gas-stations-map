@@ -84,4 +84,8 @@ export default {
       cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
     },
   },
+
+  env: {
+    MAPBOX_KEY: process.env.MAPBOX_KEY,
+  },
 }
