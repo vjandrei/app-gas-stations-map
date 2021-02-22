@@ -3,7 +3,7 @@
     <div id="actionGridItem">
       <div id="actionContainer">
         <button id="newLocation" @click="getNewLocation">
-          <i class="icon-gps"></i>
+          <i class="icon-location"></i>
         </button>
       </div>
     </div>
@@ -17,6 +17,7 @@
                 :zoom="userZoom || defaultZoom"
                 :center="updatedLocation || defaultLocation"
                 @click="resetMap"
+                :options="{ zoomControl: false }"
               >
                 <l-tile-layer :url="url"></l-tile-layer>
                 <l-marker
@@ -50,7 +51,7 @@
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <StationList :station="showStation" />
+        <StationList :stations="showStations" />
       </div>
     </div>
     <nav>
@@ -85,7 +86,7 @@ export default {
       userLocation: [],
       userCoords: [],
       defaultZoom: 6,
-      userZoom: 13,
+      userZoom: 12,
       circle: {
         name: 'userLocationPin',
         color: 'rgba(35,136,204,0.30)',
@@ -109,6 +110,14 @@ export default {
     }
   },
   mounted() {
+    this.$nuxt.$on('show-station-marker', (station) => {
+      this.$nextTick(() => {
+        this.$refs.map.mapObject.fitBounds(
+          [[station.coords.lat, station.coords.lng]],
+          { maxZoom: 12 }
+        )
+      })
+    })
     this.$store
       .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
       .then(() => {
@@ -131,11 +140,16 @@ export default {
   },
   methods: {
     async getNewLocation() {
-      this.$store.dispatch('GET_LOCATION_AND_DISTANCE').then(() => {
-        console.log('Valmis!')
-      })
+      this.$store.dispatch('GET_LOCATION_AND_DISTANCE').then(() => {})
       this.$store.dispatch('SET_STATION_DETAILS')
-      this.userZoom = 17
+      this.$nextTick(() => {
+        this.$refs.map.mapObject.fitBounds(
+          [[this.userlocation.latitude, this.userlocation.longitude]],
+          {
+            maxZoom: 15,
+          }
+        )
+      })
     },
     getMarker(station) {
       this.$store.dispatch('GET_SELECTED_STATION', station)
@@ -164,7 +178,7 @@ export default {
 #mapMask {
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: fixed;
-  height: 100vh;
+  height: 50vh;
   overflow: hidden;
   width: 100%;
   &.full {
@@ -173,7 +187,7 @@ export default {
 }
 
 #map {
-  height: 100vh;
+  height: 50vh;
 }
 
 #actionGridItem {
@@ -194,14 +208,14 @@ export default {
 }
 
 #filterGridItem {
-  @apply relative w-full px-2 pb-2;
+  @apply relative w-full;
   @screen sm {
     @apply col-start-2 col-end-3;
   }
 }
 
 #stationlistGridItem {
-  @apply relative w-full px-2 pb-2;
+  @apply relative w-full;
   @screen sm {
     @apply col-start-2 col-end-3;
   }
@@ -209,7 +223,6 @@ export default {
 
 nav {
   @apply relative w-full bg-white flex justify-between px-6 py-4;
-  box-shadow: 0 -10px 50px 0 rgba(152, 152, 152, 0.5);
   @screen sm {
   }
   .navLink {

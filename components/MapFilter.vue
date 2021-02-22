@@ -41,7 +41,7 @@ export default {
 
 <style lang="postcss" scoped>
 #filterWrapper {
-  @apply flex flex-row justify-between content-center py-3 bg-white text-base  rounded-lg mt-2;
+  @apply flex flex-row justify-between content-center py-3 bg-white text-base mt-2;
   box-shadow: 0 0 10px 0 rgba(230, 230, 230, 0.5);
 }
 .filterLink {

@@ -1,17 +1,27 @@
 <template>
   <div>
-    <div class="stationListItemCard" v-if="showCard">
-      <div class="stationListItemCardContent">
-        <div class="stationMinDetails">
+    <div id="listHeading">
+      <div id="listHeadingContainer">
+        <div id="listHeadingContent">
+          <span id="listHeadingText">Lähimmät kaasuasemat</span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="stationListItemCard"
+      v-for="station in stations.slice(0, 2)"
+      :key="station.id"
+    >
+      <div v-if="showCard" class="stationListItemCardContent">
+        <div class="stationMinDetails" @click="showMarker(station)">
           <div class="stationGeneralDetails">
             <h2>{{ station.name }}</h2>
             <h4>{{ station.address }}</h4>
           </div>
-          <div class="stationLocationDetails">
-            <h5>
-              Nykyisestä sijainista
-              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
-            </h5>
+          <div class="stationLocationDetails space-x-1">
+            <i class="icon-location text-primary"></i>
+            <h5>Sijainnista</h5>
+            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
           </div>
         </div>
         <transition name="stationFullDetails-fade">
@@ -45,13 +55,14 @@
 <script>
 export default {
   props: {
-    station: {
-      type: Object,
+    stations: {
+      type: Array,
     },
   },
   data() {
     return {}
   },
+  emits: ['my-event'],
   computed: {
     showCard() {
       if (Object.keys(this.$store.state.showStation).length !== 0) {
@@ -66,37 +77,43 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    showMarker(station) {
+      this.$nuxt.$emit('show-station-marker', station)
+    },
+  },
 }
 </script>
 
 <style lang="postcss" scoped>
+#listHeading {
+  @apply bg-light py-4;
+  #listHeadingContainer {
+    @apply relative h-px bg-gray-300;
+  }
+  #listHeadingContent {
+    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
+  }
+  #listHeadingText {
+    @apply bg-light px-4 text-xs text-gray-500 uppercase;
+  }
+}
 .stationListItemCard {
-  @apply bg-white p-4 rounded-lg mt-2;
-  box-shadow: 0 0 10px 0 rgba(230, 230, 230, 0.5);
+  @apply bg-white p-4 border-b;
 }
 .stationListItemCardContent {
-  @apply flex flex-col;
+  @apply flex flex-col leading-tight font-normal text-xs text-default font-display;
   .stationMinDetails {
-    @apply flex flex-row w-full pb-2;
+    @apply flex flex-row w-full;
   }
   .stationGeneralDetails {
     @apply flex flex-grow flex-col pr-4 border-r border-gray-300;
+    h2 {
+      @apply text-primary text-base;
+    }
   }
   .stationLocationDetails {
-    @apply flex flex-grow-0 flex-col pl-4;
-  }
-  h2 {
-    @apply font-display leading-tight font-medium text-lg text-primary;
-  }
-  h4 {
-    @apply text-sm;
-  }
-  h5 {
-    @apply leading-tight font-normal text-xs text-default font-display;
-    span {
-      @apply block text-2xl font-semibold text-dark;
-    }
+    @apply flex flex-grow-0 flex-row pl-4 items-center;
   }
   .stationFullDetails {
     @apply pt-4 border-t border-gray-300;
