@@ -51,7 +51,9 @@
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <StationList :stations="showStations" />
+        <span v-touch:swipe="swipeHandler">
+          <StationList :stations="showStations" />
+        </span>
       </div>
     </div>
     <nav>
@@ -60,10 +62,7 @@
         <span>
           <i class="icon-location"></i>
         </span>
-        <input
-          type="text"
-          placeholder="Paikanna osoitteella tai postinumerolla"
-        />
+        <h1>Kaasuasemat.fi</h1>
       </div>
       <div id="navLink2" class="navLink"><i class="icon-car"></i></div>
     </nav>
@@ -157,6 +156,17 @@ export default {
     resetMap() {
       this.$store.dispatch('SET_STATION_DETAILS')
     },
+    swipeHandler(direction) {
+      console.log(direction) // May be left / right / top / bottom
+      //this.$store.dispatch('SET_STATION_LIST', 10)
+      /*
+      if (direction === top) {
+        this.$store.dispatch('SET_STATION_LIST', 10)
+      } else if (direction === bottom) {
+        this.$store.dispatch('SET_STATION_LIST', 2)
+      }
+      */
+    },
   },
 }
 </script>
@@ -187,7 +197,7 @@ export default {
 }
 
 #map {
-  height: 50vh;
+  height: 55vh;
 }
 
 #actionGridItem {
@@ -215,6 +225,8 @@ export default {
 }
 
 #stationlistGridItem {
+  //transform: translateY(50vh);
+  //transition: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   @apply relative w-full;
   @screen sm {
     @apply col-start-2 col-end-3;
@@ -233,6 +245,9 @@ nav {
   }
   span {
     @apply absolute text-primary text-base items-center justify-center w-8 pl-4;
+  }
+  h1 {
+    @apply flex-grow w-full py-2 px-4 pl-10 text-base text-primary text-center;
   }
   input {
     @apply flex-grow w-full py-2 px-4 pl-10 text-sm border border-gray-300 border-solid rounded;

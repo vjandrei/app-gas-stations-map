@@ -27,7 +27,10 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/fullHeight.js', mode: 'client' }],
+  plugins: [
+    { src: '~/plugins/fullHeight.js', mode: 'client' },
+    { src: '~/plugins/vue2-touch-events.js', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

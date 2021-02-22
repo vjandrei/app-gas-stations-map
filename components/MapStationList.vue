@@ -9,7 +9,7 @@
     </div>
     <div
       class="stationListItemCard"
-      v-for="station in stations.slice(0, 2)"
+      v-for="station in stations.slice(0, this.$store.state.defaulListStatus)"
       :key="station.id"
     >
       <div v-if="showCard" class="stationListItemCardContent">
