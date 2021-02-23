@@ -6,7 +6,7 @@ export const state = () => ({
   showStation: {},
   showStationDetails: false,
   defaultLocation: [63.3941186, 24.7088464],
-  defaulListStatus: 2,
+  defaulListStatus: 10,
 })
 
 /**

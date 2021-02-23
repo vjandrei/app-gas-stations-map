@@ -1,14 +1,8 @@
 <template>
   <div>
-    <div id="listHeading">
-      <div id="listHeadingContainer">
-        <div id="listHeadingContent">
-          <span id="listHeadingText">Lähimmät kaasuasemat</span>
-        </div>
-      </div>
-    </div>
     <div
       class="stationListItemCard"
+      style="max-height: 6rem"
       v-for="station in stations.slice(0, this.$store.state.defaulListStatus)"
       :key="station.id"
     >
@@ -24,29 +18,27 @@
             <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
           </div>
         </div>
-        <transition name="stationFullDetails-fade">
-          <div class="stationFullDetails" v-if="showCardDetails">
-            <dl>
-              <dt>Tuottee</dt>
-              <dd>
-                <span v-for="(product, i) in station.products" :key="product[i]"
-                  >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
-                >
-              </dd>
-              <dt>Maksuvaihtoehdot</dt>
-              <dd>
-                <span v-for="(payment, i) in station.payments" :key="payment[i]"
-                  >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
-                >
-              </dd>
-              <dt>Operaattori</dt>
-              <dd>{{ station.operator }}</dd>
-            </dl>
-            <div class="navigationActions">
-              <button class="smallButton">Paikanna</button>
-            </div>
+        <div class="stationFullDetails" v-if="showCardDetails">
+          <dl>
+            <dt>Tuottee</dt>
+            <dd>
+              <span v-for="(product, i) in station.products" :key="product[i]"
+                >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
+              >
+            </dd>
+            <dt>Maksuvaihtoehdot</dt>
+            <dd>
+              <span v-for="(payment, i) in station.payments" :key="payment[i]"
+                >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
+              >
+            </dd>
+            <dt>Operaattori</dt>
+            <dd>{{ station.operator }}</dd>
+          </dl>
+          <div class="navigationActions">
+            <button class="smallButton">Paikanna</button>
           </div>
-        </transition>
+        </div>
       </div>
     </div>
   </div>
@@ -86,18 +78,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#listHeading {
-  @apply bg-light py-4;
-  #listHeadingContainer {
-    @apply relative h-px bg-gray-300;
-  }
-  #listHeadingContent {
-    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
-  }
-  #listHeadingText {
-    @apply bg-light px-4 text-xs text-gray-500 uppercase;
-  }
-}
 .stationListItemCard {
   @apply bg-white p-4 border-b;
 }
@@ -130,16 +110,5 @@ export default {
   .navigationActions {
     @apply w-full py-2 pb-0;
   }
-}
-.stationFullDetails-fade-enter-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.stationFullDetails-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.stationFullDetails-fade-enter, .stationFullDetails-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateY(10px);
-  opacity: 0;
 }
 </style>

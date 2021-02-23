@@ -50,6 +50,13 @@
       </div>
     </div>
     <div id="stationlistGridItem">
+      <div id="listHeading">
+        <div id="listHeadingContainer">
+          <div id="listHeadingContent">
+            <span id="listHeadingText">Lähimmät kaasuasemat</span>
+          </div>
+        </div>
+      </div>
       <div id="stationlistContainer">
         <StationList :stations="showStations" />
       </div>
@@ -92,6 +99,8 @@ export default {
         weight: 20,
         class: 'mapPin',
       },
+      panelState: 'collapsed',
+      gravity: 'bottom',
     }
   },
 
@@ -186,7 +195,7 @@ export default {
 #mapMask {
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: fixed;
-  height: 50vh;
+  height: 100vh;
   overflow: hidden;
   width: 100%;
   &.full {
@@ -229,6 +238,25 @@ export default {
   @screen sm {
     @apply col-start-2 col-end-3;
   }
+}
+
+#listHeading {
+  @apply bg-light py-4 fixed w-full;
+  #listHeadingContainer {
+    @apply relative h-px bg-gray-300;
+  }
+  #listHeadingContent {
+    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
+  }
+  #listHeadingText {
+    @apply bg-light px-4 text-xs text-gray-500 uppercase;
+  }
+}
+
+#stationlistContainer {
+  height: 12rem;
+  padding-top: 33px;
+  @apply overflow-y-scroll;
 }
 
 nav {
