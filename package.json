@@ -18,8 +18,7 @@
     "nuxt": "^2.14.12",
     "nuxt-leaflet": "^0.0.25",
     "nuxt-webfontloader": "^1.1.0",
-    "vue-mobile-viewport-height": "^1.0.4",
-    "vue2-touch-events": "^3.2.0"
+    "vue-mobile-viewport-height": "^1.0.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^5.0.0",

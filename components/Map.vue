@@ -51,9 +51,7 @@
     </div>
     <div id="stationlistGridItem">
       <div id="stationlistContainer">
-        <span v-touch:swipe="swipeHandler">
-          <StationList :stations="showStations" />
-        </span>
+        <StationList :stations="showStations" />
       </div>
     </div>
     <nav>
