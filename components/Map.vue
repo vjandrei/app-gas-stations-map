@@ -158,7 +158,7 @@ export default {
       })
     },
     getMarker(station) {
-      this.$store.dispatch('GET_SELECTED_STATION', station)
+      this.$store.dispatch('GET_SELECTED_MARKER', station)
     },
     resetMap() {
       this.$store.dispatch('SET_STATION_DETAILS')
