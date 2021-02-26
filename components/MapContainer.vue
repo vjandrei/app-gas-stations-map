@@ -4,9 +4,21 @@
       <div id="mapMask" :class="[isFull ? fullMap : '']" @click="full">
         <div id="map">
           <client-only>
-            <l-map :zoom="zoom" :center="center" ref="map" @update:bounds="boundsUpdated" @update:center="centerUpdated" @ready="markers">
+            <l-map
+              :zoom="zoom"
+              :center="center"
+              ref="map"
+              @update:bounds="boundsUpdated"
+              @update:center="centerUpdated"
+              @ready="markers"
+            >
               <l-tile-layer :url="url" />
-              <l-marker @click="getMarker(station)" v-for="station in userFilter" :key="station.id" :lat-lng="station.coords"></l-marker>
+              <l-marker
+                @click="getMarker(station)"
+                v-for="station in userFilter"
+                :key="station.id"
+                :lat-lng="station.coords"
+              ></l-marker>
               <l-circle-marker
                 :name="circle1.name"
                 :lat-lng="circle1.center"
@@ -34,7 +46,15 @@
     </div>
     <div id="filterGridItem">
       <div id="filterContainer">
-        <div :class="{ active: userFilterKey == product.value, filterLink: linkDefault }" v-on:click="userFilterKey = product.value" v-for="product in products" :key="product.key">
+        <div
+          :class="{
+            active: userFilterKey == product.value,
+            filterLink: linkDefault,
+          }"
+          v-on:click="userFilterKey = product.value"
+          v-for="product in products"
+          :key="product.key"
+        >
           {{ product.name }}
         </div>
       </div>
@@ -43,7 +63,13 @@
       <h1>Name</h1>
     </div>
     <div id="stationGridItem" @click="half">
-      <List :locations="userFilter" :name="name" :address="address" :distance="distance" :coords="coords" />
+      <List
+        :locations="userFilter"
+        :name="name"
+        :address="address"
+        :distance="distance"
+        :coords="coords"
+      />
     </div>
   </div>
 </template>
@@ -55,7 +81,7 @@ let leaflet
 if (isBrowser) {
   leaflet = require('leaflet')
 }
-import List from '@/components/MapStationList'
+//import List from '@/components/MapStationList'
 import Filter from '@/components/MapFilter'
 export default {
   data() {
@@ -73,10 +99,12 @@ export default {
       products: [
         { name: 'Kaikki asemat', value: 'all' },
         { name: 'Biokaasu', value: 'biogas' },
-        { name: 'Maakaasu', value: 'naturalgas' }
+        { name: 'Maakaasu', value: 'naturalgas' },
       ],
       location: [],
-      url: 'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' + process.env.MAPBOX_KEY,
+      url:
+        'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' +
+        process.env.MAPBOX_KEY,
       zoom: null,
       center: null,
       bounds: null,
@@ -88,7 +116,7 @@ export default {
         fillColor: '#2388CC',
         fillOpacity: 1,
         weight: 20,
-        class: 'mapPin'
+        class: 'mapPin',
       },
       circle2: {
         name: 'userLocationPin',
@@ -98,19 +126,19 @@ export default {
         fillColor: '#2388CC',
         fillOpacity: 1,
         weight: 20,
-        class: 'mapPin'
+        class: 'mapPin',
       },
       car: {
-        center: null
+        center: null,
       },
       mapMaskheight: null,
       isFull: false,
-      fullMap: 'full'
+      fullMap: 'full',
     }
   },
 
   components: {
-    List
+    List,
   },
 
   created() {
@@ -136,11 +164,15 @@ export default {
       return this.$store.state.stations.all
     },
     biogas() {
-      return this.$store.state.stations.all.filter(station => station.products.includes('Biokaasu'))
+      return this.$store.state.stations.all.filter((station) =>
+        station.products.includes('Biokaasu')
+      )
     },
     naturalgas() {
-      return this.$store.state.stations.all.filter(station => station.products.includes('Maakaasu'))
-    }
+      return this.$store.state.stations.all.filter((station) =>
+        station.products.includes('Maakaasu')
+      )
+    },
   },
 
   mounted() {
@@ -149,8 +181,10 @@ export default {
       this.$refs.map.mapObject.panBy(L.point(0, this.mapMaskheight / 2))
       // Toimii! console.log(this.$refs.map);
     })
-    this.$root.$on('setStation', station => {
-      this.$refs.map.mapObject.setView([station.coords.lat, station.coords.lng], 15).panBy(L.point(0, this.mapMaskheight / 2))
+    this.$root.$on('setStation', (station) => {
+      this.$refs.map.mapObject
+        .setView([station.coords.lat, station.coords.lng], 15)
+        .panBy(L.point(0, this.mapMaskheight / 2))
     })
   },
 
@@ -178,8 +212,8 @@ export default {
     half() {
       this.isFull = false
       console.log('half')
-    }
-  }
+    },
+  },
 }
 </script>
 

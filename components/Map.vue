@@ -44,21 +44,9 @@
         </div>
       </div>
     </div>
-    <div id="filterGridItem">
-      <div id="filterContainer">
-        <StationFilter />
-      </div>
-    </div>
     <div id="stationlistGridItem">
-      <div id="listHeading">
-        <div id="listHeadingContainer">
-          <div id="listHeadingContent">
-            <span id="listHeadingText">Lähimmät kaasuasemat</span>
-          </div>
-        </div>
-      </div>
       <div id="stationlistContainer">
-        <StationList :stations="showStations" />
+        <StationCards :stations="showStations" />
       </div>
     </div>
     <nav>
@@ -79,7 +67,7 @@ import { mapGetters } from 'vuex'
 const isBrowser = typeof window !== 'undefined'
 
 import StationFilter from '@/components/MapFilter'
-import StationList from '@/components/MapStationList'
+import StationCards from '@/components/StationCardSlider'
 
 export default {
   data() {
@@ -106,7 +94,7 @@ export default {
 
   components: {
     StationFilter,
-    StationList,
+    StationCards,
   },
   created() {
     if (isBrowser) {
@@ -204,7 +192,7 @@ export default {
 }
 
 #map {
-  height: 55vh;
+  height: 100vh;
 }
 
 #actionGridItem {
@@ -254,26 +242,28 @@ export default {
 }
 
 #stationlistContainer {
+  /*
   height: 12rem;
   padding-top: 33px;
   @apply overflow-y-scroll;
+  */
 }
 
 nav {
-  @apply relative w-full bg-white flex justify-between px-6 py-4;
+  @apply relative w-full bg-primary text-white flex justify-between px-6 py-2;
   @screen sm {
   }
   .navLink {
-    @apply flex-none flex justify-center content-center items-center text-primary;
+    @apply flex-none flex justify-center content-center items-center text-white;
   }
   #formInput {
     @apply w-full px-6 flex items-center;
   }
   span {
-    @apply absolute text-primary text-base items-center justify-center w-8 pl-4;
+    @apply absolute text-white text-base items-center justify-center w-8 pl-4;
   }
   h1 {
-    @apply flex-grow w-full py-2 px-4 pl-10 text-base text-primary text-center;
+    @apply flex-grow w-full py-2 px-4 pl-10 text-base text-white text-center;
   }
   input {
     @apply flex-grow w-full py-2 px-4 pl-10 text-sm border border-gray-300 border-solid rounded;

@@ -30,7 +30,8 @@ export default {
   plugins: [
     { src: '~/plugins/fullHeight.js', mode: 'client' },
     // { src: '~/plugins/slidingPanel.js', mode: 'client' },
-    // I you liked to use it just yarn install vue2-touch-events { src: '~/plugins/vue2-touch-events.js', mode: 'client' },
+    // I you liked to use it just yarn add vue2-touch-events
+    // { src: '~/plugins/vue2-touch-events.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

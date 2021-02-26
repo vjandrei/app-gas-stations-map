@@ -10,6 +10,11 @@
   --color-brand: #b4c2d5;
 }
 
+// prevent pull to refresh in pwa
+body {
+  overscroll-behavior-y: contain;
+}
+
 #appWrapper {
   @include mobile-viewport-height();
 }
