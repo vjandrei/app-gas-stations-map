@@ -1,13 +1,21 @@
 <template>
-  <div id="slider" class="slider" @touchmove="touchmove">
+  <div
+    id="slider"
+    class="slider"
+    @mousemove="mouseMoving"
+    @mouseleave="stopDrag"
+    @touchmove="touchmove"
+  >
     <div
       class="slider-cards"
       :style="`transform: translate3d(${cardsX}px,0,0)`"
-      @touchstart="touchstart"
-      @touchend="touchend"
     >
       <div
-        v-for="(station, index) in stations.slice(0, 3)"
+        @mousedown="startDrag"
+        @mouseup="stopDrag"
+        @touchstart="touchstart"
+        @touchend="touchend"
+        v-for="(station, index) in stations"
         :key="index"
         class="slider-card"
       >
@@ -32,7 +40,7 @@ export default {
     return {
       selectedIndex: 0,
       dragging: false,
-      initialTouchX: 0,
+      initialMouseX: 0,
       initialCardsX: 0,
       initialCardWidth: 0,
       cardsX: 0,
@@ -63,13 +71,6 @@ export default {
   },
   emits: ['my-event'],
   computed: {
-    showCard() {
-      if (Object.keys(this.$store.state.showStation).length !== 0) {
-        return true
-      } else {
-        return false
-      }
-    },
     showCardDetails() {
       return this.$store.state.stations.data[this.selectedIndex]
     },
@@ -80,6 +81,29 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    startDrag(e) {
+      this.dragging = true
+      this.initialMouseX = e.pageX
+      this.initialCardsX = this.cardsX
+      this.initialCardWidth = e.srcElement.clientWidth
+    },
+    mouseMoving(e) {
+      if (this.dragging) {
+        const dragAmount = e.pageX - this.initialMouseX
+        const targetX = this.initialCardsX + dragAmount
+        this.cardsX = targetX
+      }
+    },
+    stopDrag() {
+      this.dragging = false
+      const cardWidth = this.initialCardWidth
+      const nearestSlide = -Math.round(this.cardsX / cardWidth)
+      this.selectedIndex = Math.min(
+        Math.max(0, nearestSlide),
+        this.stations.length - 1
+      )
+      this.cardsX = -this.selectedIndex * cardWidth
+    },
     touchstart(e) {
       this.dragging = true
       e.changedTouches.forEach((touche, index) => {
@@ -115,6 +139,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+* {
+  box-sizing: border-box;
+}
 .slider {
   overflow: hidden;
   background-color: #b6b6b6;
