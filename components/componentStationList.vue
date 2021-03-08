@@ -85,11 +85,12 @@ export default {
 
 <style lang="postcss" scoped>
 #list {
+  @apply relative;
   height: 200px;
   overflow-y: scroll;
 }
 #listHeading {
-  @apply bg-light py-4 fixed w-full;
+  @apply bg-light py-4 sticky top-0 w-full;
   #listHeadingContainer {
     @apply relative h-px bg-gray-300;
   }

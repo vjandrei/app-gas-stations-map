@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import Map from '@/components/MapContainer'
 export default {
   transition: {
     name: 'home',
@@ -45,9 +44,7 @@ export default {
   data() {
     return {}
   },
-  components: {
-    Map,
-  },
+  components: {},
   computed: {
     userLocation() {
       return this.$store.state.userLocation

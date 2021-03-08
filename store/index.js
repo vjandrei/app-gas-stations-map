@@ -1,12 +1,13 @@
 /** Initial state */
 export const state = () => ({
-  userLocation: false,
-  userLocationData: [],
-  stationFilter: 'all',
-  showStation: {},
-  showStationDetails: false,
   defaultLocation: [63.3941186, 24.7088464],
   defaulListStatus: 10,
+  showStation: {},
+  showStationDetails: false,
+  stationFilter: 'all',
+  userLocation: false,
+  userLocationData: [],
+  loadingStatus: false,
 })
 
 /**
