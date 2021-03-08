@@ -1,6 +1,6 @@
 <template>
   <div id="map">
-    <ComponentLocator @new-location="newLocation" />
+    <ComponentLocator @new-location="getNewLocation" />
     <client-only>
       <l-map
         ref="map"
@@ -101,23 +101,14 @@ export default {
     resetMap() {
       this.$store.dispatch('SET_STATION_DETAILS')
     },
-    newLocation() {
-      this.$store
-        .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
-        .then(() => {
-          this.$store.dispatch('GET_LOCATION_AND_DISTANCE')
-          console.log('ready!')
-        })
-      /*
+    async getNewLocation() {
+      this.$store.dispatch('GET_LOCATION_AND_DISTANCE').then(() => {})
+      this.$store.dispatch('SET_STATION_DETAILS')
       this.$nextTick(() => {
-        this.$refs.map.mapObject.fitBounds(
-          [[this.userlocation.latitude, this.userlocation.longitude]],
-          {
-            maxZoom: 15,
-          }
-        )
+        this.$refs.map.mapObject.fitBounds([
+          [this.userlocation.latitude, this.userlocation.longitude],
+        ])
       })
-      */
     },
   },
 }
