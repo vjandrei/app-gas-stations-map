@@ -26,6 +26,9 @@ export default {
     configPath: '~/tailwind.config.js',
   },
 
+  // Auto import components https://github.com/nuxt/components
+  components: true,
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/fullHeight.js', mode: 'client' },

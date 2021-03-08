@@ -61,16 +61,6 @@
         <StationList :stations="showStations" />
       </div>
     </div>
-    <nav>
-      <div id="navLink1" class="navLink"><i class="icon-list"></i></div>
-      <div id="formInput">
-        <span>
-          <i class="icon-location"></i>
-        </span>
-        <h1>Kaasuasemat.fi</h1>
-      </div>
-      <div id="navLink2" class="navLink"><i class="icon-car"></i></div>
-    </nav>
   </div>
 </template>
 
@@ -257,26 +247,5 @@ export default {
   height: 12rem;
   padding-top: 33px;
   @apply overflow-y-scroll;
-}
-
-nav {
-  @apply relative w-full bg-white flex justify-between px-6 py-4;
-  @screen sm {
-  }
-  .navLink {
-    @apply flex-none flex justify-center content-center items-center text-primary;
-  }
-  #formInput {
-    @apply w-full px-6 flex items-center;
-  }
-  span {
-    @apply absolute text-primary text-base items-center justify-center w-8 pl-4;
-  }
-  h1 {
-    @apply flex-grow w-full py-2 px-4 pl-10 text-base text-primary text-center;
-  }
-  input {
-    @apply flex-grow w-full py-2 px-4 pl-10 text-sm border border-gray-300 border-solid rounded;
-  }
 }
 </style>

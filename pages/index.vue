@@ -1,5 +1,5 @@
 <template>
-  <div id="appWrapper">
+  <div>
     <transition name="fade">
       <div id="welcomeScreen">
         <div id="welcomeScreenContainer">
@@ -62,10 +62,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#appWrapper {
-  width: inherit;
-  @apply relative;
-}
 #welcomeScreen {
   @apply relative bg-local bg-center bg-no-repeat bg-cover flex flex-col h-full text-white justify-end;
   &::before {

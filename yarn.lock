@@ -1016,6 +1016,20 @@
     upath "^2.0.1"
     vue-template-compiler "^2.6.12"
 
+"@nuxt/components@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/components/-/components-2.1.2.tgz#151859853a8b8bfd265b0476d85a61b8de2c34a1"
+  integrity sha512-3zfsgYLU/s37d/voV13qoWCWGnenZySRew40XjqQiRRAL/4/Y/oizUEubq/pTI0HFhhKjr4VJVPOzqnuUdJuig==
+  dependencies:
+    chalk "^4.1.0"
+    chokidar "^3.5.1"
+    glob "^7.1.6"
+    globby "^11.0.2"
+    scule "^0.1.1"
+    semver "^7.3.4"
+    upath "^2.0.1"
+    vue-template-compiler "^2.6.12"
+
 "@nuxt/config@2.15.0":
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/@nuxt/config/-/config-2.15.0.tgz#dfdca197d7856f8763eb1c80b19ac76246eeb2b8"

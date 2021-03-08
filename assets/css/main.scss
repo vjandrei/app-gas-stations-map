@@ -10,11 +10,7 @@
   --color-brand: #b4c2d5;
 }
 
-#appWrapper {
-  @include mobile-viewport-height();
-}
-
-.app {
+main {
   @include mobile-viewport-height();
 }
 

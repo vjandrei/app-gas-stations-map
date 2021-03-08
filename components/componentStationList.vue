@@ -1,9 +1,16 @@
 <template>
-  <div>
+  <div id="list">
+    <div id="listHeading">
+      <div id="listHeadingContainer">
+        <div id="listHeadingContent">
+          <span id="listHeadingText">Lähimmät kaasuasemat</span>
+        </div>
+      </div>
+    </div>
     <div
       class="stationListItemCard"
       style="max-height: 6rem"
-      v-for="station in stations.slice(0, this.$store.state.defaulListStatus)"
+      v-for="station in stations"
       :key="station.id"
     >
       <div v-if="showCard" class="stationListItemCardContent">
@@ -77,6 +84,22 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+#list {
+  height: 200px;
+  overflow-y: scroll;
+}
+#listHeading {
+  @apply bg-light py-4 fixed w-full;
+  #listHeadingContainer {
+    @apply relative h-px bg-gray-300;
+  }
+  #listHeadingContent {
+    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
+  }
+  #listHeadingText {
+    @apply bg-light px-4 text-xs text-gray-500 uppercase;
+  }
+}
 .stationListItemCard {
   @apply bg-white p-4 border-b;
 }
