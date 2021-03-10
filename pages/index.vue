@@ -47,7 +47,7 @@ export default {
   components: {},
   computed: {
     userLocation() {
-      return this.$store.state.userLocation
+      return this.$store.state.loadingStatus
     },
   },
   methods: {

@@ -21,6 +21,10 @@ main {
   margin: 0;
 }
 
+body {
+  overscroll-behavior: contain;
+}
+
 body,
 html {
   margin: 0;

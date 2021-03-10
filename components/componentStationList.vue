@@ -7,51 +7,33 @@
         </div>
       </div>
     </div>
-    <div
-      class="stationListItemCard"
-      style="max-height: 6rem"
-      v-for="station in stations"
-      :key="station.id"
-    >
-      <div v-if="showCard" class="stationListItemCardContent">
-        <div class="stationMinDetails" @click="showMarker(station)">
-          <div class="stationGeneralDetails">
-            <h2>{{ station.name }}</h2>
-            <h4>{{ station.address }}</h4>
-          </div>
-          <div class="stationLocationDetails space-x-1">
-            <i class="icon-location text-primary"></i>
-            <h5>Sijainnista</h5>
-            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
-          </div>
-        </div>
-        <div class="stationFullDetails" v-if="showCardDetails">
-          <dl>
-            <dt>Tuottee</dt>
-            <dd>
-              <span v-for="(product, i) in station.products" :key="product[i]"
-                >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
-              >
-            </dd>
-            <dt>Maksuvaihtoehdot</dt>
-            <dd>
-              <span v-for="(payment, i) in station.payments" :key="payment[i]"
-                >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
-              >
-            </dd>
-            <dt>Operaattori</dt>
-            <dd>{{ station.operator }}</dd>
-          </dl>
-          <div class="navigationActions">
-            <button class="smallButton">Paikanna</button>
+    <span :class="showList">
+      <div
+        class="stationListItemCard"
+        style="max-height: 6rem"
+        v-for="station in stations"
+        :key="station.id"
+      >
+        <div v-if="showCard" class="stationListItemCardContent">
+          <div class="stationMinDetails" @click="getStation(station)">
+            <div class="stationGeneralDetails">
+              <h2>{{ station.name }}</h2>
+              <h4>{{ station.address }}</h4>
+            </div>
+            <div class="stationLocationDetails space-x-1">
+              <i class="icon-location text-primary"></i>
+              <h5>Sijainnista</h5>
+              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   props: {
     stations: {
@@ -59,9 +41,15 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      station: this.stations.length,
+      clicked: false
+    }
   },
   computed: {
+    ...mapGetters({
+      loading: 'PASS_LOADING_STATUS',
+    }),
     showCard() {
       if (Object.keys(this.$store.state.showStation).length !== 0) {
         return true
@@ -72,25 +60,66 @@ export default {
     showCardDetails() {
       return this.$store.state.showStationDetails
     },
+    showList() {
+      return this.loading ? 'hidden' : 'block'
+    },
   },
   created() {},
   mounted() {},
   methods: {
-    showMarker(station) {
+    getStation(station) {
       this.$nuxt.$emit('show-station-marker', station)
+      this.$store.dispatch('SET_STATION_CARD', true)
     },
   },
 }
 </script>
 
 <style lang="postcss" scoped>
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loading {
+  0% {
+    content: 'Ladataan.';
+  }
+  50% {
+    content: 'Ladataan..';
+  }
+  100% {
+    content: 'Ladataan...';
+  }
+}
+
 #list {
   @apply relative;
   height: 200px;
   overflow-y: scroll;
+  &:after {
+    content: '';
+    animation: loading 3s linear infinite alternate;
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 50%;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    min-width: 200px;
+    height: 200px;
+    z-index: -10;
+    @apply text-base text-gray-500 ;
+  }
 }
 #listHeading {
-  @apply bg-light py-4 sticky top-0 w-full;
+  @apply bg-light py-4 sticky z-30 top-0 w-full;
   #listHeadingContainer {
     @apply relative h-px bg-gray-300;
   }
@@ -103,6 +132,11 @@ export default {
 }
 .stationListItemCard {
   @apply bg-white p-4 border-b;
+  animation-name: animateIn;
+  animation-duration: 250ms;
+  animation-delay: calc(10 * 25ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
 }
 .stationListItemCardContent {
   @apply flex flex-col leading-tight font-normal text-xs text-default font-display;
@@ -110,28 +144,13 @@ export default {
     @apply flex flex-row w-full;
   }
   .stationGeneralDetails {
-    @apply flex flex-grow flex-col pr-4 border-r border-gray-300;
+    @apply flex flex-grow-0 w-48 flex-col pr-4 border-r border-gray-300;
     h2 {
       @apply text-primary text-base;
     }
   }
   .stationLocationDetails {
     @apply flex flex-grow-0 flex-row pl-4 items-center;
-  }
-  .stationFullDetails {
-    @apply pt-4 border-t border-gray-300;
-  }
-  dl {
-    @apply flex leading-tight font-normal text-sm font-display;
-    dt {
-      @apply w-1/2 flex-none text-default my-2;
-    }
-    dd {
-      @apply text-dark my-2 font-normal;
-    }
-  }
-  .navigationActions {
-    @apply w-full py-2 pb-0;
   }
 }
 </style>

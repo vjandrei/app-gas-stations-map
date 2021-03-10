@@ -1,8 +1,10 @@
 <template>
   <div id="map">
     <ComponentLocator @new-location="getNewLocation" />
+    <ComponentCard :stations="stations"/>
     <client-only>
       <l-map
+        id="mapcanvas"
         ref="map"
         :zoom="userZoom || defaultZoom"
         :center="updatedLocation || defaultLocation"
@@ -15,6 +17,7 @@
           :key="station.id"
           :lat-lng="station.coords"
           @click="getMarker(station)"
+          :icon="icon"
         ></l-marker>
         <l-circle-marker
           v-for="n in 2"
@@ -47,6 +50,11 @@ export default {
       userCoords: [],
       defaultZoom: 6,
       userZoom: 12,
+      icon: L.icon({
+        iconUrl: require('../assets/icons/mapPin.svg'),
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+      }),
       circle: {
         name: 'userLocationPin',
         color: 'rgba(35,136,204,0.30)',
@@ -70,11 +78,12 @@ export default {
     this.$nuxt.$on('show-station-marker', (station) => {
       this.$nextTick(() => {
         this.$refs.map.mapObject.fitBounds(
-          [[station.coords.lat, station.coords.lng]],
-          { maxZoom: 12 }
+          [[station.coords.lat, station.coords.lng]],{
+           paddingBottomRight:[0,200], maxZoom: 16}
         )
       })
     })
+
     this.$store
       .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
       .then(() => {
@@ -116,6 +125,9 @@ export default {
 
 <style lang="postcss" scoped>
 #map {
-  @apply h-full z-10;
+  @apply h-full flex flex-col;
+}
+#mapcanvas {
+  @apply z-0;
 }
 </style>

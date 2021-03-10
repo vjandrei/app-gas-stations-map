@@ -5,9 +5,9 @@ export const state = () => ({
   showStation: {},
   showStationDetails: false,
   stationFilter: 'all',
-  userLocation: false,
   userLocationData: [],
   loadingStatus: false,
+  isOpen: false
 })
 
 /**
@@ -56,26 +56,35 @@ const addToSessionStorage = (lat, lng) => {
 export const actions = {
   async GET_LOCATION_AND_DISTANCE({ dispatch, commit, state }) {
     commit('SET_LOADING_STATUS', true)
-    await dispatch('GET_FROM_NAVIGATOR').then(() => {
-      const userLocation = [
-        state.userLocationData.latitude,
-        state.userLocationData.longitude,
-      ]
-      const distances = state.stations.data.map((item) => ({
-        ...item,
-        distance: L.latLng(userLocation).distanceTo(
-          L.latLng([item.coords.lat, item.coords.lng])
-        ),
-      }))
-      const sortedDistances = distances.sort((a, b) => a.distance - b.distance)
-      commit('SET_DISTANCE', sortedDistances)
-      commit('SET_SELECTED_STATION', sortedDistances[0])
-    })
+    await dispatch('GET_FROM_NAVIGATOR')
+      .then(() => {
+        const userLocation = [
+          state.userLocationData.latitude,
+          state.userLocationData.longitude,
+        ]
+        const distances = state.stations.data.map((item) => ({
+          ...item,
+          distance: L.latLng(userLocation).distanceTo(
+            L.latLng([item.coords.lat, item.coords.lng])
+          ),
+        }))
+        const sortedDistances = distances.sort(
+          (a, b) => a.distance - b.distance
+        )
+        commit('SET_DISTANCE', sortedDistances)
+        commit('SET_SELECTED_STATION', sortedDistances[0])
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        commit('SET_LOADING_STATUS', false)
+      })
   },
-  async GET_FROM_NAVIGATOR(context) {
+  async GET_FROM_NAVIGATOR({ dispatch, commit, state }) {
     await getGeoLocation()
       .then((pos) => {
-        context.commit(
+        commit(
           'SET_USER_LOCATION_DATA',
           {
             latitude: pos.coords.latitude,
@@ -106,6 +115,9 @@ export const actions = {
   SET_STATION_LIST(context) {
     context.commit('SET_STATION_LIST')
   },
+  SET_STATION_CARD(context, clicked){
+    context.commit('SET_STATION_CARD', clicked)
+  }
 }
 
 /**
@@ -113,7 +125,7 @@ export const actions = {
  */
 export const mutations = {
   SET_LOADING_STATUS(state, payload) {
-    state.userLocation = payload
+    state.loadingStatus = payload
   },
   SET_USER_LOCATION_DATA(state, payload) {
     state.userLocationData = payload
@@ -139,6 +151,9 @@ export const mutations = {
   SET_STATION_LIST(state, payload) {
     state.defaulListStatus = payload
   },
+  SET_STATION_CARD(state, payload){
+    state.isOpen = payload
+  }
 }
 
 //showing things, not mutating state
@@ -162,4 +177,10 @@ export const getters = {
   PASS_DEFAULT_LOCATION: (state) => {
     return L.latLng(state.defaultLocation)
   },
+  PASS_LOADING_STATUS: (state) => {
+    return state.loadingStatus
+  },
+  PASS_STATION_CARD: (state) =>{
+    return state.isOpen
+  } 
 }
