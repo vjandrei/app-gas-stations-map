@@ -67,17 +67,16 @@ export default {
           this.$store.dispatch('SET_STATION_CARD', false)
       },
       openNavigator(station){
-        let stationLat = station.coords.lat
-        let stationLong = station.coords.lng
          if /* if we're on iOS, open in Apple Maps */
         ((navigator.platform.indexOf("iPhone") != -1) || 
         (navigator.platform.indexOf("iPod") != -1) || 
         (navigator.platform.indexOf("iPad") != -1))
-        window.open("maps://maps.google.com/maps?daddr={{stationLat}},{{stationLong}}&amp;ll=");
+        window.open('maps://maps.google.com/maps?daddr='+ station.coords.lat + ',' + station.coords.lng + '&amp;ll=');
 
         else /* else use Google */
-            window.open("https://maps.google.com/maps?daddr={{stationLat}},{{stationLong}}&amp;ll=");     
+            window.open('https://maps.google.com/maps?daddr='+ station.coords.lat +',' + station.coords.lng + '&amp;ll=');     
         }
+
   },
 }
 </script>
