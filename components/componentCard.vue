@@ -47,13 +47,13 @@
 import { mapGetters } from 'vuex'
 export default {
   props: {
-    stations: {
-      type: Array,
+    station: {
+      type: Object,
     },
   },
   data() {
     return {
-        station:{}
+    
     }
   },
   computed: {
@@ -63,8 +63,8 @@ export default {
   },
   created() {},
   mounted() {
-      this.$nuxt.$on('show-station-marker', (station) => {
-          this.station = station
+      this.$nuxt.$on('select-station', (station) => {
+          return station
       })
   },
   methods: {

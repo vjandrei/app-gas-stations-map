@@ -14,7 +14,7 @@
         v-for="station in stations"
         :key="station.id"
       >
-        <div v-if="showCard" class="stationListItemCardContent">
+        <div class="stationListItemCardContent">
           <div class="stationMinDetails" @click="getStation(station)">
             <div class="stationGeneralDetails">
               <h2>{{ station.name }}</h2>
@@ -43,23 +43,12 @@ export default {
   data() {
     return {
       station: this.stations.length,
-      clicked: false
     }
   },
   computed: {
     ...mapGetters({
       loading: 'PASS_LOADING_STATUS',
     }),
-    showCard() {
-      if (Object.keys(this.$store.state.showStation).length !== 0) {
-        return true
-      } else {
-        return false
-      }
-    },
-    showCardDetails() {
-      return this.$store.state.showStationDetails
-    },
     showList() {
       return this.loading ? 'hidden' : 'block'
     },
@@ -68,8 +57,10 @@ export default {
   mounted() {},
   methods: {
     getStation(station) {
-      this.$nuxt.$emit('show-station-marker', station)
+      this.$nuxt.$emit('select-station', station)
+      this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.$store.dispatch('SET_STATION_CARD', true)
+      
     },
   },
 }
@@ -139,7 +130,7 @@ export default {
   animation-timing-function: ease-in-out;
 }
 .stationListItemCardContent {
-  @apply flex flex-col leading-tight font-normal text-xs text-default font-display;
+  @apply cursor-pointer flex flex-col leading-tight font-normal text-xs text-default font-display;
   .stationMinDetails {
     @apply flex flex-row w-full;
   }

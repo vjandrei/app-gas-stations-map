@@ -1,7 +1,7 @@
 <template>
   <div id="map">
     <ComponentLocator @new-location="getNewLocation" />
-    <ComponentCard :stations="stations"/>
+    <ComponentCard :station="station"/>
     <client-only>
       <l-map
         id="mapcanvas"
@@ -65,6 +65,7 @@ export default {
       },
       panelState: 'collapsed',
       gravity: 'bottom',
+      station:{}
     }
   },
   components: {},
@@ -75,7 +76,7 @@ export default {
     }
   },
   mounted() {
-    this.$nuxt.$on('show-station-marker', (station) => {
+    this.$nuxt.$on('select-station', (station) => {
       this.$nextTick(() => {
         this.$refs.map.mapObject.fitBounds(
           [[station.coords.lat, station.coords.lng]],{
@@ -106,6 +107,8 @@ export default {
   methods: {
     getMarker(station) {
       this.$store.dispatch('GET_SELECTED_MARKER', station)
+      this.$store.dispatch('SET_STATION_CARD', true)
+      this.station = station
     },
     resetMap() {
       this.$store.dispatch('SET_STATION_DETAILS')

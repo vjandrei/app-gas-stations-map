@@ -106,7 +106,6 @@ export const actions = {
     context.commit('SET_USER_SESSION_LOCATION_DATA', location)
   },
   GET_SELECTED_MARKER(context, station) {
-    console.log(station)
     context.commit('SET_SELECTED_STATION', station)
   },
   SET_STATION_DETAILS(context) {
