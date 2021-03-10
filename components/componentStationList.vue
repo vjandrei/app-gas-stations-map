@@ -57,6 +57,7 @@ export default {
   mounted() {},
   methods: {
     getStation(station) {
+      console.log(station);
       this.$nuxt.$emit('select-station', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.$store.dispatch('SET_STATION_CARD', true)
@@ -130,7 +131,7 @@ export default {
   animation-timing-function: ease-in-out;
 }
 .stationListItemCardContent {
-  @apply cursor-pointer flex flex-col leading-tight font-normal text-xs text-default font-display;
+  @apply flex flex-col leading-tight font-normal text-xs text-default font-display;
   .stationMinDetails {
     @apply flex flex-row w-full;
   }

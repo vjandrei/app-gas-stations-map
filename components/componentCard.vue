@@ -46,14 +46,9 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  props: {
-    station: {
-      type: Object,
-    },
-  },
   data() {
     return {
-    
+        station: {}
     }
   },
   computed: {
@@ -64,7 +59,7 @@ export default {
   created() {},
   mounted() {
       this.$nuxt.$on('select-station', (station) => {
-          return station
+          this.station = station
       })
   },
   methods: {
