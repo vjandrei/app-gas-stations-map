@@ -3,6 +3,7 @@
     <ComponentMap />
     <ComponentFilter />
     <ComponentStationList :stations="stations" />
+    <appNavigation />
   </div>
 </template>
 

@@ -16,6 +16,7 @@ module.exports = {
         dark: 'var(--color-dark)',
         light: 'var(--color-light)',
         brand: 'var(--color-brand)',
+        fade: 'var(--color-fade)',
       },
       inset: {
         '1/2': '50%',

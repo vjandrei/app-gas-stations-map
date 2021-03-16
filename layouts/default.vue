@@ -1,7 +1,6 @@
 <template>
   <main>
     <nuxt />
-    <appNavigation />
   </main>
 </template>
 

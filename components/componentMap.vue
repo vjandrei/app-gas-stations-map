@@ -63,8 +63,6 @@ export default {
         weight: 20,
         class: 'mapPin',
       },
-      panelState: 'collapsed',
-      gravity: 'bottom',
     }
   },
   components: {},
@@ -75,14 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.$nuxt.$on('select-station', (station) => {
-      this.$nextTick(() => {
-        this.$refs.map.mapObject.fitBounds(
-          [[station.coords.lat, station.coords.lng]],{
-           paddingBottomRight:[0,200], maxZoom: 16}
-        )
-      })
-    })
+    this.$nuxt.$on('select-station', (station) => {})
 
     this.$store
       .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
