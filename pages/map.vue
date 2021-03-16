@@ -29,5 +29,6 @@ export default {
   @apply grid;
   grid-template-rows: 1fr auto auto;
   grid-template-columns: 100%;
+  grid-template-columns: [map-area] 1fr [sidebar-area] 400px;
 }
 </style>

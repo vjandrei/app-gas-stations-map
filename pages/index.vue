@@ -11,21 +11,18 @@
         <div>
          <ul id="appFeaturesList">
            <li class="appFeaturesListItem">
-             <div class="featuresIcon"><i class="icon-location text-white"></i></div>
              <div class="featuresHeading">
                <h3>Paikannus</h3>
                <h4>Alueesi lähimmät kaasutankkausasemat</h4>
              </div>
            </li>
            <li class="appFeaturesListItem">
-             <div class="featuresIcon"><i class="icon-location text-white"></i></div>
              <div class="featuresHeading">
                <h3>Suodattaminen</h3>
                <h4>Rajaa kaasutankkausasemia kaasutyypin mukaan</h4>
              </div>
            </li>
            <li class="appFeaturesListItem">
-             <div class="featuresIcon"><i class="icon-location text-white"></i></div>
              <div class="featuresHeading">
                <h3>Navigointi</h3>
                <h4>Reittiohje navigointi applikaatioon</h4>
@@ -75,24 +72,19 @@ export default {
 */
 
 #welcomeScreen {
-  @apply relative bg-local bg-center bg-no-repeat bg-cover flex flex-col h-full text-white justify-end;
+  @apply relative  bg-local bg-center bg-no-repeat bg-cover flex flex-col h-full text-white justify-end;
   &::before {
     content: '';
-    @apply absolute inset-0 w-full h-full bg-cover bg-center;
+    @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-top;
     //filter: grayscale(60%);
-    background-image: linear-gradient(
-        180deg,
-        rgba(22, 122, 206, 0.9) 0%,
-        rgba(0, 33, 61, 0.74) 100%
-      ),
-      url('~assets/img/bg-min.jpg');
+    background-image: url('~assets/img/illustrator-bg.svg');
   }
-  @apply relative flex flex-col h-full text-white justify-end bg-white ;
+  @apply relative flex flex-col h-full text-white justify-end bg-white;
 }
 
 
 #welcomeScreenContainer {
-  @apply font-display p-4 pb-8 m-auto relative w-full max-w-lg text-white;
+  @apply font-display p-4 pb-8 m-auto relative w-full max-w-lg text-secondary;
   h1 {
     @apply text-2xl font-bold mb-4 leading-snug;
   }
@@ -100,7 +92,7 @@ export default {
     @apply text-sm font-normal mb-2 leading-tight;
   }
   button {
-    @apply block w-full max-w-xs mx-auto rounded-lg px-3 py-3 bg-white text-primary;
+    @apply block w-full max-w-xs mx-auto rounded-lg px-3 py-3 bg-primary text-white;
   }
   p {
     @apply text-base leading-4 pt-4 text-center w-10/12 m-auto;
@@ -111,17 +103,17 @@ export default {
   @apply my-8;
 }
 .appFeaturesListItem{
-  @apply flex my-8 content-center items-center;
+  @apply flex my-4 content-center items-center;
 }
 .featuresIcon{
-  @apply w-12  mr-4 flex justify-center items-start;
+  @apply w-12 mr-4 flex justify-center items-start;
 }
 .featuresHeading{
   h3{
-    @apply text-lg text-white; 
+    @apply text-lg text-secondary; 
   }
   h4{
-    @apply text-xs text-white;
+    @apply text-xs text-secondary;
   }
 }
 </style>
