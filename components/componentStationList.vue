@@ -18,10 +18,9 @@
           <div class="stationMinDetails" @click="getStation(station)">
             <div class="stationGeneralDetails">
               <h2>{{ station.name }}</h2>
-              <h4>{{ station.address }}</h4>
+              <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
             </div>
             <div class="stationLocationDetails space-x-1">
-              <i class="icon-location text-primary"></i>
               <h5>Sijainnista</h5>
               <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </div>
@@ -108,7 +107,7 @@ export default {
     @apply text-base text-gray-500;
   }
   @screen lg {
-    @apply h-full;
+    @apply h-screen;
   }
 }
 #listHeading {
@@ -134,16 +133,22 @@ export default {
 .stationListItemCardContent {
   @apply flex flex-col leading-tight font-normal text-xs text-default font-display cursor-pointer;
   .stationMinDetails {
-    @apply flex flex-row w-full;
+    @apply flex flex-col w-full;
   }
   .stationGeneralDetails {
-    @apply flex flex-grow-0 w-48 flex-col pr-4 border-r border-gray-300;
+    @apply flex flex-col pr-4 border-r border-gray-300;
     h2 {
-      @apply text-primary mb-1 text-base;
+      @apply text-primary mb-2 text-base;
+    }
+    h4 {
+      @apply mb-2 text-fade;
     }
   }
   .stationLocationDetails {
-    @apply flex flex-grow-0 flex-row pl-4 items-center;
+    @apply flex flex-grow-0 text-fade flex-row items-center;
+    .icon-location {
+      @apply text-fade mr-1;
+    }
   }
 }
 </style>

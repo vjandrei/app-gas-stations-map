@@ -7,30 +7,34 @@
           <div class="stationDetails">
             <div class="stationGeneralDetails">
               <h2>{{ station.name }}</h2>
-              <h4>{{ station.address }}</h4>
+              <h4>
+                <i class="icon-location mr-1 text-fade"></i>
+                {{ station.address }}
+              </h4>
             </div>
-            <div class="stationLocationDetails space-x-1">
-              <i class="icon-location text-primary"></i>
-              <h5>Sijainnista</h5>
-              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+            <div class="stationLocationDetails">
+              <h5 class="mb-1">Sijainnista</h5>
+              <div class="flex">
+                <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+              </div>
             </div>
           </div>
           <div class="stationRoute"></div>
           <div class="stationOtherDetails">
             <dl>
-              <dt>Tuottee</dt>
+              <dt>Tuotteet:</dt>
               <dd>
                 <span v-for="(product, i) in station.products" :key="product[i]"
                   >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
                 >
               </dd>
-              <dt>Maksuvaihtoehdot</dt>
+              <dt>Maksuvaihtoehdot:</dt>
               <dd>
                 <span v-for="(payment, i) in station.payments" :key="payment[i]"
                   >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
                 >
               </dd>
-              <dt>Operaattori</dt>
+              <dt>Operaattori:</dt>
               <dd>{{ station.operator }}</dd>
             </dl>
             <div class="navigationActions">
@@ -125,12 +129,15 @@ export default {
   h2 {
     @apply text-secondary mb-1 text-xl font-semibold;
   }
+  h4 {
+    @apply text-fade;
+  }
 }
 .stationRoute {
   @apply mt-4;
 }
 .stationLocationDetails {
-  @apply flex flex-grow-0 flex-row pl-4 items-center;
+  @apply flex flex-grow-0 flex-col items-start justify-center text-fade;
 }
 .stationOtherDetails {
   @apply pt-4 border-t border-gray-300;
@@ -138,7 +145,7 @@ export default {
 dl {
   @apply flex leading-tight font-normal text-sm font-display;
   dt {
-    @apply w-1/2 flex-none text-default my-2;
+    @apply w-1/2 flex-none my-2 text-fade;
   }
   dd {
     @apply text-dark my-2 font-normal;
