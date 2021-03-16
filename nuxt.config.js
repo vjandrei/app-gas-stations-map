@@ -10,7 +10,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Kaasutankkausasemat',
+    title: 'Kaasulla.app',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -59,9 +59,11 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'Kaasulla.app',
       lang: 'en',
-      title: 'Kaasuasemat',
-      description: 'Löydä lähin kaasuasema',
+      title: 'Kaasulla.app',
+      description: 'Löydä kaasutankkausasemat ympäri Suomessa',
+      mobileApp: true,
     },
   },
 

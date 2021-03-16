@@ -1,7 +1,7 @@
 {
-  "name": "liquefied-petroleum-gas-stations",
+  "name": "Kaasulla.app",
   "short_name": "liquefied-petroleum-gas-stations",
-  "description": "Löydä lähin kaasuasema",
+  "description": "Löydä kaasutankkausasemat ympäri Suomessa",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.5f6a36.png",
@@ -50,5 +50,6 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "lang": "en",
-  "title": "Kaasuasemat"
+  "title": "Kaasulla.app",
+  "mobileApp": true
 }
