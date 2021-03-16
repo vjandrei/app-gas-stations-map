@@ -3,11 +3,11 @@
     <div id="welcomeScreen">
       <div id="welcomeScreenContainer">
         <div>
-          <h1>Löydä kaasutankkausasemat ympäri Suomessa</h1>
+          <h1>Löydä kaasutankkausasemat ympäri suomen</h1>
           <h2>
-            Kaasulla.app on karttapohjainen sovellus josta löydät
-            kaasutankkausasemat joissa voi tankkaa biokaasua tai maakaasua.
-            Sinun tarvitsee vain myötään sovellukselle paikannus oikeus.
+            Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja
+            maakaasutankkausasemat. Sinun tarvitsee vain myötään sovellukselle
+            paikannus oikeus.
           </h2>
         </div>
         <div>

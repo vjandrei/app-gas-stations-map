@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.$nuxt.$on('select-station', (station) => {
+    this.$nuxt.$on('show-station', (station) => {
       this.$nextTick(() => {
         this.$refs.map.mapObject.fitBounds(
           [[station.coords.lat, station.coords.lng]],
@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     getMarker(station) {
-      //this.$nuxt.$emit('select-station', station)
+      this.$nuxt.$emit('select-station', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.$store.dispatch('SET_STATION_CARD', true)
     },
