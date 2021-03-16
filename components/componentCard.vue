@@ -15,9 +15,7 @@
               <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </div>
           </div>
-          <div class="stationRoute">
-            <img src="~/assets/img/route-sample.jpg" alt="" class="w-full" />
-          </div>
+          <div class="stationRoute"></div>
           <div class="stationOtherDetails">
             <dl>
               <dt>Tuottee</dt>
@@ -111,6 +109,10 @@ export default {
 #stationCard {
   @apply absolute bottom-0 z-50  w-full p-4 pt-6;
   transition: transform 100ms cubic-bezier(0.35, 0.69, 0.48, 0.99);
+  @screen lg {
+    width: 400px;
+    right: 400px;
+  }
 }
 #stationCardContent {
   @apply bg-white p-4 rounded-md shadow-lg;
@@ -121,7 +123,7 @@ export default {
 .stationGeneralDetails {
   @apply flex flex-grow-0 w-4/5 flex-col pr-4 border-r border-gray-300;
   h2 {
-    @apply text-primary text-xl font-semibold;
+    @apply text-secondary mb-1 text-xl font-semibold;
   }
 }
 .stationRoute {
@@ -149,5 +151,8 @@ dl {
 .overlay {
   @apply z-40 fixed top-0 left-0 w-full h-full;
   background: rgba(235, 235, 235, 0.43);
+  @screen lg {
+    width: calc(100% - 400px);
+  }
 }
 </style>

@@ -60,7 +60,6 @@ export default {
       this.$nuxt.$emit('select-station', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.$store.dispatch('SET_STATION_CARD', true)
-      
     },
   },
 }
@@ -106,7 +105,10 @@ export default {
     min-width: 200px;
     height: 200px;
     z-index: -10;
-    @apply text-base text-gray-500 ;
+    @apply text-base text-gray-500;
+  }
+  @screen lg {
+    @apply h-full;
   }
 }
 #listHeading {
@@ -130,14 +132,14 @@ export default {
   animation-timing-function: ease-in-out;
 }
 .stationListItemCardContent {
-  @apply flex flex-col leading-tight font-normal text-xs text-default font-display;
+  @apply flex flex-col leading-tight font-normal text-xs text-default font-display cursor-pointer;
   .stationMinDetails {
     @apply flex flex-row w-full;
   }
   .stationGeneralDetails {
     @apply flex flex-grow-0 w-48 flex-col pr-4 border-r border-gray-300;
     h2 {
-      @apply text-primary text-base;
+      @apply text-primary mb-1 text-base;
     }
   }
   .stationLocationDetails {
