@@ -43,8 +43,9 @@ const isBrowser = typeof window !== 'undefined'
 export default {
   data() {
     return {
-      url: `https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=
-        ${process.env.MAPBOX_KEY}`,
+      url:
+        'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' +
+        process.env.MAPBOX_KEY,
       userLocation: [],
       userCoords: [],
       defaultZoom: 6,
@@ -72,17 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.$nuxt.$on('show-station', (station) => {
-      this.$nextTick(() => {
-        this.$refs.map.mapObject.fitBounds(
-          [[station.coords.lat, station.coords.lng]],
-          {
-            paddingBottomRight: [0, 200],
-            maxZoom: 16,
-          }
-        )
-      })
-    })
+    this.$nuxt.$on('select-station', (station) => {})
 
     this.$store
       .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
