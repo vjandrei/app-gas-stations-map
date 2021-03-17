@@ -73,8 +73,11 @@ export default {
       this.$store.dispatch('SET_STATION_CARD', false)
     },
     openNavigator(station) {
+      window.open(
+        `maps://maps.google.com/maps?daddr=${station.coords.lat},${station.coords.lng}`
+      )
+      /*
       if (
-        /* if we're on iOS, open in Apple Maps */
         navigator.platform.indexOf('iPhone') != -1 ||
         navigator.platform.indexOf('iPod') != -1 ||
         navigator.platform.indexOf('iPad') != -1
@@ -86,7 +89,7 @@ export default {
             station.coords.lng +
             '&amp;ll='
         )
-      /* else use Google */ else
+       else
         window.open(
           'https://maps.google.com/maps?daddr=' +
             station.coords.lat +
@@ -94,6 +97,7 @@ export default {
             station.coords.lng +
             '&amp;ll='
         )
+        */
     },
   },
 }
