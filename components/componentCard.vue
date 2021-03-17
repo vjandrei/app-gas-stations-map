@@ -60,6 +60,7 @@ export default {
   computed: {
     ...mapGetters({
       isOpen: 'PASS_STATION_CARD',
+      userlocation: 'PASS_USERLOCATION',
     }),
   },
   created() {},
@@ -79,20 +80,10 @@ export default {
         navigator.platform.indexOf('iPod') != -1 ||
         navigator.platform.indexOf('iPad') != -1
       )
-        window.open(
-          'maps://maps.google.com/maps?daddr=' +
-            station.coords.lat +
-            ',' +
-            station.coords.lng +
-            '&amp;ll='
-        )
+        window.open(`maps://maps.google.com/maps?daddr=&origin`)
       /* else use Google */ else
         window.open(
-          'https://maps.google.com/maps?daddr=' +
-            station.coords.lat +
-            ',' +
-            station.coords.lng +
-            '&amp;ll='
+          `https://www.google.com/maps/dir/?api=1&or=${this.userlocation.latitude},${this.userlocation.longitude}&destination=${station.coords.lat},${station.coords.lng}&travelmode=driving`
         )
     },
   },
