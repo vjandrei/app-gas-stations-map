@@ -72,6 +72,7 @@ export default {
   methods: {
     closeCard(station) {
       this.$store.dispatch('SET_STATION_CARD', false)
+      this.$nuxt.$emit('remove-marker', station)
     },
     openNavigator(station) {
       if (
@@ -116,7 +117,8 @@ export default {
   @apply flex flex-row w-full justify-between leading-tight font-normal text-xs text-default font-display;
 }
 .stationGeneralDetails {
-  @apply flex flex-grow-0 w-4/5 flex-col pr-4 border-r border-gray-300;
+  @apply flex flex-grow-0  flex-col pr-4 border-r border-gray-300;
+  flex: 1;
   h2 {
     @apply text-secondary mb-1 text-xl font-semibold;
   }
@@ -128,7 +130,7 @@ export default {
   @apply mt-4;
 }
 .stationLocationDetails {
-  @apply flex flex-grow-0 flex-col items-start justify-center text-fade;
+  @apply flex flex-grow-0 flex-col items-start justify-center text-fade px-4;
 }
 .stationOtherDetails {
   @apply pt-4 border-t border-gray-300;

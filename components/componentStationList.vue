@@ -14,18 +14,18 @@
         v-for="station in stations"
         :key="station.id"
       >
-        <div class="stationListItemCardContent">
-          <div class="stationMinDetails" @click="getStation(station)">
-            <div class="stationGeneralDetails">
-              <h2>{{ station.name }}</h2>
-              <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
-            </div>
-            <div class="stationLocationDetails space-x-1">
-              <h5>Sijainnista</h5>
-              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
-            </div>
+      <div class="stationListItemCardContent">
+        <div class="stationMinDetails" @click="getStation(station)">
+          <div class="stationGeneralDetails">
+            <h2>{{ station.name }}</h2>
+            <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
+          </div>
+          <div class="stationLocationDetails space-x-1">
+            <h5>Sijainnista</h5>
+            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
           </div>
         </div>
+      </div>
       </div>
     </span>
   </div>
@@ -57,7 +57,7 @@ export default {
   methods: {
     getStation(station) {
       this.$nuxt.$emit('select-station', station)
-      this.$nuxt.$emit('show-station', station)
+      this.$nuxt.$emit('show-marker', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.$store.dispatch('SET_STATION_CARD', true)
     },
@@ -108,7 +108,10 @@ export default {
     @apply text-base text-gray-500;
   }
   @screen lg {
-    @apply h-screen;
+    height: calc(100vh - 90px);
+    grid-column: 2;
+    grid-row: 2;
+    overflow-y: scroll;
   }
 }
 #listHeading {
@@ -137,7 +140,7 @@ export default {
     @apply flex flex-col w-full;
   }
   .stationGeneralDetails {
-    @apply flex flex-col pr-4 border-r border-gray-300;
+    @apply flex flex-col pr-4;
     h2 {
       @apply text-primary mb-2 text-base;
     }

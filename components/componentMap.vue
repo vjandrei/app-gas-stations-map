@@ -73,7 +73,41 @@ export default {
     }
   },
   mounted() {
-    this.$nuxt.$on('select-station', (station) => {})
+    this.$nuxt.$on('show-marker', (station) => {
+      this.$nextTick(() => {
+        this.$refs.map.mapObject.setView(
+          L.latLng(station.coords.lat, station.coords.lng),
+          14
+        )
+      })
+    })
+    this.$nuxt.$on('show-marker', (station) => {
+      this.$nextTick(() => {
+        
+      })
+    })
+    /*
+    this.$nuxt.$on('show-marker', (station) => {
+      this.$nextTick(() => {
+        this.$refs.map.mapObject.setView(
+          L.latLng(station.coords.lat, station.coords.lng),
+          14
+        )
+        console.log(L.marker(L.latLng(station.coords.lat, station.coords.lng)))
+        L.marker(L.latLng(station.coords.lat, station.coords.lng), {
+          title: 'hello!',
+        }).addTo(this.$refs.map.mapObject)
+      })
+    })
+
+    this.$nuxt.$on('remove-marker', (station) => {
+      this.$nextTick(() => {
+        this.$refs.map.mapObject.removeLayer(
+          L.marker(L.latLng(station.coords.lat, station.coords.lng))
+        )
+      })
+    })
+    */
 
     this.$store
       .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
@@ -107,9 +141,9 @@ export default {
       this.$store.dispatch('GET_LOCATION_AND_DISTANCE').then(() => {})
       this.$store.dispatch('SET_STATION_DETAILS')
       this.$nextTick(() => {
-        this.$refs.map.mapObject.fitBounds([
-          [this.userlocation.latitude, this.userlocation.longitude],
-        ])
+        this.$refs.map.mapObject.setView(
+          L.latLng(this.userlocation.latitude, this.userlocation.longitude)
+        )
       })
     },
   },
@@ -119,6 +153,10 @@ export default {
 <style lang="postcss" scoped>
 #map {
   @apply h-full flex flex-col;
+  @screen lg {
+    grid-column: 1;
+    grid-row: 1/4;
+  }
 }
 #mapcanvas {
   @apply z-0;

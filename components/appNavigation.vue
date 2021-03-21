@@ -28,7 +28,11 @@ export default {
 
 <style lang="postcss" scoped>
 nav {
-  @apply relative w-full bg-primary flex justify-between px-6 py-1 text-center;
+  @apply relative w-full h-12 bg-primary flex justify-between px-6 py-1 text-center;
+  @screen lg {
+    grid-column: 2;
+    grid-row: 3;
+  }
   .navLink {
     @apply flex-none flex justify-center content-center items-center text-white;
   }
