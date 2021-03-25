@@ -11,21 +11,25 @@
       <div
         class="stationListItemCard"
         style="max-height: 6rem"
-        v-for="station in stations"
-        :key="station.id"
+        v-for="(station, index) in stations"
+        :key="index"
       >
-      <div class="stationListItemCardContent">
-        <div class="stationMinDetails" @click="getStation(station)">
-          <div class="stationGeneralDetails">
-            <h2>{{ station.name }}</h2>
-            <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
-          </div>
-          <div class="stationLocationDetails space-x-1">
-            <h5>Sijainnista</h5>
-            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+        <div class="stationListItemCardContent">
+          <div class="stationMinDetails" @click="getStation(station)">
+            <div class="stationGeneralDetails">
+              <h2>{{ station.name }}</h2>
+              <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
+            </div>
+            <div class="stationLocationDetails space-x-1">
+              <h5>Sijainnista</h5>
+              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+            </div>
+           {{isOpen}}
+             <div v-if="station.isOpen">
+              Yes!
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </span>
   </div>
@@ -42,6 +46,7 @@ export default {
   data() {
     return {
       station: this.stations.length,
+      isOpen: false
     }
   },
   computed: {
@@ -59,8 +64,8 @@ export default {
       this.$nuxt.$emit('select-station', station)
       this.$nuxt.$emit('show-marker', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
-      this.$store.dispatch('SET_STATION_CARD', true)
-    },
+      station.isOpen = !station.isOpen;
+    }
   },
 }
 </script>

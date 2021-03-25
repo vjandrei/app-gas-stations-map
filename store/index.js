@@ -108,8 +108,8 @@ export const actions = {
   GET_SELECTED_MARKER(context, station) {
     context.commit('SET_SELECTED_STATION', station)
   },
-  SET_STATION_DETAILS(context) {
-    context.commit('RESET_STATION_DETAILS')
+  GET_SINGLE_STATION(context) {
+    context.commit('SET_SINGLE_STATION_DETAILS')
   },
   SET_STATION_LIST(context) {
     context.commit('SET_STATION_LIST')
@@ -141,10 +141,10 @@ export const mutations = {
   SET_SELECTED_STATION(state, payload) {
     state.showStation = payload
   },
-  SET_STATION_DETAILS(state) {
+  SET_SINGLE_STATION_DETAILS(state) {
     state.showStationDetails = true
   },
-  RESET_STATION_DETAILS(state) {
+  RESET_SINGLE_STATION_DETAILS(state) {
     state.showStationDetails = false
   },
   SET_STATION_LIST(state, payload) {

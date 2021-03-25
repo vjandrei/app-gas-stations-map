@@ -31,7 +31,7 @@ export const state = () => ({
       products: ['Maakaasu', 'Biokaasu'],
       type: ['naturalgas', 'biogas'],
       payments: ['Gas Card', 'Pankki ja luottokortit'],
-      operator: 'Gasum'
+      operator: 'Gasum',
     },
     {
       id: 3,
