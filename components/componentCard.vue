@@ -95,6 +95,9 @@ export default {
 .show-card-enter-active,
 .show-card-leave-active {
   transform: translate(0%, 100%);
+  @screen lg {
+    transform: translate(100%, 0%);
+  }
 }
 
 .show-card-leave,
@@ -107,11 +110,15 @@ export default {
   transition: transform 100ms cubic-bezier(0.35, 0.69, 0.48, 0.99);
   @screen lg {
     width: 400px;
-    right: 400px;
+    right: 0px;
+    top: calc(0% + 65px);
   }
 }
 #stationCardContent {
   @apply bg-white p-4 rounded-md shadow-lg;
+   @screen lg {
+     height: calc(100vh - 113px);
+   }
 }
 .stationDetails {
   @apply flex flex-row w-full justify-between leading-tight font-normal text-xs text-default font-display;
@@ -150,7 +157,7 @@ dl {
 
 .overlay {
   @apply z-40 fixed top-0 left-0 w-full h-full;
-  background: rgba(235, 235, 235, 0.43);
+  background: rgba(235, 235, 235, 0.0);
   @screen lg {
     width: calc(100% - 400px);
   }

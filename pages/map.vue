@@ -12,7 +12,7 @@
       </div>
       <span :class="showList">
         <ComponentStationListItem  v-for="(station, index) in stations"
-        :key="index" :station="station" :selectedStation="selectedStation" />
+        :key="index" :station="station" />
       </span>
     </div>
     <appNavigation />

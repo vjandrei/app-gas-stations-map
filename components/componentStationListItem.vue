@@ -64,11 +64,17 @@ export default {
   mounted() {},
   methods: {
     getStation(station) {
+      /*
       this.$nuxt.$emit('select-station', station)
       this.$nuxt.$emit('show-marker', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.isOpen = !this.isOpen;
+      */
+      this.$nuxt.$emit('select-station', station)
+      this.$store.dispatch('GET_SELECTED_MARKER', station)
+      this.$store.dispatch('SET_STATION_CARD', true)
     }
+    
   },
 }
 </script>
