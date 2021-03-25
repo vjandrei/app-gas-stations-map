@@ -1,18 +1,8 @@
 <template>
-  <div id="list">
-    <div id="listHeading">
-      <div id="listHeadingContainer">
-        <div id="listHeadingContent">
-          <span id="listHeadingText">Lähimmät kaasuasemat</span>
-        </div>
-      </div>
-    </div>
-    <span :class="showList">
+    <div>
       <div
         class="stationListItemCard"
-        style="max-height: 6rem"
-        v-for="(station, index) in stations"
-        :key="index"
+        style=""
       >
         <div class="stationListItemCardContent">
           <div class="stationMinDetails" @click="getStation(station)">
@@ -20,42 +10,55 @@
               <h2>{{ station.name }}</h2>
               <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
             </div>
+            
             <div class="stationLocationDetails space-x-1">
               <h5>Sijainnista</h5>
               <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </div>
-           {{isOpen}}
-             <div v-if="station.isOpen">
-              Yes!
+            <div v-show="isSelected">
+              <dl>
+              <dt>Tuotteet:</dt>
+              <dd>
+                <span v-for="(product, i) in station.products" :key="product[i]"
+                  >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
+                >
+              </dd>
+              <dt>Maksuvaihtoehdot:</dt>
+              <dd>
+                <span v-for="(payment, i) in station.payments" :key="payment[i]"
+                  >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
+                >
+              </dd>
+              <dt>Operaattori:</dt>
+              <dd>{{ station.operator }}</dd>
+            </dl>
             </div>
           </div>
         </div>
       </div>
-    </span>
-  </div>
+    </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 export default {
   props: {
-    stations: {
-      type: Array,
-    },
+    station: {
+      type: Object,
+    }
   },
   data() {
     return {
-      station: this.stations.length,
-      isOpen: false
+      isOpen: false,
     }
   },
   computed: {
-    ...mapGetters({
-      loading: 'PASS_LOADING_STATUS',
+      ...mapGetters({
+      selectedStation: 'PASS_STATION',
     }),
-    showList() {
-      return this.loading ? 'hidden' : 'block'
-    },
+    isSelected(){
+      return this.station === this.selectedStation
+    }
   },
   created() {},
   mounted() {},
@@ -64,73 +67,13 @@ export default {
       this.$nuxt.$emit('select-station', station)
       this.$nuxt.$emit('show-marker', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
-      station.isOpen = !station.isOpen;
+      this.isOpen = !this.isOpen;
     }
   },
 }
 </script>
 
 <style lang="postcss" scoped>
-@keyframes animateIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes loading {
-  0% {
-    content: 'Ladataan.';
-  }
-  50% {
-    content: 'Ladataan..';
-  }
-  100% {
-    content: 'Ladataan...';
-  }
-}
-
-#list {
-  @apply relative;
-  height: 200px;
-  overflow-y: scroll;
-  &:after {
-    content: '';
-    animation: loading 3s linear infinite alternate;
-    position: absolute;
-    display: block;
-    right: 0;
-    top: 50%;
-    left: 0;
-    margin: auto;
-    text-align: center;
-    min-width: 200px;
-    height: 200px;
-    z-index: -10;
-    @apply text-base text-gray-500;
-  }
-  @screen lg {
-    height: calc(100vh - 90px);
-    grid-column: 2;
-    grid-row: 2;
-    overflow-y: scroll;
-  }
-}
-#listHeading {
-  @apply bg-light py-4 sticky z-30 top-0 w-full;
-  #listHeadingContainer {
-    @apply relative h-px bg-gray-300;
-  }
-  #listHeadingContent {
-    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
-  }
-  #listHeadingText {
-    @apply bg-light px-4 text-xs text-gray-500 uppercase;
-  }
-}
 .stationListItemCard {
   @apply bg-white p-4 border-b;
   animation-name: animateIn;
@@ -158,6 +101,18 @@ export default {
     .icon-location {
       @apply text-fade mr-1;
     }
+  }
+}
+.stationOtherDetails {
+  @apply pt-4 border-t border-gray-300;
+}
+dl {
+  @apply flex leading-tight font-normal text-sm font-display;
+  dt {
+    @apply w-1/2 flex-none my-2 text-fade;
+  }
+  dd {
+    @apply text-dark my-2 font-normal;
   }
 }
 </style>

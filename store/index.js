@@ -108,14 +108,17 @@ export const actions = {
   GET_SELECTED_MARKER(context, station) {
     context.commit('SET_SELECTED_STATION', station)
   },
-  GET_SINGLE_STATION(context) {
-    context.commit('SET_SINGLE_STATION_DETAILS')
+  SET_STATION_DETAILS(context) {
+    context.commit('RESET_STATION_DETAILS')
   },
   SET_STATION_LIST(context) {
     context.commit('SET_STATION_LIST')
   },
   SET_STATION_CARD(context, clicked){
     context.commit('SET_STATION_CARD', clicked)
+  },
+  RESET_STATION_CARD(context, clicked){
+    context.commit('RESET_STATION_DETAILS', clicked)
   }
 }
 
@@ -141,11 +144,13 @@ export const mutations = {
   SET_SELECTED_STATION(state, payload) {
     state.showStation = payload
   },
-  SET_SINGLE_STATION_DETAILS(state) {
+  SET_STATION_DETAILS(state) {
     state.showStationDetails = true
   },
-  RESET_SINGLE_STATION_DETAILS(state) {
+  RESET_STATION_DETAILS(state, payload) {
     state.showStationDetails = false
+    state.showStation = null
+    state.isOpen = payload
   },
   SET_STATION_LIST(state, payload) {
     state.defaulListStatus = payload

@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     closeCard(station) {
-      this.$store.dispatch('SET_STATION_CARD', false)
+      this.$store.dispatch('RESET_STATION_CARD', false)
       this.$nuxt.$emit('remove-marker', station)
     },
     openNavigator(station) {

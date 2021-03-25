@@ -2,7 +2,19 @@
   <div id="mapItems">
     <ComponentMap />
     <ComponentFilter />
-    <ComponentStationList :stations="stations" />
+    <div id="list">
+      <div id="listHeading">
+        <div id="listHeadingContainer">
+          <div id="listHeadingContent">
+            <span id="listHeadingText">Lähimmät kaasuasemat</span>
+          </div>
+        </div>
+      </div>
+      <span :class="showList">
+        <ComponentStationListItem  v-for="(station, index) in stations"
+        :key="index" :station="station" :selectedStation="selectedStation" />
+      </span>
+    </div>
     <appNavigation />
   </div>
 </template>
@@ -11,16 +23,26 @@
 import { mapGetters } from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+      selectedStation: null
+    }
   },
   components: {},
   created() {},
+  mounted(){
+    this.$nuxt.$on('select-station', (station) => {
+      this.selectedStation = station
+    })
+  },
   computed: {
     ...mapGetters({
       stations: 'PASS_STATIONS',
+      loading: 'PASS_LOADING_STATUS',
     }),
-  },
-  methods: {},
+    showList() {
+      return this.loading ? 'hidden' : 'block'
+    },
+  }
 }
 </script>
 
@@ -33,6 +55,68 @@ export default {
     height: 100vh; /* <- does the trick */
     grid-template-columns: [map-area] 1fr [sidebar-area] 400px;
     grid-template-rows: [sidebar-start] auto [sidebar-top] auto [sidebar-middle] 1fr [sidebar-bottom] auto [sidebar-end];
+  }
+}
+
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loading {
+  0% {
+    content: 'Ladataan.';
+  }
+  50% {
+    content: 'Ladataan..';
+  }
+  100% {
+    content: 'Ladataan...';
+  }
+}
+
+#list {
+  @apply relative;
+  height: 200px;
+  overflow-y: scroll;
+  &:after {
+    content: '';
+    animation: loading 3s linear infinite alternate;
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 50%;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    min-width: 200px;
+    height: 200px;
+    z-index: -10;
+    @apply text-base text-gray-500;
+  }
+  @screen lg {
+    height: calc(100vh - 90px);
+    grid-column: 2;
+    grid-row: 2;
+    overflow-y: scroll;
+  }
+}
+
+#listHeading {
+  @apply bg-light py-4 sticky z-30 top-0 w-full;
+  #listHeadingContainer {
+    @apply relative h-px bg-gray-300;
+  }
+  #listHeadingContent {
+    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
+  }
+  #listHeadingText {
+    @apply bg-light px-4 text-xs text-gray-500 uppercase;
   }
 }
 </style>
