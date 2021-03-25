@@ -3,6 +3,7 @@
     <div class="overlay" v-if="isOpen" @click="closeCard(station)"></div>
     <transition name="show-card">
       <div id="stationCard" v-if="isOpen">
+        <div class="closeCard" @click="closeCard(station)">sulje</div>
         <div id="stationCardContent">
           <div class="stationDetails">
             <div class="stationGeneralDetails">
@@ -115,11 +116,30 @@ export default {
   }
 }
 #stationCardContent {
-  @apply bg-white p-4 rounded-md shadow-lg;
+  @apply bg-white p-4 rounded-md shadow-lg relative;
    @screen lg {
      height: calc(100vh - 113px);
    }
 }
+
+.closeCard{
+@apply text-primary font-semibold  font-display tracking-wider;
+    position: absolute;
+    top: 40px;
+    left: -56px;
+    background: white;
+    height: 48px;
+    width: 72px;
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    text-align: center;
+    line-height: 48px;
+    text-transform: uppercase;
+    font-size: 12px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), -5px 4px 6px -2px rgb(0 0 0 / 5%);
+    z-index: -1;
+}
+
 .stationDetails {
   @apply flex flex-row w-full justify-between leading-tight font-normal text-xs text-default font-display;
 }
