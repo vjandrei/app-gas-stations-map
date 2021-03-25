@@ -15,24 +15,6 @@
               <h5>Sijainnista</h5>
               <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </div>
-            <div v-show="isSelected">
-              <dl>
-              <dt>Tuotteet:</dt>
-              <dd>
-                <span v-for="(product, i) in station.products" :key="product[i]"
-                  >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
-                >
-              </dd>
-              <dt>Maksuvaihtoehdot:</dt>
-              <dd>
-                <span v-for="(payment, i) in station.payments" :key="payment[i]"
-                  >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
-                >
-              </dd>
-              <dt>Operaattori:</dt>
-              <dd>{{ station.operator }}</dd>
-            </dl>
-            </div>
           </div>
         </div>
       </div>
@@ -56,9 +38,6 @@ export default {
       ...mapGetters({
       selectedStation: 'PASS_STATION',
     }),
-    isSelected(){
-      return this.station === this.selectedStation
-    }
   },
   created() {},
   mounted() {},
