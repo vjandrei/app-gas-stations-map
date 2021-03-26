@@ -123,7 +123,7 @@ export default {
 }
 
 .closeCard{
-@apply text-primary font-semibold  font-display tracking-wider;
+@apply text-primary font-semibold  font-display tracking-wider cursor-pointer;
     position: absolute;
     top: 40px;
     left: -56px;
@@ -163,12 +163,18 @@ export default {
   @apply pt-4 border-t border-gray-300;
 }
 dl {
-  @apply flex leading-tight font-normal text-sm font-display;
+  @apply flex flex-row leading-tight font-normal text-sm font-display;
   dt {
     @apply w-1/2 flex-none my-2 text-fade;
+    @screen lg {
+      @apply my-4;
+    }
   }
   dd {
     @apply text-dark my-2 font-normal;
+    @screen lg {
+      @apply my-4;
+    }
   }
 }
 .navigationActions {
