@@ -32,6 +32,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/fullHeight.js', mode: 'client' },
+    { src: '~/plugins/leaflet-routing-machine.js', mode: 'client' },
     // { src: '~/plugins/slidingPanel.js', mode: 'client' },
     // I you liked to use it just yarn install vue2-touch-events { src: '~/plugins/vue2-touch-events.js', mode: 'client' },
   ],

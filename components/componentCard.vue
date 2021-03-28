@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="overlay" v-if="isOpen" @click="closeCard(station)"></div>
+    <div class="overlay" v-show="isOpen" @click="closeCard(station)"></div>
     <transition name="show-card">
-      <div id="stationCard" v-if="isOpen">
+      <div id="stationCard" v-show="isOpen">
         <div class="closeCard" @click="closeCard(station)">sulje</div>
         <div id="stationCardContent">
           <div class="stationDetails">
@@ -20,7 +20,15 @@
               </div>
             </div>
           </div>
-          <div class="stationRoute"></div>
+          <div class="stationRoute" style="height: 400px;">
+            <client-only>
+             <l-map
+              id="maproute"
+              ref="maproute">
+              <l-tile-layer :url="url"></l-tile-layer>
+            </l-map>
+            </client-only>
+          </div>
           <div class="stationOtherDetails">
             <dl>
               <dt>Tuotteet:</dt>
@@ -56,6 +64,9 @@ export default {
   data() {
     return {
       station: {},
+       url:
+        'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' +
+        process.env.MAPBOX_KEY,
     }
   },
   computed: {
@@ -67,9 +78,24 @@ export default {
   created() {},
   mounted() {
     this.$nuxt.$on('select-station', (station) => {
-      this.station = station
+      this.station = station 
+
+      const map = this.$refs.maproute.mapObject.setView(
+        L.latLng(station.coords.lat, station.coords.lng),5
+      );
+    
+      
+
+      const route = L.Routing.control({
+        waypoints: [
+          L.latLng(this.userlocation.latitude, this.userlocation.longitude),
+          L.latLng(station.coords.lat, station.coords.lng),
+        ]
+      }).addTo(map);
+    
     })
   },
+  
   methods: {
     closeCard(station) {
       this.$store.dispatch('RESET_STATION_CARD', false)
