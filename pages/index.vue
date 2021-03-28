@@ -1,42 +1,10 @@
 <template>
-  <div class="container mx-auto">
-    <div id="welcomeScreen">
+  <div id="welcomeScreen">
+    <div class="container mx-auto">
       <div id="welcomeScreenContainer">
+        <div>1</div>
         <div>
-          <h1>Löydä kaasutankkausasemat ympäri suomen</h1>
-          <h2>
-            Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja
-            maakaasutankkausasemat. Sinun tarvitsee vain myötään sovellukselle
-            paikannus oikeus.
-          </h2>
-        </div>
-        <div>
-          <ul id="appFeaturesList">
-            <li class="appFeaturesListItem">
-              <div class="featuresHeading">
-                <h3>Paikannus</h3>
-                <h4>Alueesi lähimmät kaasutankkausasemat</h4>
-              </div>
-            </li>
-            <li class="appFeaturesListItem">
-              <div class="featuresHeading">
-                <h3>Suodattaminen</h3>
-                <h4>Rajaa kaasutankkausasemia kaasutyypin mukaan</h4>
-              </div>
-            </li>
-            <li class="appFeaturesListItem">
-              <div class="featuresHeading">
-                <h3>Navigointi</h3>
-                <h4>Reittiohje navigointi applikaatioon</h4>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <button class="largeButton" @click="getUserLocation">
-            <span v-if="userLocation">Haetaan paikkatietoja</span>
-            <span v-else>Paikanna minut</span>
-          </button>
+          <img src="~/assets/img/app-in-devices.png" />
         </div>
       </div>
     </div>
@@ -70,18 +38,29 @@ export default {
 */
 
 #welcomeScreen {
-  @apply relative  bg-local bg-center bg-no-repeat bg-auto flex flex-col h-full text-white justify-end;
-  &::before {
+  @apply bg-local bg-center bg-no-repeat bg-auto h-full text-white;
+  &::after {
     content: '';
-    @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-top;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
+    @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-center;
+    @screen lg {
+      @apply bg-cover bg-top
+    }
     //filter: grayscale(60%);
-    //background-image: url('~assets/img/illustrator-bg.svg');
+    background-image: url('~assets/img/background_shape.svg');
   }
-  @apply relative flex flex-col h-full text-white justify-end bg-white;
 }
 
 #welcomeScreenContainer {
-  @apply font-display p-4 pb-8 m-auto relative w-full max-w-lg text-secondary;
+  @apply w-full h-full grid grid-cols-2 grid-rows-1 font-display text-secondary ;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: 100vh;
   h1 {
     @apply text-2xl font-bold mb-4 leading-snug;
   }
