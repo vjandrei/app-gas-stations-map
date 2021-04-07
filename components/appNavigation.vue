@@ -1,13 +1,13 @@
 <template>
   <nav>
     <div class="navLink">
-      <i class="icon-gas-station"></i>
+      
     </div>
     <div>
-      <h1>Kaasulla.app</h1>
+      <img  src="~/assets/img/kaasulla-logo-small-white.svg" alt="">
     </div>
     <div class="navLink">
-      <i class="icon-car"></i>
+      
     </div>
   </nav>
 </template>
@@ -42,8 +42,8 @@ nav {
   span {
     @apply absolute text-white text-base items-center justify-center w-8 pl-4;
   }
-  h1 {
-    @apply flex-grow w-full py-2 px-4 text-base text-white text-center font-display;
+  img {
+    @apply flex-grow w-full py-2 px-4 text-center;
   }
   input {
     @apply flex-grow w-full py-2 px-4 text-sm border border-gray-300 border-solid rounded;

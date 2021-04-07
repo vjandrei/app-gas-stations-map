@@ -123,21 +123,28 @@ export default {
 }
 
 .closeCard{
-@apply text-primary font-semibold  font-display tracking-wider cursor-pointer;
-    position: absolute;
-    top: 40px;
-    left: -56px;
-    background: white;
-    height: 48px;
-    width: 72px;
-    border-top-left-radius: 0.375rem;
-    border-bottom-left-radius: 0.375rem;
-    text-align: center;
-    line-height: 48px;
-    text-transform: uppercase;
-    font-size: 12px;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), -5px 4px 6px -2px rgb(0 0 0 / 5%);
-    z-index: -1;
+  @apply text-primary font-semibold  font-display tracking-wider cursor-pointer;
+      position: absolute;
+      top: -20px;
+      right: 16px;
+      background: white;
+      height: 48px;
+      width: 72px;
+      border-top-left-radius: 0.375rem;
+      border-top-right-radius: 0.375rem;
+      text-align: center;
+      line-height: 48px;
+      text-transform: uppercase;
+      font-size: 12px;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), -5px 4px 6px -2px rgb(0 0 0 / 5%);
+      z-index: -1;
+  @screen lg {  
+        top: 40px;
+        left: -56px;
+        border-top-left-radius: 0.375rem;
+        border-bottom-left-radius: 0.375rem;
+    }
+      
 }
 
 .stationDetails {

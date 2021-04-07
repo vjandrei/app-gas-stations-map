@@ -65,7 +65,7 @@ export default {
 */
 
 #welcomeScreen {
-  @apply bg-local bg-center bg-no-repeat bg-auto h-full text-white px-8 py-4;
+  @apply bg-local bg-right-bottom bg-no-repeat bg-auto h-full text-white px-8 py-4;
   &::after {
     content: '';
     top: 0;
@@ -75,7 +75,7 @@ export default {
     z-index: -10;
     @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-right-bottom;
     @screen lg {
-      @apply  bg-right-top;
+      @apply  bg-right-bottom;
     }
     //filter: grayscale(60%);
     background-image: url('~assets/img/background_shape.svg');
