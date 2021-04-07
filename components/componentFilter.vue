@@ -43,6 +43,10 @@ export default {
 #filter {
   @apply flex flex-row justify-between content-center py-3 bg-white text-base cursor-pointer;
   box-shadow: 0 0 10px 0 rgba(230, 230, 230, 0.5);
+  @screen lg {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
 .filterLink {
   @apply flex-1 text-center text-default font-medium uppercase text-xs;

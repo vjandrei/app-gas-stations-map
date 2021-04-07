@@ -10,7 +10,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Kaasulla.app',
+    title: 'Kaasutankkausasemat',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -59,11 +59,9 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'Kaasulla.app',
-      lang: 'en',
+      lang: 'fi',
       title: 'Kaasulla.app',
-      description: 'Löydä kaasutankkausasemat ympäri Suomessa',
-      mobileApp: true,
+      description: 'Löydä lähin kaasutankkausasemat',
     },
   },
 
@@ -72,7 +70,7 @@ export default {
    */
   webfontloader: {
     google: {
-      families: ['Lato:300,400,700'], //Loads Lato font with weights 400 and 700
+      families: ['Lato:300,400,700,900'], //Loads Lato font with weights 400 and 700
     },
   },
 
@@ -85,6 +83,15 @@ export default {
       },
     },
   },
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0', // default: localhost
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
+    },
+  },
+
   env: {
     MAPBOX_KEY: process.env.MAPBOX_KEY,
   },

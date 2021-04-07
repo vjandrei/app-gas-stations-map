@@ -1,13 +1,13 @@
 <template>
   <nav>
     <div class="navLink">
-      <i class="icon-gas-station"></i>
+      
     </div>
     <div>
-      <h1>Kaasulla.app</h1>
+      <img  src="~/assets/img/kaasulla-logo-small-white.svg" alt="">
     </div>
     <div class="navLink">
-      <i class="icon-car"></i>
+      
     </div>
   </nav>
 </template>
@@ -28,7 +28,11 @@ export default {
 
 <style lang="postcss" scoped>
 nav {
-  @apply relative w-full bg-primary flex justify-between px-6 py-1 text-center;
+  @apply relative w-full h-12 bg-primary flex justify-between px-6 py-1 text-center;
+  @screen lg {
+    grid-column: 2;
+    grid-row: 3;
+  }
   .navLink {
     @apply flex-none flex justify-center content-center items-center text-white;
   }
@@ -38,8 +42,8 @@ nav {
   span {
     @apply absolute text-white text-base items-center justify-center w-8 pl-4;
   }
-  h1 {
-    @apply flex-grow w-full py-2 px-4 text-base text-white text-center font-display;
+  img {
+    @apply flex-grow w-full py-2 px-4 text-center;
   }
   input {
     @apply flex-grow w-full py-2 px-4 text-sm border border-gray-300 border-solid rounded;

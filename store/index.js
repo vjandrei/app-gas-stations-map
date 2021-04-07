@@ -116,6 +116,9 @@ export const actions = {
   },
   SET_STATION_CARD(context, clicked){
     context.commit('SET_STATION_CARD', clicked)
+  },
+  RESET_STATION_CARD(context, clicked){
+    context.commit('RESET_STATION_DETAILS', clicked)
   }
 }
 
@@ -144,8 +147,10 @@ export const mutations = {
   SET_STATION_DETAILS(state) {
     state.showStationDetails = true
   },
-  RESET_STATION_DETAILS(state) {
+  RESET_STATION_DETAILS(state, payload) {
     state.showStationDetails = false
+    state.showStation = null
+    state.isOpen = payload
   },
   SET_STATION_LIST(state, payload) {
     state.defaulListStatus = payload

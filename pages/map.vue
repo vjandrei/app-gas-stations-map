@@ -1,17 +1,21 @@
 <template>
   <div id="mapItems">
-    <div id="mapItem">
-      <ComponentMap />
+    <ComponentMap />
+    <ComponentFilter />
+    <div id="list">
+      <div id="listHeading">
+        <div id="listHeadingContainer">
+          <div id="listHeadingContent">
+            <span id="listHeadingText">Lähimmät kaasuasemat</span>
+          </div>
+        </div>
+      </div>
+      <span :class="showList">
+        <ComponentStationListItem  v-for="(station, index) in stations"
+        :key="index" :station="station" />
+      </span>
     </div>
-    <div id="filterItem">
-      <ComponentFilter />
-    </div>
-    <div id="listItem">
-      <ComponentStationList :stations="stations" />
-    </div>
-    <div id="navItem">
-      <appNavigation />
-    </div>
+    <appNavigation />
   </div>
 </template>
 
@@ -19,16 +23,26 @@
 import { mapGetters } from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+      selectedStation: null
+    }
   },
   components: {},
   created() {},
+  mounted(){
+    this.$nuxt.$on('select-station', (station) => {
+      this.selectedStation = station
+    })
+  },
   computed: {
     ...mapGetters({
       stations: 'PASS_STATIONS',
+      loading: 'PASS_LOADING_STATUS',
     }),
-  },
-  methods: {},
+    showList() {
+      return this.loading ? 'hidden' : 'block'
+    },
+  }
 }
 </script>
 
@@ -44,32 +58,65 @@ export default {
   }
 }
 
-#mapItem {
-  @screen lg {
-    grid-column: 1;
-    grid-row: 1/4;
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loading {
+  0% {
+    content: 'Ladataan.';
+  }
+  50% {
+    content: 'Ladataan..';
+  }
+  100% {
+    content: 'Ladataan...';
   }
 }
 
-#filterItem {
-  @screen lg {
-    grid-column: 2;
-    grid-row: 1;
+#list {
+  @apply relative;
+  height: 200px;
+  overflow-y: scroll;
+  &:after {
+    content: '';
+    animation: loading 3s linear infinite alternate;
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 50%;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    min-width: 200px;
+    height: 200px;
+    z-index: -10;
+    @apply text-base text-gray-500;
   }
-}
-
-#listItem {
   @screen lg {
+    height: calc(100vh - 90px);
     grid-column: 2;
     grid-row: 2;
     overflow-y: scroll;
   }
 }
 
-#navItem {
-  @screen lg {
-    grid-column: 2;
-    grid-row: 3;
+#listHeading {
+  @apply bg-light py-4 sticky z-30 top-0 w-full;
+  #listHeadingContainer {
+    @apply relative h-px bg-gray-300;
+  }
+  #listHeadingContent {
+    @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
+  }
+  #listHeadingText {
+    @apply bg-light px-4 text-xs text-gray-500 uppercase;
   }
 }
 </style>
