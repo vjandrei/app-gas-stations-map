@@ -126,7 +126,7 @@ export default {
 }
 
 #appImage{
-  @sceen md{
+  @screen md{
     @apply col-start-2 col-end-2 row-start-1 row-end-4 flex flex-wrap content-center;
   }
 }
