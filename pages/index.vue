@@ -1,13 +1,40 @@
 <template>
-  <div id="welcomeScreen">
+  <div id="welcomeScreen" class="flex flex-wrap content-center">
     <div class="container mx-auto">
       <div id="welcomeScreenContainer">
-        <div>1</div>
-        <div>
-          <img src="~/assets/img/app-in-devices.png" />
-        </div>
+          <div class="col-start-1 col-end-2">
+            <img  src="~/assets/img/kaasulla-logo.svg" alt="">
+          </div>
+          <div class="col-start-1 col-end-2">
+            <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
+            <h2>Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. Sinun tarvitsee vain myötää sovellukselle paikannus oikeus.</h2>
+            <button @click="getUserLocation">
+              <span v-if="userLocation">Haetaan paikkatietoja</span>
+              <span v-else>Paikanna minut</span>
+            </button>
+          </div>
+          <div class="col-start-1 col-end-2">
+            <h3>Ominaisuudet</h3>
+            <ul>
+              <li>
+                <h4>Paikannus</h4>
+                <h5>Alueesi lähimmät kaasutankkausasemat</h5>
+              </li>
+              <li>
+                <h4>Suodattaminen</h4>
+                <h5>Rajaa kaasutankkausasemia kaasutyypin mukaan</h5>
+              </li>
+              <li>
+                <h4>Navigointi</h4>
+                <h5>Reittiohje navigointi applikaatioon</h5>
+              </li>
+            </ul>
+          </div>
+          <div id="appImage">
+            <div><img src="~/assets/img/app-in-devices.png" /></div>
+          </div>
       </div>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -38,7 +65,7 @@ export default {
 */
 
 #welcomeScreen {
-  @apply bg-local bg-center bg-no-repeat bg-auto h-full text-white;
+  @apply bg-local bg-center bg-no-repeat bg-auto h-full text-white px-8 py-4;
   &::after {
     content: '';
     top: 0;
@@ -46,32 +73,61 @@ export default {
     right: 0;
     bottom: 0;
     z-index: -10;
-    @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-center;
+    @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-right-bottom;
     @screen lg {
-      @apply bg-cover bg-top
+      @apply  bg-right-top;
     }
     //filter: grayscale(60%);
     background-image: url('~assets/img/background_shape.svg');
   }
 }
 
+
 #welcomeScreenContainer {
-  @apply w-full h-full grid grid-cols-2 grid-rows-1 font-display text-secondary ;
+  @apply w-full h-full font-display text-secondary;
+  @screen md {
+    @apply grid grid-cols-2;
+  }
+  /*
   display: grid;
   align-items: center;
   justify-items: center;
   height: 100vh;
+  */
   h1 {
-    @apply text-2xl font-bold mb-4 leading-snug;
+    @apply text-2xl font-extrabold my-8 leading-tight;
+    @screen md {
+      @apply text-3xl;
+    }
   }
   h2 {
-    @apply text-sm font-normal mb-2 leading-tight;
+    @apply text-xl font-normal my-8 leading-normal;
   }
   button {
-    @apply block w-full max-w-xs mx-auto rounded-lg px-3 py-3 bg-primary text-white;
+    @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary text-white font-bold text-lg mb-8;
   }
-  p {
-    @apply text-base leading-4 pt-4 text-center w-10/12 m-auto;
+  h3 {
+    @apply text-xl font-extrabold my-4;
+  }
+  h4 {
+    @apply text-lg font-bold;
+  }
+  h5 {
+    @apply text-base font-normal my-1 leading-snug;
+  }
+  ul {
+    li {
+      @apply my-4;
+    }
+  }
+  img{
+    @apply my-8;
+  }
+}
+
+#appImage{
+  @sceen md{
+    @apply col-start-2 col-end-2 row-start-1 row-end-4 flex flex-wrap content-center;
   }
 }
 

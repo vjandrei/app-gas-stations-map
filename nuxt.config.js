@@ -59,9 +59,9 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
-      title: 'Kaasuasemat',
-      description: 'Löydä lähin kaasuasema',
+      lang: 'fi',
+      title: 'Kaasulla.app',
+      description: 'Löydä lähin kaasutankkausasemat',
     },
   },
 
@@ -70,7 +70,7 @@ export default {
    */
   webfontloader: {
     google: {
-      families: ['Lato:300,400,700'], //Loads Lato font with weights 400 and 700
+      families: ['Lato:300,400,700,900'], //Loads Lato font with weights 400 and 700
     },
   },
 
