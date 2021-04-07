@@ -62,6 +62,20 @@ export default {
       lang: 'fi',
       title: 'Kaasulla.app',
       description: 'Löydä lähin kaasutankkausasemat',
+      icon:{
+        source: '~/assets/img/logo-shape.png'
+      },
+      meta:{
+        name: 'Kaasulla.app',
+        author: 'Andreas Koutsoukos',
+        description: 'Löydä lähin kaasutankkausasemat',
+        theme_color: '#167ACE',
+        ogSiteName: 'Kaasulla.app',
+        ogTitle: 'Kaasutankkausasemat',
+        ogDescription: 'Löydä lähin kaasutankkausasemat',
+        ogImage: '~/assets/img/app-in-devices.png',
+        ogUrl: 'https://kaasulla.app',
+      }
     },
   },
 
