@@ -1,6 +1,6 @@
 {
-  "name": "liquefied-petroleum-gas-stations",
-  "short_name": "liquefied-petroleum-gas-stations",
+  "name": "kaasulla.app",
+  "short_name": "kaasulla.app",
   "description": "Löydä lähin kaasutankkausasemat",
   "icons": [
     {
@@ -50,5 +50,19 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "lang": "fi",
-  "title": "Kaasulla.app"
+  "title": "Kaasulla.app",
+  "icon": {
+    "source": "~/assets/img/logo-shape.png"
+  },
+  "meta": {
+    "name": "Kaasulla.app",
+    "author": "Andreas Koutsoukos",
+    "description": "Löydä lähin kaasutankkausasemat",
+    "theme_color": "#167ACE",
+    "ogSiteName": "Kaasulla.app",
+    "ogTitle": "Kaasutankkausasemat",
+    "ogDescription": "Löydä lähin kaasutankkausasemat",
+    "ogImage": "~/assets/img/app-in-devices.png",
+    "ogUrl": "https://kaasulla.app"
+  }
 }
