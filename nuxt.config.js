@@ -59,10 +59,16 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'Kaasulla.app',
+      short_name: 'Kaasulla.app',
       lang: 'fi',
       title: 'Kaasulla.app',
       description:
         'Kaasulla.app on selainpohjainen karttasovellus jonka avulla löydät kaasutankkausasemat helposti. Sovellus paikantaa sinun sijainnin ja näyttää lähimmät asemat.',
+      publicPath: 'https://kaasulla.app',
+    },
+    icon: {
+      fileName: 'icon.png',
     },
     meta: {
       name: 'Kaasulla.app',
