@@ -1,0 +1,55 @@
+{
+  "name": "Kaasulla.app",
+  "short_name": "Kaasulla.app",
+  "description": "Kaasulla.app on selainpohjainen karttasovellus jonka avulla löydät kaasutankkausasemat helposti. Sovellus paikantaa sinun sijainnin ja näyttää lähimmät asemat.",
+  "icons": [
+    {
+      "src": "/_nuxt/icons/icon_64x64.be9e4c.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/_nuxt/icons/icon_120x120.be9e4c.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/_nuxt/icons/icon_144x144.be9e4c.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/_nuxt/icons/icon_152x152.be9e4c.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/_nuxt/icons/icon_192x192.be9e4c.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/_nuxt/icons/icon_384x384.be9e4c.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/_nuxt/icons/icon_512x512.be9e4c.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#167ACE",
+  "lang": "fi",
+  "title": "Kaasulla.app"
+}
