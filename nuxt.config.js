@@ -65,7 +65,6 @@ export default {
       title: 'Kaasulla.app',
       description:
         'Kaasulla.app on selainpohjainen karttasovellus jonka avulla löydät kaasutankkausasemat helposti. Sovellus paikantaa sinun sijainnin ja näyttää lähimmät asemat.',
-      publicPath: 'https://kaasulla.app',
     },
     icon: {
       fileName: 'icon.png',
