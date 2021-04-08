@@ -3,7 +3,13 @@
     <div class="container mx-auto">
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
-          <img id="logo" src="~/assets/img/kaasulla-logo.svg" alt="" />
+          <img
+            id="logo"
+            src="~/assets/img/kaasulla-logo.svg"
+            width="auto"
+            height="auto"
+            alt=""
+          />
         </div>
         <div class="col-start-1 col-end-2">
           <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
@@ -40,14 +46,18 @@
               <source
                 srcset="~/assets/img//app-in-devices-large.webp"
                 type="image/webp"
+                sizes="500w"
               />
               <source
                 srcset="~/assets/img//app-in-devices-large.png"
                 type="image/png"
+                sizes="500w"
               />
               <img
                 src="~/assets/img//app-in-devices-large.png"
                 alt="App View"
+                width="500px"
+                height="auto"
               />
             </picture>
           </div>

@@ -11,11 +11,13 @@
         </div>
       </div>
       <span :class="showList">
-        <ComponentStationListItem  v-for="(station, index) in stations"
-        :key="index" :station="station" />
+        <ComponentStationListItem
+          v-for="(station, index) in stations"
+          :key="index"
+          :station="station"
+        />
       </span>
     </div>
-    <appNavigation />
   </div>
 </template>
 
@@ -24,12 +26,12 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      selectedStation: null
+      selectedStation: null,
     }
   },
   components: {},
   created() {},
-  mounted(){
+  mounted() {
     this.$nuxt.$on('select-station', (station) => {
       this.selectedStation = station
     })
@@ -42,7 +44,7 @@ export default {
     showList() {
       return this.loading ? 'hidden' : 'block'
     },
-  }
+  },
 }
 </script>
 

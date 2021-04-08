@@ -13,7 +13,10 @@ export default {
     title: 'Kaasutankkausasemat',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, user-scalable=no',
+      },
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -44,6 +47,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
+    'nuxt-purgecss',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -105,7 +109,14 @@ export default {
       },
     },
   },
-
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0', // default: localhost
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
+    },
+  },
   env: {
     MAPBOX_KEY: process.env.MAPBOX_KEY,
   },

@@ -18,6 +18,7 @@
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
     "nuxt-leaflet": "^0.0.25",
+    "nuxt-purgecss": "^1.0.0",
     "nuxt-webfontloader": "^1.1.0",
     "vue-mobile-viewport-height": "^1.0.4",
     "vue-sliding-panel": "^1.1.2",
