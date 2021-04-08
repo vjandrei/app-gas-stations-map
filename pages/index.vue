@@ -2,39 +2,52 @@
   <div id="welcomeScreen" class="flex flex-wrap content-center">
     <div class="container mx-auto">
       <div id="welcomeScreenContainer">
-          <div class="col-start-1 col-end-2">
-            <img  src="~/assets/img/kaasulla-logo.svg" alt="">
+        <div class="col-start-1 col-end-2">
+          <img src="~/assets/img/kaasulla-logo.svg" alt="" />
+        </div>
+        <div class="col-start-1 col-end-2">
+          <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
+          <h2>
+            Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja
+            maakaasutankkausasemat. Sinun tarvitsee vain myötää sovellukselle
+            paikannus oikeus.
+          </h2>
+          <button @click="getUserLocation">
+            <span v-if="userLocation">Haetaan paikkatietoja</span>
+            <span v-else>Paikanna minut</span>
+          </button>
+        </div>
+        <div class="col-start-1 col-end-2">
+          <h3>Ominaisuudet</h3>
+          <ul>
+            <li>
+              <h4>Paikannus</h4>
+              <h5>Alueesi lähimmät kaasutankkausasemat</h5>
+            </li>
+            <li>
+              <h4>Suodattaminen</h4>
+              <h5>Rajaa kaasutankkausasemia kaasutyypin mukaan</h5>
+            </li>
+            <li>
+              <h4>Navigointi</h4>
+              <h5>Reittiohje navigointi applikaatioon</h5>
+            </li>
+          </ul>
+        </div>
+        <div id="appImage">
+          <div>
+            <img
+              src=""
+              srcset="
+              ~/assets/img/app-in-devices-small.jpg   320w
+              ~/assets/img/app-in-devices-medium.jpg  560w,
+              ~/assets/img/app-in-devices-large.jpg  1085w,
+              "
+            />
           </div>
-          <div class="col-start-1 col-end-2">
-            <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
-            <h2>Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. Sinun tarvitsee vain myötää sovellukselle paikannus oikeus.</h2>
-            <button @click="getUserLocation">
-              <span v-if="userLocation">Haetaan paikkatietoja</span>
-              <span v-else>Paikanna minut</span>
-            </button>
-          </div>
-          <div class="col-start-1 col-end-2">
-            <h3>Ominaisuudet</h3>
-            <ul>
-              <li>
-                <h4>Paikannus</h4>
-                <h5>Alueesi lähimmät kaasutankkausasemat</h5>
-              </li>
-              <li>
-                <h4>Suodattaminen</h4>
-                <h5>Rajaa kaasutankkausasemia kaasutyypin mukaan</h5>
-              </li>
-              <li>
-                <h4>Navigointi</h4>
-                <h5>Reittiohje navigointi applikaatioon</h5>
-              </li>
-            </ul>
-          </div>
-          <div id="appImage">
-            <div><img src="~/assets/img/app-in-devices.png" /></div>
-          </div>
+        </div>
       </div>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -75,13 +88,12 @@ export default {
     z-index: -10;
     @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-right-bottom;
     @screen lg {
-      @apply  bg-right-bottom;
+      @apply bg-right-bottom;
     }
     //filter: grayscale(60%);
     background-image: url('~assets/img/background_shape.svg');
   }
 }
-
 
 #welcomeScreenContainer {
   @apply w-full h-full font-display text-secondary;
@@ -120,13 +132,13 @@ export default {
       @apply my-4;
     }
   }
-  img{
+  img {
     @apply my-8;
   }
 }
 
-#appImage{
-  @screen md{
+#appImage {
+  @screen md {
     @apply col-start-2 col-end-2 row-start-1 row-end-4 flex flex-wrap content-center;
   }
 }

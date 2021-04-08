@@ -68,7 +68,7 @@ export default {
     },
     icon: {
       fileName: 'icon.png',
-      purpose: 'maskable',
+      purpose: ['any', 'maskable'],
       sizes: [48, 64, 72, 96, 120, 128, 144, 152, 192, 384, 512],
     },
     meta: {
