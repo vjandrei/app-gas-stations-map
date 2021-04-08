@@ -83,7 +83,7 @@ export default {
       ogHost: 'https://kaasulla.app',
       ogImage: '/ogImage.png',
       ogUrl: 'https://kaasulla.app',
-      nativeUI: true,
+      nativeUI: false,
     },
   },
 
@@ -105,6 +105,7 @@ export default {
       },
     },
   },
+
   env: {
     MAPBOX_KEY: process.env.MAPBOX_KEY,
   },

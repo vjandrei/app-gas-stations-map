@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
-          <img src="~/assets/img/kaasulla-logo.svg" alt="" />
+          <img id="logo" src="~/assets/img/kaasulla-logo.svg" alt="" />
         </div>
         <div class="col-start-1 col-end-2">
           <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
@@ -36,14 +36,20 @@
         </div>
         <div id="appImage">
           <div>
-            <img
-              src=""
-              srcset="
-              ~/assets/img/app-in-devices-small.jpg   320w
-              ~/assets/img/app-in-devices-medium.jpg  560w,
-              ~/assets/img/app-in-devices-large.jpg  1085w,
-              "
-            />
+            <picture>
+              <source
+                srcset="~/assets/img//app-in-devices-large.webp"
+                type="image/webp"
+              />
+              <source
+                srcset="~/assets/img//app-in-devices-large.png"
+                type="image/png"
+              />
+              <img
+                src="~/assets/img//app-in-devices-large.png"
+                alt="App View"
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -76,6 +82,10 @@ export default {
   @apply relative flex flex-col h-full text-white justify-end bg-white ;
 }
 */
+
+#logo {
+  @apply h-6;
+}
 
 #welcomeScreen {
   @apply bg-local bg-right-bottom bg-no-repeat bg-auto h-full text-white px-8 py-4;
