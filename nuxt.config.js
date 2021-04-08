@@ -68,6 +68,7 @@ export default {
     },
     icon: {
       fileName: 'icon.png',
+      purpose: 'maskable',
     },
     meta: {
       name: 'Kaasulla.app',
