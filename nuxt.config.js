@@ -61,7 +61,8 @@ export default {
     manifest: {
       lang: 'fi',
       title: 'Kaasulla.app',
-      description: 'Löydä lähin kaasutankkausasemat',
+      description:
+        'Kaasulla.app on selainpohjainen karttasovellus jonka avulla löydät kaasutankkausasemat helposti. Sovellus paikantaa sinun sijainnin ja näyttää lähimmät asemat.',
     },
     meta: {
       name: 'Kaasulla.app',
@@ -69,11 +70,13 @@ export default {
       description: 'Löydä lähin kaasutankkausasemat',
       theme_color: '#167ACE',
       ogSiteName: 'Kaasulla.app',
-      ogTitle: 'Kaasutankkausasemat',
-      ogDescription: 'Löydä lähin kaasutankkausasemat',
+      ogTitle: 'Löydä kaasutankkausasemat kätevästi mobiilipuhelimen avulla.',
+      ogDescription:
+        'Kaasulla.app on selainpohjainen karttasovellus jonka avulla löydät kaasutankkausasemat helposti. Sovellus paikantaa sinun sijainnin ja näyttää lähimmät asemat.',
       ogHost: 'https://kaasulla.app',
       ogImage: '/ogImage.png',
       ogUrl: 'https://kaasulla.app',
+      nativeUI: true,
     },
   },
 
