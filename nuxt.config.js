@@ -44,14 +44,12 @@ export default {
     // https://go.nuxtjs.dev/eslint
     //'@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
-    // https://github.com/Developmint/nuxt-webfontloader
-    'nuxt-webfontloader',
     // https://github.com/schlunsen/nuxt-leaflet
     'nuxt-leaflet',
   ],
@@ -90,9 +88,12 @@ export default {
   /*
    ** Global Fonts
    */
-  webfontloader: {
-    google: {
-      families: ['Lato:300,400,700,900'], //Loads Lato font with weights 400 and 700
+  googleFonts: {
+    families: {
+      Lato: [300, 400, 700, 900],
+      prefetch: true,
+      preconnect: true,
+      preload: true,
     },
   },
 
