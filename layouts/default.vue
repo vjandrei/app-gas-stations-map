@@ -19,7 +19,7 @@
         </header>
         <ul id="primaryLinks">
           <li>
-            <a href="" class="active"><i class="icon-location"></i> Koti</a>
+            <NuxtLink to="/"><i class="icon-location"></i> Koti</NuxtLink>
           </li>
           <li>
             <a href=""><i class="icon-location"></i> Tietoa sivusta</a>
