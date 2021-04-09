@@ -3,15 +3,6 @@
     <div class="container mx-auto">
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
-          <img
-            id="logo"
-            src="~/assets/img/kaasulla-logo.svg"
-            width="131px"
-            height="24px"
-            alt=""
-          />
-        </div>
-        <div class="col-start-1 col-end-2">
           <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
           <h2>
             Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja

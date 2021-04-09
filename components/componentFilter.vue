@@ -51,11 +51,11 @@ export default {
 .filterLink {
   @apply flex-1 text-center text-secondary_dark font-medium uppercase text-xs;
   &.active {
-    @apply text-default;
+    @apply text-primary_default;
     span {
       @apply px-1 pb-2 w-full;
       box-shadow: inset 0 -0.125em 0 0 #fff,
-        inset 0 -0.275em 0 0 rgba(0, 175, 254, 1);
+        inset 0 -0.275em 0 0 rgba(0, 69, 191, 1);
     }
   }
 }

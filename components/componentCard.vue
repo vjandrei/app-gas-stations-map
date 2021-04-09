@@ -123,7 +123,7 @@ export default {
 }
 
 .closeCard {
-  @apply text-default font-semibold  font-display tracking-wider cursor-pointer;
+  @apply text-primary_default font-semibold font-display tracking-wider cursor-pointer;
   position: absolute;
   top: -20px;
   right: 16px;

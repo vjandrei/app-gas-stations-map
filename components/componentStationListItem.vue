@@ -72,7 +72,7 @@ export default {
   .stationGeneralDetails {
     @apply flex flex-col pr-4;
     h2 {
-      @apply text-default mb-2 text-base;
+      @apply text-primary_default mb-2 text-base;
     }
     h4 {
       @apply mb-2 text-secondary_dark;

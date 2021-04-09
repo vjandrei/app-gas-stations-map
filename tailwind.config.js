@@ -23,7 +23,7 @@ module.exports = {
         primary_light: 'var(--color-primary-light)',
         default: 'var(--color-default)',
         secondary_dark: 'var(--color-secondary-dark)',
-        secondary_default: 'var(--color-secondary-defaul)',
+        secondary_default: 'var(--color-secondary-default)',
         secondary_light: 'var(--color-secondary-light)',
       },
       inset: {
