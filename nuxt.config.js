@@ -96,8 +96,8 @@ export default {
       prefetch: true,
       preconnect: true,
       preload: true,
-      display: 'swap',
     },
+    display: 'swap',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
