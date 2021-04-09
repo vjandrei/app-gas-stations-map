@@ -87,12 +87,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-/*
-#welcomeScreen {
-  @apply relative flex flex-col h-full text-white justify-end bg-white ;
-}
-*/
-
 #logo {
   @apply h-6;
 }
@@ -120,12 +114,6 @@ export default {
   @screen md {
     @apply grid grid-cols-2;
   }
-  /*
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  height: 100vh;
-  */
   h1 {
     @apply text-2xl font-extrabold my-8 leading-tight;
     @screen md {
@@ -136,7 +124,7 @@ export default {
     @apply text-xl font-normal my-8 leading-normal;
   }
   button {
-    @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary text-white font-bold text-lg mb-8;
+    @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary_dark text-white font-bold text-lg mb-8;
   }
   h3 {
     @apply text-xl font-extrabold my-4;

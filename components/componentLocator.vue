@@ -32,7 +32,7 @@ export default {
   }
   i {
     font-size: 24px;
-    @apply text-primary;
+    @apply text-default;
   }
 }
 </style>

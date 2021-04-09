@@ -49,13 +49,13 @@ export default {
   }
 }
 .filterLink {
-  @apply flex-1 text-center text-default font-medium uppercase text-xs;
+  @apply flex-1 text-center text-secondary_dark font-medium uppercase text-xs;
   &.active {
-    @apply text-primary;
+    @apply text-default;
     span {
       @apply px-1 pb-2 w-full;
       box-shadow: inset 0 -0.125em 0 0 #fff,
-        inset 0 -0.275em 0 0 rgba(35, 136, 204, 1);
+        inset 0 -0.275em 0 0 rgba(0, 175, 254, 1);
     }
   }
 }

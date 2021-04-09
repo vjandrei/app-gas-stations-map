@@ -58,7 +58,7 @@ export default {
       circle: {
         name: 'userLocationPin',
         color: 'rgba(35,136,204,0.30)',
-        fillColor: '#2388CC',
+        fillColor: '#0045BF',
         fillOpacity: 1,
         weight: 20,
         class: 'mapPin',
@@ -82,9 +82,7 @@ export default {
       })
     })
     this.$nuxt.$on('show-marker', (station) => {
-      this.$nextTick(() => {
-        
-      })
+      this.$nextTick(() => {})
     })
     /*
     this.$nuxt.$on('show-marker', (station) => {

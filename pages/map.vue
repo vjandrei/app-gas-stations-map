@@ -99,7 +99,7 @@ export default {
     min-width: 200px;
     height: 200px;
     z-index: -10;
-    @apply text-base text-gray-500;
+    @apply text-base text-secondary_dark;
   }
   @screen lg {
     height: calc(100vh - 90px);
@@ -110,15 +110,15 @@ export default {
 }
 
 #listHeading {
-  @apply bg-light py-4 sticky z-30 top-0 w-full;
+  @apply bg-secondary_light py-4 sticky z-30 top-0 w-full;
   #listHeadingContainer {
-    @apply relative h-px bg-gray-300;
+    @apply relative h-px bg-secondary_default;
   }
   #listHeadingContent {
     @apply absolute left-0 top-0 flex justify-center w-full -mt-2;
   }
   #listHeadingText {
-    @apply bg-light px-4 text-xs text-gray-500 uppercase;
+    @apply bg-secondary_light px-4 text-xs text-secondary_dark uppercase;
   }
 }
 </style>

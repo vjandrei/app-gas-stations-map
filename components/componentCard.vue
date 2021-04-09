@@ -117,34 +117,34 @@ export default {
 }
 #stationCardContent {
   @apply bg-white p-4 rounded-md shadow-lg relative;
-   @screen lg {
-     height: calc(100vh - 113px);
-   }
+  @screen lg {
+    height: calc(100vh - 113px);
+  }
 }
 
-.closeCard{
-  @apply text-primary font-semibold  font-display tracking-wider cursor-pointer;
-      position: absolute;
-      top: -20px;
-      right: 16px;
-      background: white;
-      height: 48px;
-      width: 72px;
-      border-top-left-radius: 0.375rem;
-      border-top-right-radius: 0.375rem;
-      text-align: center;
-      line-height: 48px;
-      text-transform: uppercase;
-      font-size: 12px;
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), -5px 4px 6px -2px rgb(0 0 0 / 5%);
-      z-index: -1;
-  @screen lg {  
-        top: 40px;
-        left: -56px;
-        border-top-left-radius: 0.375rem;
-        border-bottom-left-radius: 0.375rem;
-    }
-      
+.closeCard {
+  @apply text-default font-semibold  font-display tracking-wider cursor-pointer;
+  position: absolute;
+  top: -20px;
+  right: 16px;
+  background: white;
+  height: 48px;
+  width: 72px;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  text-align: center;
+  line-height: 48px;
+  text-transform: uppercase;
+  font-size: 12px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+    -5px 4px 6px -2px rgb(0 0 0 / 5%);
+  z-index: -1;
+  @screen lg {
+    top: 40px;
+    left: -56px;
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+  }
 }
 
 .stationDetails {
@@ -154,17 +154,17 @@ export default {
   @apply flex flex-grow-0  flex-col pr-4 border-r border-gray-300;
   flex: 1;
   h2 {
-    @apply text-secondary mb-1 text-xl font-semibold;
+    @apply text-secondary_dark mb-1 text-xl font-semibold;
   }
   h4 {
-    @apply text-fade;
+    @apply text-secondary_dark;
   }
 }
 .stationRoute {
   @apply mt-4;
 }
 .stationLocationDetails {
-  @apply flex flex-grow-0 flex-col items-start justify-center text-fade px-4;
+  @apply flex flex-grow-0 flex-col items-start justify-center text-secondary_dark px-4;
 }
 .stationOtherDetails {
   @apply pt-4 border-t border-gray-300;
@@ -172,13 +172,13 @@ export default {
 dl {
   @apply flex flex-row leading-tight font-normal text-sm font-display;
   dt {
-    @apply w-1/2 flex-none my-2 text-fade;
+    @apply w-1/2 flex-none my-2 text-secondary_dark;
     @screen lg {
       @apply my-4;
     }
   }
   dd {
-    @apply text-dark my-2 font-normal;
+    @apply text-secondary_dark my-2 font-normal;
     @screen lg {
       @apply my-4;
     }
@@ -190,7 +190,7 @@ dl {
 
 .overlay {
   @apply z-40 fixed top-0 left-0 w-full h-full;
-  background: rgba(235, 235, 235, 0.0);
+  background: rgba(235, 235, 235, 0);
   @screen lg {
     width: calc(100% - 400px);
   }

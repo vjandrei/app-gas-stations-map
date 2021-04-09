@@ -1,24 +1,21 @@
 <template>
-    <div>
-      <div
-        class="stationListItemCard"
-        style=""
-      >
-        <div class="stationListItemCardContent">
-          <div class="stationMinDetails" @click="getStation(station)">
-            <div class="stationGeneralDetails">
-              <h2>{{ station.name }}</h2>
-              <h4><i class="icon-location mr-1"></i> {{ station.address }}</h4>
-            </div>
-            
-            <div class="stationLocationDetails space-x-1">
-              <h5>Sijainnista</h5>
-              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
-            </div>
+  <div>
+    <div class="stationListItemCard" style="">
+      <div class="stationListItemCardContent">
+        <div class="stationMinDetails" @click="getStation(station)">
+          <div class="stationGeneralDetails">
+            <h2>{{ station.name }}</h2>
+            <h4><i class="icon-location"></i> {{ station.address }}</h4>
+          </div>
+
+          <div class="stationLocationDetails space-x-1">
+            <h5>Sijainnista</h5>
+            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -27,7 +24,7 @@ export default {
   props: {
     station: {
       type: Object,
-    }
+    },
   },
   data() {
     return {
@@ -35,7 +32,7 @@ export default {
     }
   },
   computed: {
-      ...mapGetters({
+    ...mapGetters({
       selectedStation: 'PASS_STATION',
     }),
   },
@@ -53,8 +50,7 @@ export default {
       this.$nuxt.$emit('show-marker', station)
       this.$store.dispatch('GET_SELECTED_MARKER', station)
       this.$store.dispatch('SET_STATION_CARD', true)
-    }
-    
+    },
   },
 }
 </script>
@@ -76,16 +72,16 @@ export default {
   .stationGeneralDetails {
     @apply flex flex-col pr-4;
     h2 {
-      @apply text-primary mb-2 text-base;
+      @apply text-default mb-2 text-base;
     }
     h4 {
-      @apply mb-2 text-fade;
+      @apply mb-2 text-secondary_dark;
     }
   }
   .stationLocationDetails {
-    @apply flex flex-grow-0 text-fade flex-row items-center;
+    @apply flex flex-grow-0 text-secondary_dark flex-row items-center;
     .icon-location {
-      @apply text-fade mr-1;
+      @apply text-primary_dark mr-1;
     }
   }
 }
@@ -95,10 +91,10 @@ export default {
 dl {
   @apply flex leading-tight font-normal text-sm font-display;
   dt {
-    @apply w-1/2 flex-none my-2 text-fade;
+    @apply w-1/2 flex-none my-2 text-secondary_dark;
   }
   dd {
-    @apply text-dark my-2 font-normal;
+    @apply text-secondary_dark my-2 font-normal;
   }
 }
 </style>

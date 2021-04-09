@@ -2,13 +2,20 @@
 @import 'fonts-icons';
 
 :root {
-  --color-primary: #167ACE;
+  --color-primary: #167ace;
   --color-secondary: #373d5d;
-  --color-default: #959eb5;
   --color-dark: #030417;
   --color-light: #f5f7fa;
   --color-brand: #b4c2d5;
-  --color-fade: #616A89;
+  --color-fade: #616a89;
+
+  --color-primary-dark: #0039ad;
+  --color-primary-defaul: #0045bf;
+  --color-primary-light: #296be8;
+  --color-default: #00affc;
+  --color-secondary-dark: #435280;
+  --color-secondary-defaul: #aebdd5;
+  --color-secondary-light: #ecf3ff;
 }
 
 main {
@@ -39,16 +46,16 @@ html {
 }
 
 .largeButton {
-  @apply mx-auto w-full text-center bg-primary text-lg text-white font-bold py-4 px-4 rounded;
+  @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary_dark text-white font-bold text-lg mb-8;
   &:hover {
-    background-color: #1972ae;
+    @apply bg-primary_light;
   }
 }
 
 .smallButton {
-  @apply mx-auto w-full text-center bg-primary text-lg text-white font-bold py-2 px-4 rounded;
+  @apply block w-full  rounded-lg px-2 py-2 bg-primary_dark text-white font-bold text-lg mb-8;
   &:hover {
-    background-color: #1972ae;
+    @apply bg-primary_light;
   }
 }
 
