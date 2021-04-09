@@ -1,42 +1,51 @@
 <template>
   <div id="app">
-    <nav>
-      <div id="menuButton">Valikko <i class="icon-location"></i></div>
-      <header id="header">
-        <img
-          id="logo"
-          src="~/assets/img/kaasulla-logo-small-white.svg"
-          width="50%"
-          height="24px"
-          alt=""
-        />
-      </header>
-      <ul id="primaryLinks">
-        <li>
-          <a href="" class="active"><i class="icon-location"></i> Koti</a>
-        </li>
-        <li>
-          <a href=""><i class="icon-location"></i> Tietoa sivusta</a>
-        </li>
-        <li>
-          <a href=""><i class="icon-location"></i> Kaasuautoilu blogi</a>
-        </li>
-      </ul>
-      <ul id="secondaryLinks">
-        <li>
-          <a href="">Yhteydenotto</a>
-        </li>
-        <li>
-          <a href="">Tietosuoja</a>
-        </li>
-        <li>
-          <a href="">Käyttöehdot</a>
-        </li>
-      </ul>
-      <footer>
-        <small>Copyright © 2021 Kaasulle.app. <br />All Rights Reserved.</small>
-      </footer>
-    </nav>
+    <button id="openMenu" class="menuButton" @click="navigationToggle()">
+      Valikko
+    </button>
+    <transition name="nav">
+      <nav v-if="show">
+        <button id="closeMenu" class="menuButton" @click="navigationToggle()">
+          Sulje
+        </button>
+        <header id="header">
+          <img
+            id="logo"
+            src="~/assets/img/kaasulla-logo-small-white.svg"
+            width="50%"
+            height="24px"
+            alt=""
+          />
+        </header>
+        <ul id="primaryLinks">
+          <li>
+            <a href="" class="active"><i class="icon-location"></i> Koti</a>
+          </li>
+          <li>
+            <a href=""><i class="icon-location"></i> Tietoa sivusta</a>
+          </li>
+          <li>
+            <a href=""><i class="icon-location"></i> Kaasuautoilu blogi</a>
+          </li>
+        </ul>
+        <ul id="secondaryLinks">
+          <li>
+            <a href="">Yhteydenotto</a>
+          </li>
+          <li>
+            <a href="">Tietosuoja</a>
+          </li>
+          <li>
+            <a href="">Käyttöehdot</a>
+          </li>
+        </ul>
+        <footer>
+          <small
+            >Copyright © 2021 Kaasulle.app. <br />All Rights Reserved.</small
+          >
+        </footer>
+      </nav>
+    </transition>
     <main>
       <nuxt />
     </main>
@@ -45,38 +54,64 @@
 
 <script>
 export default {
-  components: {},
+  data() {
+    return {
+      show: false,
+    }
+  },
+  methods: {
+    navigationToggle() {
+      this.show = !this.show
+    },
+  },
 }
 </script>
 
 <style lang="postcss" scoped>
 #app {
-  @apply min-h-full flex flex-row;
+  @apply relative min-h-full;
 }
-#menuButton {
+
+#openMenu {
+  top: 48px;
+  left: 0px;
+}
+#closeMenu {
+  @apply z-20;
+  top: 48px;
+  right: -80px;
+}
+
+.menuButton {
   @apply text-white bg-primary_default font-semibold font-display tracking-wider cursor-pointer z-10 rounded-r-lg;
   position: absolute;
-  top: -20px;
-  right: 16px;
   height: 48px;
-  width: 100px;
+  width: 80px;
   text-align: center;
   line-height: 48px;
   text-transform: uppercase;
   font-size: 12px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
-    -5px 4px 6px -2px rgb(0 0 0 / 5%);
-  @screen lg {
-    top: 51px;
-    right: -100px;
-  }
+  box-shadow: 10px 10px 15px -3px rgb(0 0 0 / 10%),
+    0px 4px 6px -2px rgb(0 0 0 / 5%);
 }
-nav {
-  @apply relative flex flex-col w-1/6 bg-primary_default;
-  transition: transform 100ms cubic-bezier(0.35, 0.69, 0.48, 0.99);
+
+.nav-enter-active,
+.nav-leave-active {
   transform: translate(-100%, 0%);
+}
+
+.nav-leave,
+.nav-enter {
+}
+
+nav {
+  @apply fixed w-3/5 min-h-full flex flex-col bg-primary_default z-10;
+  @screen lg {
+    @apply w-64;
+  }
+  transition: transform 100ms cubic-bezier(0.35, 0.69, 0.48, 0.99);
   #header {
-    @apply bg-primary_dark px-8 p-4 text-center;
+    @apply flex bg-primary_dark px-8 h-12 text-center;
   }
   #primaryLinks,
   #secondaryLinks {
@@ -110,7 +145,7 @@ nav {
   }
 }
 main {
-  @apply w-5/6 min-h-full grid;
+  @apply min-h-full grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: 100%;
 }

@@ -83,7 +83,7 @@ export default {
 }
 
 #welcomeScreen {
-  @apply bg-local bg-right-bottom bg-no-repeat bg-auto h-full text-white px-8 py-4;
+  @apply bg-local bg-right-bottom bg-no-repeat bg-auto h-full text-white px-8 pt-24 py-4;
   &::after {
     content: '';
     top: 0;
@@ -115,7 +115,7 @@ export default {
     @apply text-xl font-normal my-8 leading-normal;
   }
   button {
-    @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary_dark text-white font-bold text-lg mb-8;
+    @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary_default text-white font-bold text-lg mb-8;
   }
   h3 {
     @apply text-xl font-extrabold my-4;
@@ -139,6 +139,9 @@ export default {
 #appImage {
   @screen md {
     @apply col-start-2 col-end-2 row-start-1 row-end-4 flex flex-wrap content-center;
+    img {
+      @apply w-full;
+    }
   }
 }
 

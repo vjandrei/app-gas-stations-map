@@ -102,7 +102,7 @@ export default {
     @apply text-base text-secondary_dark;
   }
   @screen lg {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 42px);
     grid-column: 2;
     grid-row: 2;
     overflow-y: scroll;
@@ -110,7 +110,7 @@ export default {
 }
 
 #listHeading {
-  @apply bg-secondary_light py-4 sticky z-30 top-0 w-full;
+  @apply bg-secondary_light py-4 sticky top-0 w-full;
   #listHeadingContainer {
     @apply relative h-px bg-secondary_default;
   }
