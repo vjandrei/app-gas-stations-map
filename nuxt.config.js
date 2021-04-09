@@ -94,6 +94,7 @@ export default {
       prefetch: true,
       preconnect: true,
       preload: true,
+      display: 'swap',
     },
   },
 
