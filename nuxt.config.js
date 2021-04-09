@@ -8,6 +8,8 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Kaasutankkausasemat',
+    description:
+      'Kaasulla.app on selainpohjainen karttasovellus jonka avulla löydät kaasutankkausasemat helposti. Sovellus paikantaa sinun sijainnin ja näyttää lähimmät asemat.',
     meta: [
       { charset: 'utf-8' },
       {

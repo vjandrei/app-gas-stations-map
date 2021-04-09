@@ -6,8 +6,8 @@
           <img
             id="logo"
             src="~/assets/img/kaasulla-logo.svg"
-            width="auto"
-            height="auto"
+            width="131px"
+            height="24px"
             alt=""
           />
         </div>
@@ -57,7 +57,7 @@
                 src="~/assets/img//app-in-devices-large.png"
                 alt="App View"
                 width="500px"
-                height="auto"
+                height="340px"
               />
             </picture>
           </div>
