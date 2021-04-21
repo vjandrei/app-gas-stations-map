@@ -33,24 +33,12 @@
         </div>
         <div id="appImage">
           <div>
-            <picture>
-              <source
-                srcset="~/assets/img//app-in-devices-large.webp"
-                type="image/webp"
-                sizes="500w"
-              />
-              <source
-                srcset="~/assets/img//app-in-devices-large.png"
-                type="image/png"
-                sizes="500w"
-              />
-              <img
-                src="~/assets/img//app-in-devices-large.png"
-                alt="App View"
-                width="500px"
-                height="340px"
-              />
-            </picture>
+            <img
+              src="~/assets/img//app-in-devices.svg"
+              alt="App View"
+              width="500px"
+              height="340px"
+            />
           </div>
         </div>
       </div>
@@ -106,13 +94,16 @@ export default {
     @apply grid grid-cols-2;
   }
   h1 {
-    @apply text-2xl font-extrabold my-8 leading-tight;
+    @apply text-xl font-extrabold my-8 leading-tight;
     @screen md {
-      @apply text-3xl;
+      @apply text-5xl leading-snug;
     }
   }
   h2 {
     @apply text-xl font-normal my-8 leading-normal;
+    @screen md {
+      @apply leading-relaxed;
+    }
   }
   button {
     @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary_default text-white font-bold text-lg mb-8;

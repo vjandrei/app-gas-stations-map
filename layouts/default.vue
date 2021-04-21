@@ -19,30 +19,32 @@
         </header>
         <ul id="primaryLinks">
           <li>
-            <NuxtLink to="/"><i class="icon-location"></i> Koti</NuxtLink>
+            <NuxtLink to="/"><i class="icon-home"></i> Koti</NuxtLink>
           </li>
           <li>
-            <a href=""><i class="icon-location"></i> Tietoa sivusta</a>
+            <NuxtLink to="/about"
+              ><i class="icon-info"></i> Tietoa sivusta</NuxtLink
+            >
           </li>
           <li>
-            <a href=""><i class="icon-location"></i> Kaasuautoilu blogi</a>
+            <NuxtLink to="/blog"
+              ><i class="icon-article"></i> Kaasuautoilu blogi</NuxtLink
+            >
           </li>
         </ul>
         <ul id="secondaryLinks">
           <li>
-            <a href="">Yhteydenotto</a>
+            <NuxtLink to="/contact"> Yhteydenotto</NuxtLink>
           </li>
           <li>
-            <a href="">Tietosuoja</a>
+            <NuxtLink to="/"> Tietosuoja</NuxtLink>
           </li>
           <li>
-            <a href="">Käyttöehdot</a>
+            <NuxtLink to="/"> Käyttöehdot</NuxtLink>
           </li>
         </ul>
         <footer>
-          <small
-            >Copyright © 2021 Kaasulle.app. <br />All Rights Reserved.</small
-          >
+          <small>2021 Kaasulle.app</small>
         </footer>
       </nav>
     </transition>
@@ -112,10 +114,13 @@ nav {
   transition: transform 100ms cubic-bezier(0.35, 0.69, 0.48, 0.99);
   #header {
     @apply flex bg-primary_dark px-8 h-12 text-center;
+    img {
+      @apply w-24 m-auto;
+    }
   }
   #primaryLinks,
   #secondaryLinks {
-    @apply m-4 mb-0 text-white border-b border-primary_dark pb-4;
+    @apply m-4 mb-0 text-white font-medium border-b border-primary_dark pb-4;
     li {
       @apply p-2;
       a {
@@ -133,6 +138,7 @@ nav {
     }
   }
   #secondaryLinks {
+    @apply font-normal;
     li {
       a {
         @apply rounded block p-2;

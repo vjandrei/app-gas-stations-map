@@ -63,3 +63,21 @@ i {
     content: '\e906';
   }
 }
+
+.icon-home {
+  &:before {
+    content: url('~assets/img/home-icon.svg');
+  }
+}
+
+.icon-info {
+  &:before {
+    content: url('~assets/img/info-icon.svg');
+  }
+}
+
+.icon-article {
+  &:before {
+    content: url('~assets/img/article-icon.svg');
+  }
+}
