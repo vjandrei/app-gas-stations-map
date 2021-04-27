@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <AppNavigation />
+    <AppLangBreadNavigation />
     <main class="container mx-auto p-8">
       <nuxt />
     </main>

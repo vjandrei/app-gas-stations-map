@@ -1,5 +1,5 @@
 <template>
-  <div id="welcomeScreen" class="flex flex-wrap content-center">
+  <div class="flex flex-wrap content-center">
     <div class="container mx-auto">
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
@@ -66,41 +66,22 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#logo {
-  @apply h-6;
-}
-
-#welcomeScreen {
-  @apply bg-local bg-right-bottom bg-no-repeat bg-auto h-full text-white px-8 pt-24 py-4;
-  &::after {
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -10;
-    @apply absolute inset-0 w-full h-full bg-no-repeat bg-contain bg-right-bottom;
-    @screen lg {
-      @apply bg-right-bottom;
-    }
-    //filter: grayscale(60%);
-    background-image: url('~assets/img/background_shape.svg');
-  }
-}
-
 #welcomeScreenContainer {
-  @apply w-full h-full font-display text-secondary;
+  @apply w-full h-full font-display;
   @screen md {
     @apply grid grid-cols-2;
   }
   h1 {
-    @apply text-xl font-extrabold my-8 leading-tight;
+    @apply text-2xl font-extrabold my-8 leading-tight;
     @screen md {
-      @apply text-5xl leading-snug;
+      @apply text-3xl leading-snug;
+    }
+    @screen lg {
+      @apply text-4xl;
     }
   }
   h2 {
-    @apply text-xl font-normal my-8 leading-normal;
+    @apply text-lg font-normal my-8 leading-normal;
     @screen md {
       @apply leading-relaxed;
     }

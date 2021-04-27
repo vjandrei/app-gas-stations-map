@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <main class="container mx-auto p-8">
+  <div>
+    <main>
       <nuxt />
     </main>
   </div>

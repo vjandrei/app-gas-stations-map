@@ -54,7 +54,33 @@ export default {
   modules: [
     // https://github.com/schlunsen/nuxt-leaflet
     'nuxt-leaflet',
+    'nuxt-i18n',
   ],
+
+  // i18n
+
+  i18n: {
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+    },
+    locales: [
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.js',
+      },
+      {
+        name: 'Finland',
+        code: 'fi',
+        iso: 'fi-FI',
+        file: 'fi-FI.js',
+      },
+    ],
+    langDir: 'lang/',
+    defaultLocale: 'fi',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

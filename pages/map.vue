@@ -24,6 +24,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
+  layout: 'map',
   data() {
     return {
       selectedStation: null,
