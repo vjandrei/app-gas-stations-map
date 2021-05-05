@@ -1,33 +1,50 @@
 <template>
   <div class="flex flex-wrap content-center">
-    <div class="container mx-auto">
+    <div class="container mx-auto grid">
+      <AppLangBreadNavigation />
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
-          <h1>Kaasutankkausasemat yhdessä sovelluksessa</h1>
-          <h2>
-            Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja
-            maakaasutankkausasemat. Sinun tarvitsee vain myötää sovellukselle
-            paikannus oikeus.
-          </h2>
+          <h1>{{ $t('home.heading') }}</h1>
+          <h2 class="max-w-lg">{{ $t('home.subheading') }}</h2>
           <button @click="getUserLocation">
-            <span v-if="userLocation">Haetaan paikkatietoja</span>
-            <span v-else>Paikanna minut</span>
+            <span v-if="userLocation">{{ $t('ui.gettinglocation') }}</span>
+            <span v-else>{{ $t('ui.locate') }}</span>
           </button>
         </div>
         <div class="col-start-1 col-end-2">
-          <h3>Ominaisuudet</h3>
           <ul>
-            <li>
-              <h4>Paikannus</h4>
-              <h5>Alueesi lähimmät kaasutankkausasemat</h5>
+            <li class="flex py-2">
+              <div
+                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-xl mr-6"
+              >
+                <i class="icon-crosshairs text-primary_dark"></i>
+              </div>
+              <div>
+                <h4>{{ $t('home.features.locationHeading') }}</h4>
+                <h5>{{ $t('home.features.locationContent') }}</h5>
+              </div>
             </li>
-            <li>
-              <h4>Suodattaminen</h4>
-              <h5>Rajaa kaasutankkausasemia kaasutyypin mukaan</h5>
+            <li class="flex py-2">
+              <div
+                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-xl mr-6"
+              >
+                <i class="icon-filter text-primary_dark"></i>
+              </div>
+              <div>
+                <h4>{{ $t('home.features.filterHeading') }}</h4>
+                <h5>{{ $t('home.features.filterContent') }}</h5>
+              </div>
             </li>
-            <li>
-              <h4>Navigointi</h4>
-              <h5>Reittiohje navigointi applikaatioon</h5>
+            <li class="flex py-2">
+              <div
+                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-xl mr-6"
+              >
+                <i class="icon-location-arrow text-primary_dark"></i>
+              </div>
+              <div>
+                <h4>{{ $t('home.features.navigationHeading') }}</h4>
+                <h5>{{ $t('home.features.navigationContent') }}</h5>
+              </div>
             </li>
           </ul>
         </div>
@@ -48,6 +65,13 @@
 
 <script>
 export default {
+  layout: 'default',
+  nuxtI18n: {
+    paths: {
+      fi: '/',
+      en: '/home',
+    },
+  },
   data() {
     return {}
   },
@@ -87,7 +111,10 @@ export default {
     }
   }
   button {
-    @apply block w-full max-w-xs rounded-lg px-3 py-3 bg-primary_default text-white font-bold text-lg mb-8;
+    @apply block w-full rounded-lg px-3 py-3 bg-primary_default text-white font-bold text-lg mb-8;
+    @screen md {
+      @apply max-w-xs;
+    }
   }
   h3 {
     @apply text-xl font-extrabold my-4;

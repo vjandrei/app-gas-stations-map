@@ -48,7 +48,7 @@ html {
 
 main {
   @apply min-h-full grid text-secondary;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 1fr;
   grid-template-columns: 100%;
 }
 
@@ -95,7 +95,7 @@ h4 {
   background-color: rgba(245, 247, 250, var(--tw-bg-opacity));
 }
 
-.nuxt-link-active span {
+.nuxt-link-exact-active span {
   @apply text-white bg-primary_dark;
 }
 

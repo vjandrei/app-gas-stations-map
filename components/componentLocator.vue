@@ -1,7 +1,7 @@
 <template>
   <div id="locator">
     <button id="newLocation" @click="getNewLocation">
-      <i class="icon-gps"></i>
+      <i class="icon-crosshairs text-primary_dark"></i>
     </button>
   </div>
 </template>

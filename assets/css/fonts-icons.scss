@@ -25,6 +25,30 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-filter {
+  &:before {
+    content: '\e800';
+  }
+}
+
+.icon-location-arrow {
+  &:before {
+    content: '\e801';
+  }
+}
+
+.icon-map-marker {
+  &:before {
+    content: '\e802';
+  }
+}
+
+.icon-crosshairs {
+  &:before {
+    content: '\e803';
+  }
+}
+
 .icon-zoom_out {
   &:before {
     content: '\e901';

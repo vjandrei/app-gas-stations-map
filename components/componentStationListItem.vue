@@ -5,7 +5,10 @@
         <div class="stationMinDetails" @click="getStation(station)">
           <div class="stationGeneralDetails">
             <h2>{{ station.name }}</h2>
-            <h4><i class="icon-location"></i> {{ station.address }}</h4>
+            <h4>
+              <i class="icon-map-marker"></i>
+              {{ station.address }}
+            </h4>
           </div>
 
           <div class="stationLocationDetails space-x-1">
