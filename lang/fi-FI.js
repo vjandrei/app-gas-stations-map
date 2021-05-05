@@ -4,7 +4,7 @@ export default {
   hello: 'Moikka',
   pages: {
     home: 'Koti',
-    about: 'Tietoa sivusta',
+    about: 'Tietoa',
     contact: 'Ota yhteyttä',
   },
   ui: {
@@ -15,9 +15,9 @@ export default {
     gettinglocation: 'Haetaan paikkatietoja',
   },
   home: {
-    heading: 'Kaasutankkausasemat yhdessä sovelluksessa',
+    heading: 'Löydä Kaasutankkausasemat',
     subheading:
-      'Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. Sinun tarvitsee vain myötää sovellukselle paikannus oikeus.',
+      'Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. ',
     features: {
       locationHeading: 'Paikanna oma sijainti',
       locationContent: 'Alueesi lähimmät kaasutankkausasemat',

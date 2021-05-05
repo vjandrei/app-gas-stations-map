@@ -69,13 +69,13 @@ main {
   }
 }
 h1 {
-  @apply text-xl font-extrabold my-8 leading-tight;
+  @apply text-xl font-extrabold mb-8 leading-tight;
   @screen md {
     @apply text-5xl leading-snug;
   }
 }
 h2 {
-  @apply text-xl font-normal my-8 leading-normal;
+  @apply text-xl font-normal mb-8 leading-normal;
   @screen md {
     @apply leading-relaxed;
   }

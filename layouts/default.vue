@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <main class="container mx-auto p-8">
+    <AppNavigation />
+    <main>
       <nuxt />
     </main>
   </div>
@@ -14,4 +15,11 @@ export default {
 }
 </script>
 
-<style lang="postcss"></style>
+<style lang="postcss" scoped>
+#app{
+  @apply container mx-auto grid;
+}
+main{
+  @apply container mx-auto p-4;
+}
+</style>

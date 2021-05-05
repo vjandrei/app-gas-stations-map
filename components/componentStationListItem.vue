@@ -10,7 +10,6 @@
               {{ station.address }}
             </h4>
           </div>
-
           <div class="stationLocationDetails space-x-1">
             <h5>Sijainnista</h5>
             <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
@@ -75,17 +74,17 @@ export default {
   .stationGeneralDetails {
     @apply flex flex-col pr-4;
     h2 {
-      @apply text-primary_default mb-2 text-base;
+      @apply text-primary_default mb-2 text-lg;
     }
     h4 {
-      @apply mb-2 text-secondary_dark;
+      @apply mb-2 text-secondary_dark text-sm font-normal;
+      i{
+        @apply mr-2;
+      }
     }
   }
   .stationLocationDetails {
     @apply flex flex-grow-0 text-secondary_dark flex-row items-center;
-    .icon-location {
-      @apply text-primary_dark mr-1;
-    }
   }
 }
 .stationOtherDetails {

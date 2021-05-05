@@ -1,41 +1,5 @@
 <template>
   <div id="contactScreen">
-    <div class="flex flex-wrap justify-between md:px-6 md:pt-6">
-      <!-- buttons theme switch  -->
-      <div class="w-1/2 lg:w-5/12">
-        <nav class="flex flex-wrap mb-4">
-          <p
-            href="#"
-            class="w-auto py-2 pl-3 bg-white rounded-l-lg tab-theme active"
-          >
-            <span
-              class="flex items-center justify-center h-10 px-4 align-middle rounded-lg fill-current"
-              >Yhtendenotto
-            </span>
-          </p>
-        </nav>
-      </div>
-      <!-- buttons size switch  -->
-      <div class="w-1/2 lg:w-5/12">
-        <nav class="flex flex-wrap md:justify-end mb-4">
-          <a
-            href="#"
-            class="w-auto py-2 pl-3 bg-white rounded-l-lg tab-theme active"
-            ><span
-              class="flex items-center justify-center h-10 px-4 align-middle rounded-lg fill-current text-white bg-primary_dark"
-              >FI
-            </span></a
-          ><a
-            href="#"
-            class="w-auto py-2 pl-1 pr-3 bg-white rounded-r-lg tab-theme text-waterloo-900"
-            ><span
-              class="flex items-center justify-center h-10 px-4 align-middle rounded-lg fill-current"
-              >EN</span
-            ></a
-          >
-        </nav>
-      </div>
-    </div>
     <div class="flex flex-wrap justify-between px-6 pt-6">
       <section class="max-w-screen-md mx-auto">
         <h1
@@ -85,6 +49,13 @@
 
 <script>
 export default {
+  layout: 'pages',
+  nuxtI18n: {
+    paths: {
+      fi: '/otayhteytta',
+      en: '/contact',
+    },
+  },
   data() {
     return {}
   },

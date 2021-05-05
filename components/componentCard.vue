@@ -9,15 +9,13 @@
             <div class="stationGeneralDetails">
               <h2>{{ station.name }}</h2>
               <h4>
-                <i class="icon-location mr-1 text-fade"></i>
-                {{ station.address }}
-              </h4>
+              <i class="icon-map-marker"></i>
+              {{ station.address }}
+            </h4>
             </div>
-            <div class="stationLocationDetails">
-              <h5 class="mb-1">Sijainnista</h5>
-              <div class="flex">
-                <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
-              </div>
+            <div class="stationLocationDetails space-x-1">
+            <h5>Sijainnista</h5>
+            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </div>
           </div>
           <div class="stationRoute"></div>
@@ -154,10 +152,13 @@ export default {
   @apply flex flex-grow-0  flex-col pr-4 border-r border-gray-300;
   flex: 1;
   h2 {
-    @apply text-secondary_dark mb-1 text-xl font-semibold;
+    @apply text-secondary_dark mb-1 text-base font-semibold;
   }
   h4 {
-    @apply text-secondary_dark;
+    @apply mb-2 text-secondary_dark text-sm font-normal;
+    i{
+        @apply mr-2;
+      }
   }
 }
 .stationRoute {

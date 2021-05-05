@@ -15,9 +15,9 @@ export default {
     gettinglocation: 'Getting location',
   },
   home: {
-    heading: 'Kaasutankkausasemat yhdessä sovelluksessa',
+    heading: 'Find liquefied petroleum gas filling stations',
     subheading:
-      'Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. Sinun tarvitsee vain myötää sovellukselle paikannus oikeus.',
+      'The app allows you to find stations where you can refuel',
     features: {
       locationHeading: 'Paikanna oma sijainti',
       locationContent: 'Alueesi lähimmät kaasutankkausasemat',

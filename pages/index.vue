@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-wrap content-center">
     <div class="container mx-auto grid">
-      <AppLangBreadNavigation />
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
           <h1>{{ $t('home.heading') }}</h1>
@@ -96,18 +95,18 @@ export default {
     @apply grid grid-cols-2;
   }
   h1 {
-    @apply text-2xl font-extrabold my-8 leading-tight;
+    @apply text-center text-3xl font-extrabold mb-4 leading-tight;
     @screen md {
-      @apply text-3xl leading-snug;
+      @apply text-left text-3xl leading-snug;
     }
     @screen lg {
       @apply text-4xl;
     }
   }
   h2 {
-    @apply text-lg font-normal my-8 leading-normal;
+    @apply text-center text-base font-normal mb-8 leading-normal;
     @screen md {
-      @apply leading-relaxed;
+      @apply text-left  leading-relaxed;
     }
   }
   button {
