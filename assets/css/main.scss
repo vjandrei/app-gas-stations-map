@@ -32,6 +32,8 @@ main {
 body {
   overscroll-behavior: contain;
   @include mobile-viewport-height();
+  background-image: url('~assets/img/blob-scene-haikei.svg');
+  @apply bg-no-repeat h-full bg-cover bg-fixed bg-center;
 }
 
 body,
@@ -46,11 +48,6 @@ html {
   box-sizing: border-box;
 }
 
-main {
-  @apply min-h-full grid text-secondary;
-  grid-template-rows: 1fr;
-  grid-template-columns: 100%;
-}
 
 #app {
   @apply min-h-full relative bg-local bg-right-bottom bg-no-repeat bg-auto h-full font-display text-secondary;
@@ -65,7 +62,7 @@ main {
     @screen lg {
       @apply bg-right-bottom;
     }
-    background-image: url('~assets/img/background_shape.svg');
+    //background-image: url('~assets/img/blob-scene-haikei.svg');
   }
 }
 h1 {
@@ -96,7 +93,19 @@ h4 {
 }
 
 .nuxt-link-exact-active span {
-  @apply text-white bg-primary_dark;
+  @apply relative font-semibold text-primary_dark;
+  &::after {
+    position: absolute;
+    content: '';
+    top: 7px;
+    left: -10px;
+    right: 0;
+    bottom: 0;
+    width: 5px;
+    height: 5px;
+    background-color: #0039ad;
+    border-radius: 100px;
+  }
 }
 
 .largeButton {

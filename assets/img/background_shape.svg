@@ -1,9 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1024">
-  <defs>
-    <linearGradient id="a" x1="0%" x2="74.9608802%" y1="65.3550347%" y2="34.9934074%">
-      <stop offset="0%" stop-color="#ECF3FF"/>
-      <stop offset="100%" stop-color="#FFF" stop-opacity=".43745049"/>
-    </linearGradient>
-  </defs>
-  <path fill="url(#a)" fill-rule="evenodd" d="M1920 0v801.932329h-749.56587C832.31756 801.932329 712.604702 1064 378.889652 1064H0V0h1920z" transform="rotate(180 960 522)"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1024px" viewBox="0 0 1440 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>background_shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="75.276617%" x2="74.9608802%" y2="25.2969693%" id="linearGradient-1">
+            <stop stop-color="#ECF3FF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.437450489" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD--" fill="url(#linearGradient-1)">
+            <g id="background">
+                <path d="M1440,0.0995968646 L1440,743.099597 L1428.648,743.098597 L1070.4773,779.319562 L690.434128,779.319562 L690.434128,779.319562 C465.023083,779.319562 234.878374,860.863401 0,1023.95108 L0,741.951081 L0,0.0995968646 L1440,0.0995968646 Z" id="background_shape" transform="translate(720.000000, 512.025339) scale(-1, -1) translate(-720.000000, -512.025339) "></path>
+            </g>
+        </g>
+    </g>
 </svg>

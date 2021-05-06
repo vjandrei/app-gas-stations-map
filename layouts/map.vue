@@ -15,7 +15,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#appNavigation{
-    @apply p-4;
-  }
+main {
+  @apply min-h-full grid text-secondary;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+}
 </style>

@@ -1,51 +1,57 @@
 <template>
   <div id="appNavigation">
     <!-- buttons theme switch  -->
-    <div class="flex">
-      <div class="w-2/3 lg:w-5/12">
-        <nav id="navStyle">
-          <nuxt-link :to="localePath('index')">
-            <span
-              class="flex items-center h-10 px-1 align-middle rounded-lg mx-1 md:px-4"
-              >{{ $t('pages.home') }}
-            </span>
-          </nuxt-link>
-          <nuxt-link :to="localePath('about')">
-            <span
-              class="flex items-center h-10 px-1 align-middle rounded-lg mx-1 md:px-4"
-              >{{ $t('pages.about') }}
-            </span>
-          </nuxt-link>
-          <nuxt-link :to="localePath('contact')">
-            <span
-              class="flex items-center h-10 px-1 align-middle rounded-lg mx-1 md:px-4"
-              >{{ $t('pages.contact') }}
-            </span>
-          </nuxt-link>
-        </nav>
+    <nav
+      class="flex flex-col md:flex-row md:items-center justify-between flex-wrap"
+    >
+      <div class="flex items-center flex-shrink-0 mr-6">
+        <nuxt-link :to="localePath('index')">
+          <img
+            class="w-32"
+            src="~/assets/img/kaasulla-logo.svg"
+            alt="Kaasulla-logo"
+          />
+        </nuxt-link>
       </div>
-      <!-- buttons size switch  -->
-      <div class="w-1/3 lg:w-5/12">
-        <nav class="flex flex-wrap justify-end">
+      <div
+        class="flex md:flex-row md:items-center md:flex-grow justify-between mt-4 md:mt-0"
+      >
+        <div class="md:flex-grow flex space-x-4 md:w-full">
           <nuxt-link
-            class="w-auto py-2 bg-white rounded-l-lg"
-            :to="switchLocalePath('fi')"
+            :to="localePath('about')"
+            class="md:inline-block md:mt-0 hover:text-primary_dark"
+          >
+            <span>{{ $t('pages.about') }} </span>
+          </nuxt-link>
+          <nuxt-link
+            :to="localePath('map')"
+            class="md:inline-block md:mt-0 hover:text-primary_dark"
+          >
+            <span>{{ $t('pages.map') }} </span>
+          </nuxt-link>
+          <nuxt-link
+            :to="localePath('contact')"
+            class="md:inline-block md:mt-0 hover:text-primary_dark"
+          >
+            <span>{{ $t('pages.contact') }} </span>
+          </nuxt-link>
+        </div>
+        <div class="md:flex-grow flex space-x-4">
+          <nuxt-link class="w-auto block" :to="switchLocalePath('fi')"
             ><span
-              class="flex items-center justify-center h-10 px-4 align-middle rounded-lg fill-current md:mx-2"
-              >FI
+              class="langLink md:inline-block md:mt-0 hover:text-primary_dark"
+              >Fin
             </span></nuxt-link
           >
-          <nuxt-link
-            class="w-auto py-2 bg-white rounded-r-lg"
-            :to="switchLocalePath('en')"
+          <nuxt-link class="w-auto block" :to="switchLocalePath('en')"
             ><span
-              class="flex items-center justify-center h-10 px-4 align-middle rounded-lg fill-current md:mx-2"
-              >EN</span
+              class="langLink mt-4 md:inline-block md:mt-0 hover:text-primary_dark"
+              >Eng</span
             ></nuxt-link
           >
-        </nav>
+        </div>
       </div>
-    </div>
+    </nav>
   </div>
 </template>
 
@@ -65,10 +71,10 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#appNavigation{
-  @apply  top-0 left-0 mb-4 border-b border-gray-100 py-2 bg-white w-full ;
+#appNavigation {
+  @apply top-0 left-0 py-2 w-full;
 }
-#navStyle{
+#navStyle {
   @apply flex py-2;
 }
 </style>

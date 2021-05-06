@@ -5,6 +5,7 @@ export default {
   pages: {
     home: 'Koti',
     about: 'Tietoa',
+    map: "Kartta",
     contact: 'Ota yhteyttä',
   },
   ui: {

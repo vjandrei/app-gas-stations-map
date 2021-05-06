@@ -95,7 +95,7 @@ export default {
     @apply grid grid-cols-2;
   }
   h1 {
-    @apply text-center text-3xl font-extrabold mb-4 leading-tight;
+    @apply text-2xl font-extrabold mb-4 leading-tight;
     @screen md {
       @apply text-left text-3xl leading-snug;
     }
@@ -104,7 +104,7 @@ export default {
     }
   }
   h2 {
-    @apply text-center text-base font-normal mb-8 leading-normal;
+    @apply text-base font-normal mb-8 leading-normal;
     @screen md {
       @apply text-left  leading-relaxed;
     }

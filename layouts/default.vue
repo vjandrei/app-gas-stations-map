@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <AppNavigation />
     <main>
+      <AppNavigation />
       <nuxt />
     </main>
   </div>
@@ -16,10 +16,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-#app{
-  @apply container mx-auto grid;
-}
-main{
-  @apply container mx-auto p-4;
+main {
+  @apply container mx-auto p-5  min-h-full grid text-secondary;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 100%;
 }
 </style>

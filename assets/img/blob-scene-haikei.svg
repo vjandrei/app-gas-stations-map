@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1024px" viewBox="0 0 1440 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>blob-scene-haikei</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.3065087%" id="linearGradient-1">
+            <stop stop-color="#F7FAFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#ECF3FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#ECF3FF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD--" fill-rule="nonzero">
+            <g id="blob-scene-haikei" transform="translate(0.000000, -1.000000)">
+                <g id="Group" transform="translate(882.000000, 102.000000)" fill="url(#linearGradient-1)">
+                    <path d="M17.9717742,923 C-1,829.370576 -19.9717742,735.741152 49.4649194,684.083539 C118.711895,632.425926 276.177621,622.740123 340.302218,576.400206 C404.426815,530.060288 374.830847,447.256173 380.522379,362.932716 C386.403629,278.799177 427.192944,193.336214 486.574597,136.740741 C545.95625,80.3351852 623.740524,52.987037 702.283669,35.1347737 C781.016532,17.0925926 860.508266,8.5462963 940,0 L940,923 L17.9717742,923 Z" id="Path"></path>
+                </g>
+                <g id="Group" fill="url(#linearGradient-2)">
+                    <path d="M922,0 C849.909465,60.5777778 777.81893,121.155556 775.162963,207.939394 C772.506996,294.533333 839.285597,407.333333 796.790123,460.505051 C754.484362,513.676768 602.714815,507.410101 507.1,507.6 C411.485185,507.789899 371.835391,514.436364 342.430041,593.624242 C313.024691,672.812121 294.053498,824.541414 238.657613,891.385859 C183.261728,958.420202 91.6308642,940.569697 0,922.909091 L0,0 L922,0 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
