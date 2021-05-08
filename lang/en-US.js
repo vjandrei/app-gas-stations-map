@@ -5,6 +5,7 @@ export default {
   pages: {
     home: 'Home',
     about: 'About',
+    map: 'Map',
     contact: 'Contacts',
   },
   ui: {
@@ -16,15 +17,14 @@ export default {
   },
   home: {
     heading: 'Find liquefied petroleum gas filling stations',
-    subheading:
-      'The app allows you to find stations where you can refuel',
+    subheading: 'The app allows you to find stations where you can refuel',
     features: {
-      locationHeading: 'Paikanna oma sijainti',
-      locationContent: 'Alueesi lähimmät kaasutankkausasemat',
-      filterHeading: 'Suodata kaasutankkausasemia',
-      filterContent: 'Valittavissa on biokaasu ja maakaasu suodattaminen',
-      navigationHeading: 'Navigoi reitti kaasutankkausasemalle',
-      navigationContent: 'Avaa reitin valitulle kaasutankkausasemalle',
+      locationHeading: 'Find your location',
+      locationContent: 'Gas filling stations near you',
+      filterHeading: 'Filter gas filling stations',
+      filterContent: 'Filter by bio or neutral gas',
+      navigationHeading: 'Navigate to the station',
+      navigationContent: 'Open route to the selected gas filling station',
     },
   },
 }

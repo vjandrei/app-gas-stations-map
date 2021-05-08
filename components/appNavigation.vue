@@ -29,12 +29,6 @@
           >
             <span>{{ $t('pages.map') }} </span>
           </nuxt-link>
-          <nuxt-link
-            :to="localePath('contact')"
-            class="md:inline-block md:mt-0 hover:text-primary_dark"
-          >
-            <span>{{ $t('pages.contact') }} </span>
-          </nuxt-link>
         </div>
         <div class="md:flex-grow flex space-x-4">
           <nuxt-link class="w-auto block" :to="switchLocalePath('fi')"

@@ -55,6 +55,11 @@
             Palvelu hyödyntää puhelimen sijaintitietoa ja näyttää lähistöllä
             olevat kaasutankkausasemat suoraan tien päällä.
           </p>
+          <p
+            class="text-center mt-24 text-primary_dark hover:text-primary_default"
+          >
+            <a href="mailto:andreas.koutsoukos@gmail.com">Ota yhteyttä</a>
+          </p>
         </article>
       </div>
     </section>
