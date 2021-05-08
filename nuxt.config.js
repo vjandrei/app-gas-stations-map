@@ -138,14 +138,6 @@ export default {
       },
     },
   },
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0', // default: localhost
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
-    },
-  },
 
   env: {
     MAPBOX_KEY: process.env.MAPBOX_KEY,
