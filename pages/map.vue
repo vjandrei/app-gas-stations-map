@@ -30,8 +30,6 @@ export default {
       selectedStation: null,
     }
   },
-  components: {},
-  created() {},
   mounted() {
     this.$nuxt.$on('select-station', (station) => {
       this.selectedStation = station

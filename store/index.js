@@ -1,13 +1,13 @@
 /** Initial state */
 export const state = () => ({
-  defaultLocation: [63.3941186, 24.7088464],
+  defaultLocation: [65.3860673, 23.5945392],
   defaulListStatus: 10,
   showStation: {},
   showStationDetails: false,
   stationFilter: 'all',
   userLocationData: [],
   loadingStatus: false,
-  isOpen: false
+  isOpen: false,
 })
 
 /**
@@ -114,12 +114,12 @@ export const actions = {
   SET_STATION_LIST(context) {
     context.commit('SET_STATION_LIST')
   },
-  SET_STATION_CARD(context, clicked){
+  SET_STATION_CARD(context, clicked) {
     context.commit('SET_STATION_CARD', clicked)
   },
-  RESET_STATION_CARD(context, clicked){
+  RESET_STATION_CARD(context, clicked) {
     context.commit('RESET_STATION_DETAILS', clicked)
-  }
+  },
 }
 
 /**
@@ -155,9 +155,9 @@ export const mutations = {
   SET_STATION_LIST(state, payload) {
     state.defaulListStatus = payload
   },
-  SET_STATION_CARD(state, payload){
+  SET_STATION_CARD(state, payload) {
     state.isOpen = payload
-  }
+  },
 }
 
 //showing things, not mutating state
@@ -184,7 +184,7 @@ export const getters = {
   PASS_LOADING_STATUS: (state) => {
     return state.loadingStatus
   },
-  PASS_STATION_CARD: (state) =>{
+  PASS_STATION_CARD: (state) => {
     return state.isOpen
-  } 
+  },
 }

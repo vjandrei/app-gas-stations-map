@@ -66,25 +66,28 @@ export default {
     }
   },
   components: {},
+
   created() {
     if (isBrowser) {
       this.userCoords = JSON.parse(sessionStorage.getItem('userCoords'))
       this.userLocation = L.latLng(this.userCoords)
     }
   },
+
   mounted() {
     this.$nuxt.$on('show-marker', (station) => {
       this.$nextTick(() => {
         this.$refs.map.mapObject.setView(
-          L.latLng(station.coords.lat, station.coords.lng),
-          14
+          L.latLng(station.coords.lat, station.coords.lng)
         )
       })
     })
+
     this.$nuxt.$on('show-marker', (station) => {
       this.$nextTick(() => {})
     })
-    /*
+
+    /* // näitä ei käytetä
     this.$nuxt.$on('show-marker', (station) => {
       this.$nextTick(() => {
         this.$refs.map.mapObject.setView(
@@ -113,6 +116,7 @@ export default {
         this.$store.dispatch('GET_LOCATION_AND_DISTANCE')
       })
   },
+
   computed: {
     ...mapGetters({
       stations: 'PASS_STATIONS',
@@ -140,7 +144,8 @@ export default {
       this.$store.dispatch('SET_STATION_DETAILS')
       this.$nextTick(() => {
         this.$refs.map.mapObject.setView(
-          L.latLng(this.userlocation.latitude, this.userlocation.longitude)
+          L.latLng(this.userlocation.latitude, this.userlocation.longitude),
+          12
         )
       })
     },
