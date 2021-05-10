@@ -1,6 +1,3 @@
-import path from 'path'
-import fs from 'fs'
-
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -140,15 +137,6 @@ export default {
       plugins: {
         'postcss-nested': {},
       },
-    },
-  },
-
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0', // default: localhost
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt')),
     },
   },
 
