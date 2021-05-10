@@ -16,9 +16,9 @@ export default {
     gettinglocation: 'Haetaan paikkatietoja',
   },
   home: {
-    heading: 'Löydä Kaasutankkausasemat',
+    heading: 'Navigoi asemille helposti suoraan mobiililaitteellasi',
     subheading:
-      'Kaasulla.app on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. ',
+      'Kaasulla.app (beta) on karttapohjainen sovellus josta löydät bio- ja maakaasutankkausasemat. ',
     features: {
       locationHeading: 'Paikanna sijainti',
       locationContent: 'Alueesi lähimmät kaasutankkausasemat',
@@ -26,6 +26,20 @@ export default {
       filterContent: 'Biokaasu tai maakaasu',
       navigationHeading: 'Navigoi kaasutankkausasemalle',
       navigationContent: 'Avaa reitin valitulle kaasutankkausasemalle',
+    },
+  },
+  map: {
+    filters: {
+      all: 'Kaikki asemat',
+      bio: 'Biokaasu',
+      neutral: 'Maakaasu',
+    },
+    listHeading: 'Lähimmät kaasuasemat',
+    locationsHeading: 'Sijainnista',
+    productsDetails: {
+      productHeading: 'Tuotteet',
+      paymentHeading: 'Maksuvaihtoehdot',
+      operatorHeading: 'Operaattori',
     },
   },
 }

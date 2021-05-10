@@ -92,7 +92,12 @@ export const actions = {
           },
           addToSessionStorage(pos.coords.latitude, pos.coords.longitude)
         )
-        this.$router.push('/map')
+        console.log(`/${this.$i18n.locale}/`)
+        if (`/${this.$i18n.locale}/` === '/en/') {
+          this.$router.push('/en/map')
+        } else {
+          this.$router.push('/kartta')
+        }
       })
       .catch((err) => {
         console.log(err)

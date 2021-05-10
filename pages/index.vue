@@ -1,20 +1,29 @@
 <template>
   <div class="flex flex-wrap content-center">
-    <div class="container mx-auto grid">
+    <div class="sm:container mx-auto grid">
       <div id="welcomeScreenContainer">
         <div class="col-start-1 col-end-2">
-          <h1>{{ $t('home.heading') }}</h1>
-          <h2 class="max-w-lg">{{ $t('home.subheading') }}</h2>
+          <div class="text-center my-8">
+            <nuxt-link :to="localePath('index')">
+              <img
+                class="w-32"
+                src="~/assets/img/kaasulla-logo.svg"
+                alt="Kaasulla-logo"
+              />
+            </nuxt-link>
+            <h1>{{ $t('home.heading') }}</h1>
+            <h2 class="max-w-lg">{{ $t('home.subheading') }}</h2>
+          </div>
           <button @click="getUserLocation">
             <span v-if="userLocation">{{ $t('ui.gettinglocation') }}</span>
             <span v-else>{{ $t('ui.locate') }}</span>
           </button>
         </div>
         <div class="col-start-1 col-end-2">
-          <ul>
+          <ul id="appFeaturesList">
             <li class="flex py-2">
               <div
-                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-xl mr-6"
+                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-md mr-6"
               >
                 <i class="icon-crosshairs text-primary_dark"></i>
               </div>
@@ -25,7 +34,7 @@
             </li>
             <li class="flex py-2">
               <div
-                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-xl mr-6"
+                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-md mr-6"
               >
                 <i class="icon-filter text-primary_dark"></i>
               </div>
@@ -36,7 +45,7 @@
             </li>
             <li class="flex py-2">
               <div
-                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-xl mr-6"
+                class="h-12 w-12 flex place-items-center place-content-center rounded-full shadow-md mr-6"
               >
                 <i class="icon-location-arrow text-primary_dark"></i>
               </div>
@@ -95,7 +104,7 @@ export default {
     @apply grid grid-cols-2;
   }
   h1 {
-    @apply text-2xl font-extrabold mb-4 leading-tight;
+    @apply text-3xl font-extrabold mb-4 leading-tight tracking-tight;
     @screen md {
       @apply text-left text-3xl leading-snug;
     }
@@ -104,7 +113,7 @@ export default {
     }
   }
   h2 {
-    @apply text-base font-normal mb-8 leading-normal;
+    @apply text-base font-normal mb-8 leading-normal tracking-tight;
     @screen md {
       @apply text-left  leading-relaxed;
     }
@@ -144,7 +153,6 @@ export default {
 }
 
 #appFeaturesList {
-  @apply my-8;
 }
 .appFeaturesListItem {
   @apply flex my-4 content-center items-center;

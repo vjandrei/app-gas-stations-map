@@ -19,9 +19,9 @@ export default {
   data() {
     return {
       filters: [
-        { name: 'Kaikki asemat', value: 'all', id: 1 },
-        { name: 'Biokaasu', value: 'biogas', id: 2 },
-        { name: 'Maakaasu', value: 'naturalgas', id: 3 },
+        { name: this.$t('map.filters.all'), value: 'all', id: 1 },
+        { name: this.$t('map.filters.bio'), value: 'biogas', id: 2 },
+        { name: this.$t('map.filters.neutral'), value: 'naturalgas', id: 3 },
       ],
       selectedFilter: '',
     }

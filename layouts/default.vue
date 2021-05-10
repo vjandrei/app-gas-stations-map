@@ -17,7 +17,7 @@ export default {
 
 <style lang="postcss" scoped>
 main {
-  @apply container mx-auto p-5  min-h-full grid text-secondary;
+  @apply container mx-auto p-3  min-h-full grid text-secondary;
   grid-template-rows: auto 1fr;
   grid-template-columns: 100%;
 }

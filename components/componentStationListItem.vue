@@ -11,7 +11,7 @@
             </h4>
           </div>
           <div class="stationLocationDetails space-x-1">
-            <h5>Sijainnista</h5>
+            <h5>{{ $t('map.locationsHeading') }}</h5>
             <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default {
     }
     h4 {
       @apply mb-2 text-secondary_dark text-sm font-normal;
-      i{
+      i {
         @apply mr-2;
       }
     }

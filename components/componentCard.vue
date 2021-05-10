@@ -3,42 +3,44 @@
     <div class="overlay" v-if="isOpen" @click="closeCard(station)"></div>
     <transition name="show-card">
       <div id="stationCard" v-if="isOpen">
-        <div class="closeCard" @click="closeCard(station)">sulje</div>
+        <div class="closeCard" @click="closeCard(station)">
+          {{ $t('ui.close') }}
+        </div>
         <div id="stationCardContent">
           <div class="stationDetails">
             <div class="stationGeneralDetails">
               <h2>{{ station.name }}</h2>
               <h4>
-              <i class="icon-map-marker"></i>
-              {{ station.address }}
-            </h4>
+                <i class="icon-map-marker"></i>
+                {{ station.address }}
+              </h4>
             </div>
             <div class="stationLocationDetails space-x-1">
-            <h5>Sijainnista</h5>
-            <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
+              <h5>{{ $t('map.locationsHeading') }}</h5>
+              <span>{{ (station.distance / 1000).toFixed(1) }} km</span>
             </div>
           </div>
           <div class="stationRoute"></div>
           <div class="stationOtherDetails">
             <dl>
-              <dt>Tuotteet:</dt>
+              <dt>{{ $t('map.productsDetails.productHeading') }}:</dt>
               <dd>
                 <span v-for="(product, i) in station.products" :key="product[i]"
                   >{{ product != '' && i != 0 ? ',' : '' }} {{ product }}</span
                 >
               </dd>
-              <dt>Maksuvaihtoehdot:</dt>
+              <dt>{{ $t('map.productsDetails.paymentHeading') }}:</dt>
               <dd>
                 <span v-for="(payment, i) in station.payments" :key="payment[i]"
                   >{{ payment != '' && i != 0 ? ',' : '' }} {{ payment }}</span
                 >
               </dd>
-              <dt>Operaattori:</dt>
+              <dt>{{ $t('map.productsDetails.operatorHeading') }}:</dt>
               <dd>{{ station.operator }}</dd>
             </dl>
             <div class="navigationActions">
-              <button @click="openNavigator(station)" class="smallButton">
-                Paikanna
+              <button @click="openNavigator(station)">
+                {{ $t('ui.locate') }}
               </button>
             </div>
           </div>
@@ -156,9 +158,9 @@ export default {
   }
   h4 {
     @apply mb-2 text-secondary_dark text-sm font-normal;
-    i{
-        @apply mr-2;
-      }
+    i {
+      @apply mr-2;
+    }
   }
 }
 .stationRoute {
@@ -187,6 +189,13 @@ dl {
 }
 .navigationActions {
   @apply w-full py-2 pb-0;
+}
+
+button {
+  @apply block w-full rounded-lg px-3 py-3 bg-primary_default text-white font-bold text-lg mb-8;
+  @screen md {
+    @apply max-w-xs;
+  }
 }
 
 .overlay {

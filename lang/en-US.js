@@ -17,7 +17,8 @@ export default {
   },
   home: {
     heading: 'Find liquefied petroleum gas filling stations',
-    subheading: 'The app allows you to find stations where you can refuel',
+    subheading:
+      'The app (beta) allows you to find stations where you can refuel',
     features: {
       locationHeading: 'Find your location',
       locationContent: 'Gas filling stations near you',
@@ -25,6 +26,20 @@ export default {
       filterContent: 'Filter by bio or neutral gas',
       navigationHeading: 'Navigate to the station',
       navigationContent: 'Open route to the selected gas filling station',
+    },
+  },
+  map: {
+    filters: {
+      all: 'All',
+      bio: 'Biogas',
+      neutral: 'Natural gas',
+    },
+    listHeading: 'Nearest gas stations',
+    locationsHeading: 'From location',
+    productsDetails: {
+      productHeading: 'Products',
+      paymentHeading: 'Payment options',
+      operatorHeading: 'Operator',
     },
   },
 }

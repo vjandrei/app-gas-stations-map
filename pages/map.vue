@@ -6,7 +6,7 @@
       <div id="listHeading">
         <div id="listHeadingContainer">
           <div id="listHeadingContent">
-            <span id="listHeadingText">Lähimmät kaasuasemat</span>
+            <span id="listHeadingText">{{ $t('map.listHeading') }}</span>
           </div>
         </div>
       </div>
@@ -25,6 +25,12 @@
 import { mapGetters } from 'vuex'
 export default {
   layout: 'map',
+  nuxtI18n: {
+    paths: {
+      fi: '/kartta',
+      en: '/map',
+    },
+  },
   data() {
     return {
       selectedStation: null,
