@@ -40,7 +40,7 @@
             </dl>
             <div class="navigationActions">
               <button @click="openNavigator(station)">
-                {{ $t('ui.locate') }}
+                {{ $t('ui.showroute') }}
               </button>
             </div>
           </div>
