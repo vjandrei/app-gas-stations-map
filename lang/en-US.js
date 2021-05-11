@@ -14,6 +14,7 @@ export default {
     close: 'Close',
     locate: 'Locate me',
     gettinglocation: 'Getting location',
+    showroute: 'Get route',
   },
   home: {
     heading: 'Find liquefied petroleum gas filling stations',

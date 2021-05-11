@@ -14,6 +14,7 @@ export default {
     close: 'Sulje',
     locate: 'Paikanna minut',
     gettinglocation: 'Haetaan paikkatietoja',
+    showroute: 'Näytä reitti',
   },
   home: {
     heading: 'Navigoi asemille helposti suoraan mobiililaitteellasi',
