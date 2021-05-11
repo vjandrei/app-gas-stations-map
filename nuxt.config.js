@@ -57,7 +57,11 @@ export default {
     'nuxt-i18n',
     [
       'nuxt-matomo',
-      { matomoUrl: 'https://kaasullaapp.matomo.cloud/', siteId: 1 },
+      {
+        matomoUrl: 'https://kaasullaapp.matomo.cloud/',
+        siteId: 1,
+        cookies: false,
+      },
     ],
   ],
 
