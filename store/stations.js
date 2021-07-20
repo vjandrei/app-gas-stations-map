@@ -285,7 +285,7 @@ export const state = () => ({
       products: ['Biokaasu'],
       type: ['biogas'],
       payments: [
-        'Metener-tankkauskortti, käteinen. Huom! Käteisellä maksu vain klo 07–20. Ennen saapumista soitettava +358 400 546 590 (Erkki Kalmari)',
+        'Pankki- ja luottokortti',
       ],
       operator: 'Metener Oy',
     },
@@ -298,22 +298,7 @@ export const state = () => ({
       products: ['Maakaasu'],
       type: ['naturalgas'],
       payments: [
-        'Metener-tankkauskortti, käteinen. Huom! Käteisellä maksu vain klo 07–20.(+aktivointiavain ks. yllä)',
-      ],
-      operator: 'Lempäälän Lämpö Oy',
-      other:
-        '*HUOM! Asema on puolijulkinen - tankkaus vaatii asiakkaaksi rekisteröitymistä (Lempäälän Lämpö Oy:ltä saatavaa aktivointiavainta)*',
-    },
-    {
-      id: 27,
-      url_name: 'saaksjarvi',
-      name: 'Lempäälä Sääksjärvi',
-      address: 'Varastotie 11, 33880 Lempäälä',
-      coords: { lat: 62.323538, lng: 25.8724165 },
-      products: ['Maakaasu'],
-      type: ['naturalgas'],
-      payments: [
-        'Metener-tankkauskortti, käteinen. Huom! Käteisellä maksu vain klo 07–20.(+aktivointiavain ks. yllä)',
+        'Pankki- ja luottokortti (+aktivointiavain)',
       ],
       operator: 'Lempäälän Lämpö Oy',
       other:
@@ -643,11 +628,35 @@ export const state = () => ({
       url_name: 'diggarinkatu',
       name: 'Järvenpää',
       address: 'Diggarinkatu 8 A, 04420 Järvenpää',
-      coords: { lat: 60.1732487, lng: 24.8208381 },
+      coords: { lat: 60.4553351, lng: 25.113481 },
       products: ['Maakaasu', 'Biokaasu'],
       type: ['neutralgas', 'biogas'],
       payments: ['Pankki- & luottokortit'],
       operator: 'Gasum Oy',
+    },
+    {
+      id: 58,
+      url_name: 'alatemmes',
+      name: 'Ala-temmes',
+      address: 'Jyväskyläntie 69, 91930 Ala-Temmes',
+      coords: { lat: 64.7632956, lng: 25.5447264 },
+      products: ['Biokaasu'],
+      type: ['biogas'],
+      payments: ['Pankki- & luottokortit'],
+      operator: 'Seo',
+      other: 'Ala-Temmeksen ja Kaakkurin asemiltamme löytyvät myös NGV2 adapterit ko. liittimille varustettujen ajoneuvojen tankkausta varten (raskas/keskiraskas liikenne).'
+    },
+    {
+      id: 59,
+      url_name: 'kaakkuri',
+      name: 'Oulu kaakkuri',
+      address: 'Kaakkurinojantie 1 90420 Oulu',
+      coords: { lat: 64.9593355, lng: 25.5259025 },
+      products: ['Biokaasu'],
+      type: ['biogas'],
+      payments: ['Pankki- & luottokortit'],
+      operator: 'Seo',
+      other: 'Ala-Temmeksen ja Kaakkurin asemiltamme löytyvät myös NGV2 adapterit ko. liittimille varustettujen ajoneuvojen tankkausta varten (raskas/keskiraskas liikenne).'
     },
   ],
 })
