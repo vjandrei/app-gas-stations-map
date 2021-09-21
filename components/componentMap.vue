@@ -66,12 +66,15 @@ export default {
     }
   },
   components: {},
+
   created() {
     if (isBrowser) {
       this.userCoords = JSON.parse(sessionStorage.getItem('userCoords'))
       this.userLocation = L.latLng(this.userCoords)
     }
   },
+
+  /*
   mounted() {
     this.$nuxt.$on('show-marker', (station) => {
       this.$nextTick(() => {
@@ -81,31 +84,10 @@ export default {
         )
       })
     })
+
     this.$nuxt.$on('show-marker', (station) => {
       this.$nextTick(() => {})
     })
-    /*
-    this.$nuxt.$on('show-marker', (station) => {
-      this.$nextTick(() => {
-        this.$refs.map.mapObject.setView(
-          L.latLng(station.coords.lat, station.coords.lng),
-          14
-        )
-        console.log(L.marker(L.latLng(station.coords.lat, station.coords.lng)))
-        L.marker(L.latLng(station.coords.lat, station.coords.lng), {
-          title: 'hello!',
-        }).addTo(this.$refs.map.mapObject)
-      })
-    })
-
-    this.$nuxt.$on('remove-marker', (station) => {
-      this.$nextTick(() => {
-        this.$refs.map.mapObject.removeLayer(
-          L.marker(L.latLng(station.coords.lat, station.coords.lng))
-        )
-      })
-    })
-    */
 
     this.$store
       .dispatch('GET_USER_SESSION_LOCATION_DATA', this.userCoords)
@@ -113,6 +95,9 @@ export default {
         this.$store.dispatch('GET_LOCATION_AND_DISTANCE')
       })
   },
+
+  */
+
   computed: {
     ...mapGetters({
       stations: 'PASS_STATIONS',
@@ -126,6 +111,7 @@ export default {
       }
     },
   },
+
   methods: {
     getMarker(station) {
       this.$nuxt.$emit('select-station', station)
