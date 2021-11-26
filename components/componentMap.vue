@@ -43,9 +43,7 @@ const isBrowser = typeof window !== 'undefined'
 export default {
   data() {
     return {
-      url:
-        'https://api.mapbox.com/styles/v1/vjandrei/cjz4h2qqo069r1drtkgqxxh13/tiles/256/{z}/{x}/{y}@2x?access_token=' +
-        process.env.MAPBOX_KEY,
+      url: 'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png',
       userLocation: [],
       userCoords: [],
       defaultZoom: 6,
