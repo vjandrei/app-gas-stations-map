@@ -54,15 +54,7 @@ export default {
   modules: [
     // https://github.com/schlunsen/nuxt-leaflet
     'nuxt-leaflet',
-    'nuxt-i18n',
-    [
-      'nuxt-matomo',
-      {
-        matomoUrl: 'https://kaasullaapp.matomo.cloud/',
-        siteId: 1,
-        cookies: false,
-      },
-    ],
+    'nuxt-i18n'
   ],
 
   // i18n
