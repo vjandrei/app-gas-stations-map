@@ -18,3 +18,5 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+TO-DO get data from https://www.gasum.com/Api/StationApi/?currentLanguage=fi
